@@ -1,0 +1,4 @@
+repository "GeeksLegacy@AmRickStudios@cloud"
+  path "/"
+    br "/main"
+    co "/main"
