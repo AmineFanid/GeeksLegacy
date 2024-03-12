@@ -1,0 +1,635 @@
+fileFormatVersion: 2
+guid: f005dbe83f6321d4d835bd3a7c2df844
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 7344609961471367721
+    second: TileMapComplementary_0
+  - first:
+      213: -4735105553215942481
+    second: TileMapComplementary_1
+  - first:
+      213: -1852396017668714091
+    second: TileMapComplementary_2
+  - first:
+      213: 5199996057083773470
+    second: TileMapComplementary_3
+  - first:
+      213: -2436899847227791349
+    second: TileMapComplementary_4
+  - first:
+      213: -6104234320369211298
+    second: TileMapComplementary_5
+  - first:
+      213: 8522622023199744621
+    second: TileMapComplementary_6
+  - first:
+      213: 3418485036314114569
+    second: TileMapComplementary_7
+  - first:
+      213: -5056427932185085304
+    second: TileMapComplementary_8
+  - first:
+      213: 113653163433964723
+    second: TileMapComplementary_9
+  - first:
+      213: -7218071996151103070
+    second: TileMapComplementary_10
+  - first:
+      213: 4504593052199491850
+    second: TileMapComplementary_11
+  - first:
+      213: 2494800484923043514
+    second: TileMapComplementary_12
+  - first:
+      213: -4029521581029590240
+    second: TileMapComplementary_13
+  - first:
+      213: 2159014781629789180
+    second: TileMapComplementary_14
+  - first:
+      213: 7514331270758451599
+    second: TileMapComplementary_15
+  - first:
+      213: 7774495374344511225
+    second: TileMapComplementary_16
+  - first:
+      213: -5572261364431717220
+    second: TileMapComplementary_17
+  - first:
+      213: -2084232933299820597
+    second: TileMapComplementary_18
+  - first:
+      213: -2746417866714064429
+    second: TileMapComplementary_19
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: TileMapComplementary_0
+      rect:
+        serializedVersion: 2
+        x: 271
+        y: 311
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 92adb47b8db4de560800000000000000
+      internalID: 7344609961471367721
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TileMapComplementary_1
+      rect:
+        serializedVersion: 2
+        x: 303
+        y: 311
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fa095964696894eb0800000000000000
+      internalID: -4735105553215942481
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TileMapComplementary_2
+      rect:
+        serializedVersion: 2
+        x: 335
+        y: 311
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5911287e2a7fa46e0800000000000000
+      internalID: -1852396017668714091
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TileMapComplementary_3
+      rect:
+        serializedVersion: 2
+        x: 367
+        y: 311
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e1209e7fcd81a2840800000000000000
+      internalID: 5199996057083773470
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TileMapComplementary_4
+      rect:
+        serializedVersion: 2
+        x: 399
+        y: 311
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b08a8cc00846e2ed0800000000000000
+      internalID: -2436899847227791349
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TileMapComplementary_5
+      rect:
+        serializedVersion: 2
+        x: 271
+        y: 279
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e5825ac2a37694ba0800000000000000
+      internalID: -6104234320369211298
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TileMapComplementary_6
+      rect:
+        serializedVersion: 2
+        x: 303
+        y: 279
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d62edb7439f664670800000000000000
+      internalID: 8522622023199744621
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TileMapComplementary_7
+      rect:
+        serializedVersion: 2
+        x: 335
+        y: 279
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 90abd735706e07f20800000000000000
+      internalID: 3418485036314114569
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TileMapComplementary_8
+      rect:
+        serializedVersion: 2
+        x: 367
+        y: 279
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 88abeb5f595f3d9b0800000000000000
+      internalID: -5056427932185085304
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TileMapComplementary_9
+      rect:
+        serializedVersion: 2
+        x: 399
+        y: 279
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3b4b41233f6c39100800000000000000
+      internalID: 113653163433964723
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TileMapComplementary_10
+      rect:
+        serializedVersion: 2
+        x: 271
+        y: 247
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2a1083233c144db90800000000000000
+      internalID: -7218071996151103070
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TileMapComplementary_11
+      rect:
+        serializedVersion: 2
+        x: 303
+        y: 247
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a091b0eb387838e30800000000000000
+      internalID: 4504593052199491850
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TileMapComplementary_12
+      rect:
+        serializedVersion: 2
+        x: 335
+        y: 247
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: abe6f41b2df4f9220800000000000000
+      internalID: 2494800484923043514
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TileMapComplementary_13
+      rect:
+        serializedVersion: 2
+        x: 367
+        y: 247
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 02bf5fba8734418c0800000000000000
+      internalID: -4029521581029590240
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TileMapComplementary_14
+      rect:
+        serializedVersion: 2
+        x: 399
+        y: 247
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cf37cd3418c56fd10800000000000000
+      internalID: 2159014781629789180
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TileMapComplementary_15
+      rect:
+        serializedVersion: 2
+        x: 271
+        y: 215
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f89ca266a74484860800000000000000
+      internalID: 7514331270758451599
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TileMapComplementary_16
+      rect:
+        serializedVersion: 2
+        x: 303
+        y: 215
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9fed8b71a5e84eb60800000000000000
+      internalID: 7774495374344511225
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TileMapComplementary_17
+      rect:
+        serializedVersion: 2
+        x: 335
+        y: 215
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c9cf969efc95ba2b0800000000000000
+      internalID: -5572261364431717220
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TileMapComplementary_18
+      rect:
+        serializedVersion: 2
+        x: 367
+        y: 215
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bc76e7d90315313e0800000000000000
+      internalID: -2084232933299820597
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TileMapComplementary_19
+      rect:
+        serializedVersion: 2
+        x: 399
+        y: 215
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3d9d8b95083c2e9d0800000000000000
+      internalID: -2746417866714064429
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      TileMapComplementary_0: 7344609961471367721
+      TileMapComplementary_1: -4735105553215942481
+      TileMapComplementary_10: -7218071996151103070
+      TileMapComplementary_11: 4504593052199491850
+      TileMapComplementary_12: 2494800484923043514
+      TileMapComplementary_13: -4029521581029590240
+      TileMapComplementary_14: 2159014781629789180
+      TileMapComplementary_15: 7514331270758451599
+      TileMapComplementary_16: 7774495374344511225
+      TileMapComplementary_17: -5572261364431717220
+      TileMapComplementary_18: -2084232933299820597
+      TileMapComplementary_19: -2746417866714064429
+      TileMapComplementary_2: -1852396017668714091
+      TileMapComplementary_3: 5199996057083773470
+      TileMapComplementary_4: -2436899847227791349
+      TileMapComplementary_5: -6104234320369211298
+      TileMapComplementary_6: 8522622023199744621
+      TileMapComplementary_7: 3418485036314114569
+      TileMapComplementary_8: -5056427932185085304
+      TileMapComplementary_9: 113653163433964723
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
