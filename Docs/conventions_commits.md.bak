@@ -12,5 +12,4 @@ Notre convention pour les commits sur **github**
 - **refactor** : Modification de code
 - **test** : Ajout, modification ou suppression de test 
 - **perf** : Modification de code axé sur l'amélioration de la performance
-- **work** : Ajout ou modif dans le projet (organisation)
 ---
