@@ -1082,7 +1082,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4267753855855774138, guid: 00a63d34d2420f94f81450d39eac9ea2, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -5.29
+      value: -5.17
       objectReference: {fileID: 0}
     - target: {fileID: 4267753855855774138, guid: 00a63d34d2420f94f81450d39eac9ea2, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1119,10 +1119,6 @@ PrefabInstance:
     - target: {fileID: 4889261689804403610, guid: 00a63d34d2420f94f81450d39eac9ea2, type: 3}
       propertyPath: m_Name
       value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 5283779602602068612, guid: 00a63d34d2420f94f81450d39eac9ea2, type: 3}
-      propertyPath: m_Constraints
-      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1616,17 +1612,13 @@ PrefabInstance:
       propertyPath: m_Name
       value: BossDesolation
       objectReference: {fileID: 0}
-    - target: {fileID: 5631229267345395597, guid: c7a8346050528f84c89df11a38f77c40, type: 3}
-      propertyPath: m_Controller
-      value: 
-      objectReference: {fileID: 9100000, guid: 3e041ae219b56a74cb10b0a4f5d30177, type: 2}
     - target: {fileID: 9143248134679086203, guid: c7a8346050528f84c89df11a38f77c40, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.21
+      value: 2.47
       objectReference: {fileID: 0}
     - target: {fileID: 9143248134679086203, guid: c7a8346050528f84c89df11a38f77c40, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -3.73
+      value: -3.68
       objectReference: {fileID: 0}
     - target: {fileID: 9143248134679086203, guid: c7a8346050528f84c89df11a38f77c40, type: 3}
       propertyPath: m_LocalPosition.z
