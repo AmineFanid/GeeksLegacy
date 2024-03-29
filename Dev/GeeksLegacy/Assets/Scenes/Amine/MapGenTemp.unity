@@ -448,7 +448,7 @@ MonoBehaviour:
   groundTileMap: {fileID: 1566541656}
   caveTileMap: {fileID: 441166872}
   seed: 420
-  characterPrefab: {fileID: 4889261689804403610, guid: a0b267f8f3e2ff74fb3bbb55bf30d412, type: 3}
+  characterPrefab: {fileID: 4889261689804403610, guid: cb91870e4c9011947995cbfb0e52c426, type: 3}
 --- !u!1 &1065168886
 GameObject:
   m_ObjectHideFlags: 0
