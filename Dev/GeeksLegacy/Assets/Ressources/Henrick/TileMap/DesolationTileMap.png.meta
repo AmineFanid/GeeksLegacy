@@ -1,67 +1,10 @@
 fileFormatVersion: 2
-guid: f005dbe83f6321d4d835bd3a7c2df844
+guid: 5f88245c2183bce45bef1d3fa4e3056d
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 7344609961471367721
-    second: TileMapComplementary_0
-  - first:
-      213: -4735105553215942481
-    second: TileMapComplementary_1
-  - first:
-      213: -1852396017668714091
-    second: TileMapComplementary_2
-  - first:
-      213: 5199996057083773470
-    second: TileMapComplementary_3
-  - first:
-      213: -2436899847227791349
-    second: TileMapComplementary_4
-  - first:
-      213: -6104234320369211298
-    second: TileMapComplementary_5
-  - first:
-      213: 8522622023199744621
-    second: TileMapComplementary_6
-  - first:
-      213: 3418485036314114569
-    second: TileMapComplementary_7
-  - first:
-      213: -5056427932185085304
-    second: TileMapComplementary_8
-  - first:
-      213: 113653163433964723
-    second: TileMapComplementary_9
-  - first:
-      213: -7218071996151103070
-    second: TileMapComplementary_10
-  - first:
-      213: 4504593052199491850
-    second: TileMapComplementary_11
-  - first:
-      213: 2494800484923043514
-    second: TileMapComplementary_12
-  - first:
-      213: -4029521581029590240
-    second: TileMapComplementary_13
-  - first:
-      213: 2159014781629789180
-    second: TileMapComplementary_14
-  - first:
-      213: 7514331270758451599
-    second: TileMapComplementary_15
-  - first:
-      213: 7774495374344511225
-    second: TileMapComplementary_16
-  - first:
-      213: -5572261364431717220
-    second: TileMapComplementary_17
-  - first:
-      213: -2084232933299820597
-    second: TileMapComplementary_18
-  - first:
-      213: -2746417866714064429
-    second: TileMapComplementary_19
+      213: 8460274746131033602
+    second: DesolationTileMap_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -157,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: TileMapComplementary_0
+      name: DesolationTileMap_0
       rect:
         serializedVersion: 2
-        x: 271
-        y: 311
-        width: 18
-        height: 18
+        x: 0
+        y: 84
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -172,426 +115,536 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 92adb47b8db4de560800000000000000
-      internalID: 7344609961471367721
+      spriteID: 20e2951ae0fe86570800000000000000
+      internalID: 8460274746131033602
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TileMapComplementary_1
+      name: DesolationTileMap_1
       rect:
         serializedVersion: 2
-        x: 303
-        y: 311
-        width: 18
-        height: 18
+        x: 16
+        y: 84
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: fa095964696894eb0800000000000000
-      internalID: -4735105553215942481
+      spriteID: 19cfe2eec66bc7c449f58af3afbb0327
+      internalID: -1645063249
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TileMapComplementary_2
+      name: DesolationTileMap_2
       rect:
         serializedVersion: 2
-        x: 335
-        y: 311
-        width: 18
-        height: 18
+        x: 32
+        y: 84
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 5911287e2a7fa46e0800000000000000
-      internalID: -1852396017668714091
+      spriteID: f7575af950453b743a054675c604ee24
+      internalID: 92965077
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TileMapComplementary_3
+      name: DesolationTileMap_3
       rect:
         serializedVersion: 2
-        x: 367
-        y: 311
-        width: 18
-        height: 18
+        x: 48
+        y: 84
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: e1209e7fcd81a2840800000000000000
-      internalID: 5199996057083773470
+      spriteID: 8afe8bb15638fc74dbced3b05b4c8c47
+      internalID: -1596492015
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TileMapComplementary_4
+      name: DesolationTileMap_4
       rect:
         serializedVersion: 2
-        x: 399
-        y: 311
-        width: 18
-        height: 18
+        x: 64
+        y: 84
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: b08a8cc00846e2ed0800000000000000
-      internalID: -2436899847227791349
+      spriteID: 87d527a47cf964f4f903a56e2011ab4f
+      internalID: 887326686
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TileMapComplementary_5
+      name: DesolationTileMap_5
       rect:
         serializedVersion: 2
-        x: 271
-        y: 279
-        width: 18
-        height: 18
+        x: 80
+        y: 84
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: e5825ac2a37694ba0800000000000000
-      internalID: -6104234320369211298
+      spriteID: bf702e27095162842b18b897dd974c49
+      internalID: -1442862912
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TileMapComplementary_6
+      name: DesolationTileMap_6
       rect:
         serializedVersion: 2
-        x: 303
-        y: 279
-        width: 18
-        height: 18
+        x: 0
+        y: 68
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: d62edb7439f664670800000000000000
-      internalID: 8522622023199744621
+      spriteID: 784a2ed6da37d8d47a1062f808f197ea
+      internalID: 802585861
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TileMapComplementary_7
+      name: DesolationTileMap_7
       rect:
         serializedVersion: 2
-        x: 335
-        y: 279
-        width: 18
-        height: 18
+        x: 16
+        y: 68
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 90abd735706e07f20800000000000000
-      internalID: 3418485036314114569
+      spriteID: f6d49f2ed6c784a42bb75365477fd4f3
+      internalID: 1324142592
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TileMapComplementary_8
+      name: DesolationTileMap_8
       rect:
         serializedVersion: 2
-        x: 367
-        y: 279
-        width: 18
-        height: 18
+        x: 32
+        y: 68
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 88abeb5f595f3d9b0800000000000000
-      internalID: -5056427932185085304
+      spriteID: 399a2396b6d62f3428181eb51e1320fd
+      internalID: -1821319049
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TileMapComplementary_9
+      name: DesolationTileMap_9
       rect:
         serializedVersion: 2
-        x: 399
-        y: 279
-        width: 18
-        height: 18
+        x: 48
+        y: 68
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 3b4b41233f6c39100800000000000000
-      internalID: 113653163433964723
+      spriteID: fc193470528539f4a921803c82a1011e
+      internalID: -205463604
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TileMapComplementary_10
+      name: DesolationTileMap_10
       rect:
         serializedVersion: 2
-        x: 271
-        y: 247
-        width: 18
-        height: 18
+        x: 64
+        y: 68
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 2a1083233c144db90800000000000000
-      internalID: -7218071996151103070
+      spriteID: eb76264b8419a544fbebda6ff961c16f
+      internalID: 667783050
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TileMapComplementary_11
+      name: DesolationTileMap_11
       rect:
         serializedVersion: 2
-        x: 303
-        y: 247
-        width: 18
-        height: 18
+        x: 80
+        y: 68
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: a091b0eb387838e30800000000000000
-      internalID: 4504593052199491850
+      spriteID: 1aaab240775803645a6a7f2edbe27bff
+      internalID: 19574646
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TileMapComplementary_12
+      name: DesolationTileMap_12
       rect:
         serializedVersion: 2
-        x: 335
-        y: 247
-        width: 18
-        height: 18
+        x: 0
+        y: 52
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: abe6f41b2df4f9220800000000000000
-      internalID: 2494800484923043514
+      spriteID: 5260d2f0f8c0d4a4e931a29559aafa1b
+      internalID: -452729987
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TileMapComplementary_13
+      name: DesolationTileMap_13
       rect:
         serializedVersion: 2
-        x: 367
-        y: 247
-        width: 18
-        height: 18
+        x: 16
+        y: 52
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 02bf5fba8734418c0800000000000000
-      internalID: -4029521581029590240
+      spriteID: d837722124d0eb647a7cb3e3b3443d68
+      internalID: 887696659
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TileMapComplementary_14
+      name: DesolationTileMap_14
       rect:
         serializedVersion: 2
-        x: 399
-        y: 247
-        width: 18
-        height: 18
+        x: 32
+        y: 52
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: cf37cd3418c56fd10800000000000000
-      internalID: 2159014781629789180
+      spriteID: 9075051f11f0b0d428ebba07d65535ae
+      internalID: -499345037
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TileMapComplementary_15
+      name: DesolationTileMap_15
       rect:
         serializedVersion: 2
-        x: 271
-        y: 215
-        width: 18
-        height: 18
+        x: 48
+        y: 52
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: f89ca266a74484860800000000000000
-      internalID: 7514331270758451599
+      spriteID: 754989da98301814abde699ff501057a
+      internalID: 36814879
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TileMapComplementary_16
+      name: DesolationTileMap_16
       rect:
         serializedVersion: 2
-        x: 303
-        y: 215
-        width: 18
-        height: 18
+        x: 64
+        y: 52
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 9fed8b71a5e84eb60800000000000000
-      internalID: 7774495374344511225
+      spriteID: ceff513b831164e44ae1693f1ba94e04
+      internalID: 687496353
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TileMapComplementary_17
+      name: DesolationTileMap_17
       rect:
         serializedVersion: 2
-        x: 335
-        y: 215
-        width: 18
-        height: 18
+        x: 80
+        y: 52
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: c9cf969efc95ba2b0800000000000000
-      internalID: -5572261364431717220
+      spriteID: 9207fde42e6151243a01427e191c5798
+      internalID: -948115815
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TileMapComplementary_18
+      name: DesolationTileMap_18
       rect:
         serializedVersion: 2
-        x: 367
-        y: 215
-        width: 18
-        height: 18
+        x: 0
+        y: 36
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: bc76e7d90315313e0800000000000000
-      internalID: -2084232933299820597
+      spriteID: f33f1c1352e7df44b8e8adeed278f688
+      internalID: -548323396
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TileMapComplementary_19
+      name: DesolationTileMap_19
       rect:
         serializedVersion: 2
-        x: 399
-        y: 215
-        width: 18
-        height: 18
+        x: 16
+        y: 36
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 3d9d8b95083c2e9d0800000000000000
-      internalID: -2746417866714064429
+      spriteID: b777697bf2cc5aa468f162311c10718c
+      internalID: 50528031
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DesolationTileMap_20
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 36
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d874e3c7a41af384abdb56a2a6b67a07
+      internalID: 1748337011
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DesolationTileMap_21
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 36
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b706b602850f5224ba59f951ae0c81b6
+      internalID: -551127878
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DesolationTileMap_22
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 36
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fec75749aefdfc54e849c41f3daa8edd
+      internalID: 584206636
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DesolationTileMap_23
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 36
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a56517857173af14091b5333a9fd9fce
+      internalID: 1422719623
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DesolationTileMap_24
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 20
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a5a10206880eb2b489a2c693e5db51aa
+      internalID: 1953961244
       vertices: []
       indices: 
       edges: []
@@ -600,7 +653,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: dcce88842c00f8c4fa769a6a32e2e83c
     internalID: 0
     vertices: []
     indices: 
@@ -608,26 +661,31 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      TileMapComplementary_0: 7344609961471367721
-      TileMapComplementary_1: -4735105553215942481
-      TileMapComplementary_10: -7218071996151103070
-      TileMapComplementary_11: 4504593052199491850
-      TileMapComplementary_12: 2494800484923043514
-      TileMapComplementary_13: -4029521581029590240
-      TileMapComplementary_14: 2159014781629789180
-      TileMapComplementary_15: 7514331270758451599
-      TileMapComplementary_16: 7774495374344511225
-      TileMapComplementary_17: -5572261364431717220
-      TileMapComplementary_18: -2084232933299820597
-      TileMapComplementary_19: -2746417866714064429
-      TileMapComplementary_2: -1852396017668714091
-      TileMapComplementary_3: 5199996057083773470
-      TileMapComplementary_4: -2436899847227791349
-      TileMapComplementary_5: -6104234320369211298
-      TileMapComplementary_6: 8522622023199744621
-      TileMapComplementary_7: 3418485036314114569
-      TileMapComplementary_8: -5056427932185085304
-      TileMapComplementary_9: 113653163433964723
+      DesolationTileMap_0: 8460274746131033602
+      DesolationTileMap_1: -1645063249
+      DesolationTileMap_10: 667783050
+      DesolationTileMap_11: 19574646
+      DesolationTileMap_12: -452729987
+      DesolationTileMap_13: 887696659
+      DesolationTileMap_14: -499345037
+      DesolationTileMap_15: 36814879
+      DesolationTileMap_16: 687496353
+      DesolationTileMap_17: -948115815
+      DesolationTileMap_18: -548323396
+      DesolationTileMap_19: 50528031
+      DesolationTileMap_2: 92965077
+      DesolationTileMap_20: 1748337011
+      DesolationTileMap_21: -551127878
+      DesolationTileMap_22: 584206636
+      DesolationTileMap_23: 1422719623
+      DesolationTileMap_24: 1953961244
+      DesolationTileMap_3: -1596492015
+      DesolationTileMap_4: 887326686
+      DesolationTileMap_5: -1442862912
+      DesolationTileMap_6: 802585861
+      DesolationTileMap_7: 1324142592
+      DesolationTileMap_8: -1821319049
+      DesolationTileMap_9: -205463604
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
