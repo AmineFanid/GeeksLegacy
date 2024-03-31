@@ -27,25 +27,28 @@ public class ProceduralGeneration : MonoBehaviour
     [SerializeField] Tilemap groundTileMap;
     [SerializeField] Tilemap caveTileMap;
 
-    
+    List<int[]> surface;
     int[,] map;
     [SerializeField] float seed;
 
+    [Header("Charac")]
+    [SerializeField] GameObject characterPrefab;
 
 
     // Start is called before the first frame update
     void Start()
     {
         perlinHeightList = new int[width]; //liste de la taille de notre width
+        surface = new List<int[]>();
         Generation();
     }
 
     private void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Space))
+        /*if(Input.GetKeyDown(KeyCode.Space))
         {
             Generation();
-        }
+        }*/
     }
 
     public void Generation()
@@ -55,7 +58,9 @@ public class ProceduralGeneration : MonoBehaviour
         map = GenerateArray(width, height, true);
         map = TerrainGeneration(map);
         smoothMap(nbSmoothing);
+        GetSurfaceTiles();
         RenderMap(map, groundTileMap, caveTileMap, groundTile, caveTile);
+        SpawnCharacter(characterPrefab);
     }
 
     public int[,] GenerateArray(int width, int height, bool empty) { 
@@ -111,6 +116,7 @@ public class ProceduralGeneration : MonoBehaviour
                     {
                         //Moore's neighborhood
                         int surroundingGroundCount = GetSurroundingGroundCount(x,y);
+                        //GetSurfaceGround(x, y);
                         if (surroundingGroundCount > 4)
                         {
                             map[x, y] = 1;
@@ -124,6 +130,30 @@ public class ProceduralGeneration : MonoBehaviour
             }            
         }
 
+
+    }
+
+    public void GetSurfaceTiles()
+    {
+        surface.Clear(); // Clear the list before populating it with new values
+
+        for (int x = 0; x < width; x++)
+        {
+            for (int y = 0; y < height; y++)
+            {
+                GetSurfaceGround(x, y);
+            }
+        }
+    }
+
+
+    public void GetSurfaceGround(int gridX, int gridY)
+    {
+
+        if (map[gridX, gridY] == 1 && map[gridX, gridY + 1] == 0)
+        {
+            surface.Add(new int[] { gridX, (gridY+2) });
+        }
 
     }
     
@@ -144,6 +174,7 @@ public class ProceduralGeneration : MonoBehaviour
                         {
                             groundCount++;
                         }
+
 
                     }
                 }
@@ -176,4 +207,30 @@ public class ProceduralGeneration : MonoBehaviour
         groundTileMap.ClearAllTiles();
         caveTileMap.ClearAllTiles();
     }
+
+    public List<int[]> getSurface() {
+        return surface;
+    }
+
+    public void SpawnCharacter(GameObject characterPrefab)
+    {
+        if (surface.Count > 0)
+        {
+            // Choose a random surface tile
+            int randomIndex = Random.Range(0, surface.Count);
+            int[] surfaceTile = surface[randomIndex];
+
+            // Calculate the position to spawn the character
+            Vector3 spawnPosition = new Vector3(surfaceTile[0], surfaceTile[1], 0);
+
+            // Spawn the character prefab at the calculated position
+            Instantiate(characterPrefab, spawnPosition, Quaternion.identity);
+        }
+        else
+        {
+            Debug.LogWarning("Surface list is empty. Make sure to generate the terrain first.");
+        }
+    }
+
+
 }
