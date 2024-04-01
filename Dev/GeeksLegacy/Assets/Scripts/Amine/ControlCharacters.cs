@@ -46,10 +46,10 @@ public class ControlCharacters : MonoBehaviour
         Vector2 movement = new Vector2(ControleX, 0f) * _Speed * Time.deltaTime;
         transform.Translate(movement);
 
-        // Check if the player is grounded
+        // Check si le joueur est au sol
         _isGrounded = Physics2D.Raycast(transform.position, Vector2.down, 0.1f);
 
-        // Jump
+        // Saute
         if (Input.GetButtonDown("Jump") && _isGrounded)
         {
             Rigidbody.AddForce(Vector2.up * _JumpForce, ForceMode2D.Impulse);
