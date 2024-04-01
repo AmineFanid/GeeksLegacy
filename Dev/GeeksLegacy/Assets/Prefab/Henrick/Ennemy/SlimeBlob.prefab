@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 4809063208921987325}
   - component: {fileID: 3295186018607216988}
   - component: {fileID: 13779675663241825}
+  - component: {fileID: 6146254695222716942}
   m_Layer: 0
   m_Name: SlimeBlob
   m_TagString: Untagged
@@ -27,7 +28,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3282144701167911265}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: 0.029835828, w: 0.9995548}
+  m_LocalRotation: {x: 0, y: 0, z: 0.029831985, w: 0.999555}
   m_LocalPosition: {x: -0.486, y: -4.742, z: 0.002886591}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -164,10 +165,12 @@ EdgeCollider2D:
   - {x: 0.32511827, y: -0.06381921}
   - {x: 0.32390514, y: -0.114327155}
   - {x: 0.28039157, y: -0.14886737}
-  - {x: 0.12683575, y: -0.1852846}
-  - {x: -0.04714805, y: -0.18360326}
-  - {x: -0.09623014, y: -0.16619898}
+  - {x: 0.2184238, y: -0.16596547}
+  - {x: 0.12820803, y: -0.16231817}
+  - {x: -0.040975653, y: -0.15044652}
+  - {x: -0.09719506, y: -0.14728366}
   - {x: -0.22036548, y: -0.14151618}
+  - {x: -0.26466504, y: -0.13615389}
   - {x: -0.32381108, y: -0.11191126}
   - {x: -0.32295367, y: -0.04812957}
   - {x: -0.29735035, y: -0.02012255}
@@ -178,3 +181,15 @@ EdgeCollider2D:
   m_AdjacentEndPoint: {x: 0, y: 0}
   m_UseAdjacentStartPoint: 0
   m_UseAdjacentEndPoint: 0
+--- !u!114 &6146254695222716942
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3282144701167911265}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce573f85e71512e498820cc8e3e63fca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
