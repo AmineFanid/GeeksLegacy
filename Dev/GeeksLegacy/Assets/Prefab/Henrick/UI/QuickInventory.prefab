@@ -11,7 +11,8 @@ GameObject:
   - component: {fileID: 5472194020310001080}
   - component: {fileID: 2539958756116999810}
   - component: {fileID: 5212738593756354422}
-  m_Layer: 0
+  - component: {fileID: 9011996051679609710}
+  m_Layer: 5
   m_Name: QuickInventory
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26,9 +27,9 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5053877235808560257}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -94, y: 80, z: -3913.19}
-  m_LocalScale: {x: 145.96672, y: 145.96672, z: 145.96672}
+  m_LocalScale: {x: 160.83011, y: 160.83011, z: 160.83011}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -74,8 +75,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 508318231
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 1ec175a9ee84e134a958559b78f87209, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -110,3 +111,15 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &9011996051679609710
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5053877235808560257}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93cdde09bc5a1974c8318d3a2964650f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
