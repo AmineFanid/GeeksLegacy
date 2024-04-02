@@ -11,8 +11,9 @@ GameObject:
   - component: {fileID: 8156664620012122354}
   - component: {fileID: 4809063208921987325}
   - component: {fileID: 3295186018607216988}
-  - component: {fileID: 13779675663241825}
   - component: {fileID: 6146254695222716942}
+  - component: {fileID: 9179208932551167152}
+  - component: {fileID: 4193620545976088816}
   m_Layer: 0
   m_Name: SlimeBlob
   m_TagString: Untagged
@@ -117,8 +118,46 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!68 &13779675663241825
-EdgeCollider2D:
+--- !u!114 &6146254695222716942
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3282144701167911265}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1c3bae2dbf603a419289414b6bd17ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _Cible: {fileID: 3699161660515108619, guid: 00a63d34d2420f94f81450d39eac9ea2, type: 3}
+  _ForceMouvement: 7
+  _EstEnChasse: 1
+  _DistanceVision: 5
+--- !u!95 &9179208932551167152
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3282144701167911265}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 2bf91b7c566ca2c4189b70d5c1fa6534, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!70 &4193620545976088816
+CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -151,45 +190,6 @@ EdgeCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
-  m_EdgeRadius: 0
-  m_Points:
-  - {x: -0.1773855, y: 0.13457783}
-  - {x: -0.112927265, y: 0.20273425}
-  - {x: -0.052312486, y: 0.22686462}
-  - {x: 0.077296115, y: 0.22478807}
-  - {x: 0.1462138, y: 0.20525423}
-  - {x: 0.20746467, y: 0.13682903}
-  - {x: 0.23304829, y: 0.065280914}
-  - {x: 0.2693358, y: -0.014324777}
-  - {x: 0.32511827, y: -0.06381921}
-  - {x: 0.32390514, y: -0.114327155}
-  - {x: 0.28039157, y: -0.14886737}
-  - {x: 0.2184238, y: -0.16596547}
-  - {x: 0.12820803, y: -0.16231817}
-  - {x: -0.040975653, y: -0.15044652}
-  - {x: -0.09719506, y: -0.14728366}
-  - {x: -0.22036548, y: -0.14151618}
-  - {x: -0.26466504, y: -0.13615389}
-  - {x: -0.32381108, y: -0.11191126}
-  - {x: -0.32295367, y: -0.04812957}
-  - {x: -0.29735035, y: -0.02012255}
-  - {x: -0.25369734, y: 0.0054469556}
-  - {x: -0.2213349, y: 0.049832713}
-  - {x: -0.176486, y: 0.13531946}
-  m_AdjacentStartPoint: {x: 0, y: 0}
-  m_AdjacentEndPoint: {x: 0, y: 0}
-  m_UseAdjacentStartPoint: 0
-  m_UseAdjacentEndPoint: 0
---- !u!114 &6146254695222716942
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3282144701167911265}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ce573f85e71512e498820cc8e3e63fca, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Offset: {x: 0.019732658, y: 0.008603272}
+  m_Size: {x: 0.4782276, y: 0.40713724}
+  m_Direction: 1
