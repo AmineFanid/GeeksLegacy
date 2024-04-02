@@ -106,10 +106,10 @@ TextureImporter:
       name: TileMap_0
       rect:
         serializedVersion: 2
-        x: 255
-        y: 279
-        width: 18
-        height: 18
+        x: 0
+        y: 0
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,10 +128,10 @@ TextureImporter:
       name: TileMap_1
       rect:
         serializedVersion: 2
-        x: 287
-        y: 279
-        width: 18
-        height: 18
+        x: 16
+        y: 0
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -150,7 +150,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 76c2f26c9ccf19a419365a943cb23e8c
     internalID: 0
     vertices: []
     indices: 
