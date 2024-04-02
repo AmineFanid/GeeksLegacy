@@ -69,9 +69,9 @@ public class Monster : MonoBehaviour
         _Animator.SetFloat("Vitesse", vitesse);
         if (vitesse > 0.01f)
         {
-            //Vector2 directionAssainie = ForceAnimationVirtualJoystick.ForceDirectionAxe(_DirectionMouvement);
-            //_Animator.SetFloat("MouvementX", directionAssainie.x);
-            //_Animator.SetFloat("MouvementY", directionAssainie.y);
+            Vector2 directionAssainie = ForceAnimationVirtualJoystick.ForceDirectionAxe(_DirectionMouvement);
+            _Animator.SetFloat("MouvementX", directionAssainie.x);
+            _Animator.SetFloat("MouvementY", directionAssainie.y);
         }
     }
 
