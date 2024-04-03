@@ -273,28 +273,28 @@ AnimatorStateMachine:
   m_ChildStates:
   - serializedVersion: 1
     m_State: {fileID: -3294599103030898015}
-    m_Position: {x: -160, y: 190, z: 0}
+    m_Position: {x: -200, y: 210, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -4622077899937160525}
-    m_Position: {x: -270, y: 270, z: 0}
+    m_Position: {x: -310, y: 330, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 3441984620569521008}
-    m_Position: {x: -250, y: 390, z: 0}
+    m_Position: {x: -250, y: 470, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 2828444291633345569}
-    m_Position: {x: -150, y: 510, z: 0}
+    m_Position: {x: -100, y: 600, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -677840873849740973}
-    m_Position: {x: 60, y: 600, z: 0}
+    m_Position: {x: 190, y: 600, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 246829027171332143}
-    m_Position: {x: 230, y: 490, z: 0}
+    m_Position: {x: 330, y: 500, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 8035077530398375540}
-    m_Position: {x: 330, y: 370, z: 0}
+    m_Position: {x: 390, y: 370, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -9023599149048509698}
-    m_Position: {x: 230, y: 260, z: 0}
+    m_Position: {x: 330, y: 230, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -3237105845111851396}
     m_Position: {x: 90, y: 140, z: 0}
@@ -425,13 +425,13 @@ AnimatorController:
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: ScrollDown
     m_Type: 9
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   m_AnimatorLayers:
   - serializedVersion: 5
     m_Name: Base Layer
