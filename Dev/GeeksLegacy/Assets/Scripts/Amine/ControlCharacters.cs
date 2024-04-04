@@ -16,11 +16,12 @@ public class ControlCharacters : MonoBehaviour
     private float ControleY;
     [Header("Character Settings")]
 
-    //[SerializeField] private float _Hp = 100.0f;
     [SerializeField] private float _Speed = 5.0f;
     [SerializeField] private float _JumpForce = 2.0f;
 
-    //private bool _Vivant = true;
+    private int _MaxJump = 2;
+    private int _NumJump = 0;
+
 
 
     private bool _isGrounded;
@@ -38,32 +39,42 @@ public class ControlCharacters : MonoBehaviour
         ControleX = Input.GetAxis("Horizontal");
         ControleY = Mathf.Max(0, Input.GetAxis("Vertical"));
 
-        //Vector3 direction = new Vector3(ControleX, (ControleY * 2), 0);
-        //transform.Translate(direction * _Speed * Time.deltaTime);
-
-
         // Move horizontally    
         Vector2 movement = new Vector2(ControleX, 0f) * _Speed * Time.deltaTime;
         transform.Translate(movement);
 
-        // Check si le joueur est au sol
-        _isGrounded = Physics2D.Raycast(transform.position, Vector2.down, 0.1f);
 
         // Saute
-        if (Input.GetButtonDown("Jump") && _isGrounded)
+        if (Input.GetButtonDown("Jump"))
         {
-            Rigidbody.AddForce(Vector2.up * _JumpForce, ForceMode2D.Impulse);
+            if(_NumJump < _MaxJump)
+            {
+                Rigidbody.AddForce(Vector2.up * _JumpForce, ForceMode2D.Impulse);
+                _NumJump++;
+            }
         }
 
+
         // Pour la gestion de la vie du personnage
-       /* if(_Hp == 0.0f)
+        /* if(_Hp == 0.0f)
+         {
+             _Vivant == false;
+         }
+         if (!_Vivant)
+         {
+             Destroy(this.gameObject);
+         }*/
+    }
+
+    public void FixedUpdate()
+    {
+        int groundLayerMask = LayerMask.GetMask("Ground"); 
+        _isGrounded = Physics2D.Raycast(transform.position, Vector2.down, 0.9f, groundLayerMask);
+
+        if ((_NumJump >= _MaxJump) && _isGrounded)
         {
-            _Vivant == false;
+            _NumJump = 0;
         }
-        if (!_Vivant)
-        {
-            Destroy(this.gameObject);
-        }*/
     }
 
     public void OnCollisionEnter2D(Collision2D collision)
