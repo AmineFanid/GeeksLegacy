@@ -1,0 +1,1290 @@
+fileFormatVersion: 2
+guid: ccd7193f1f550a841a2a3e2affa2d6d0
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -3664488898363154101
+    second: AllTileDesolation_0
+  - first:
+      213: -2955189305547752596
+    second: AllTileDesolation_1
+  - first:
+      213: 903021186627385009
+    second: AllTileDesolation_2
+  - first:
+      213: -8944698110423184079
+    second: AllTileDesolation_3
+  - first:
+      213: -5266602148325970639
+    second: AllTileDesolation_4
+  - first:
+      213: 1983899766079430415
+    second: AllTileDesolation_5
+  - first:
+      213: 5390909154110464751
+    second: AllTileDesolation_6
+  - first:
+      213: -4844616133095914397
+    second: AllTileDesolation_7
+  - first:
+      213: 6364642364560684982
+    second: AllTileDesolation_8
+  - first:
+      213: 6348635447137962437
+    second: AllTileDesolation_9
+  - first:
+      213: -622938164897231231
+    second: AllTileDesolation_10
+  - first:
+      213: -5285162717504250441
+    second: AllTileDesolation_11
+  - first:
+      213: 2958775653626785598
+    second: AllTileDesolation_12
+  - first:
+      213: 4505701617065705979
+    second: AllTileDesolation_13
+  - first:
+      213: -58417147578443212
+    second: AllTileDesolation_14
+  - first:
+      213: 8332996670644450369
+    second: AllTileDesolation_15
+  - first:
+      213: -5496323345218138957
+    second: AllTileDesolation_16
+  - first:
+      213: -6534354088526625757
+    second: AllTileDesolation_17
+  - first:
+      213: 6027761053964479189
+    second: AllTileDesolation_18
+  - first:
+      213: 642318018371163157
+    second: AllTileDesolation_19
+  - first:
+      213: -7964221825950562114
+    second: AllTileDesolation_20
+  - first:
+      213: -2177929286447344516
+    second: AllTileDesolation_21
+  - first:
+      213: 784971920972013480
+    second: AllTileDesolation_22
+  - first:
+      213: -3842241906860201062
+    second: AllTileDesolation_23
+  - first:
+      213: -3728906557374176358
+    second: AllTileDesolation_24
+  - first:
+      213: 450942648063134432
+    second: AllTileDesolation_25
+  - first:
+      213: -5158021774236527472
+    second: AllTileDesolation_26
+  - first:
+      213: -4920915242717042652
+    second: AllTileDesolation_27
+  - first:
+      213: 1579690886263624160
+    second: AllTileDesolation_28
+  - first:
+      213: 6598582638954030267
+    second: AllTileDesolation_29
+  - first:
+      213: 8915988116817891615
+    second: AllTileDesolation_30
+  - first:
+      213: -740985271432136878
+    second: AllTileDesolation_31
+  - first:
+      213: 7265280404784700674
+    second: AllTileDesolation_32
+  - first:
+      213: 2060271063688013365
+    second: AllTileDesolation_33
+  - first:
+      213: -7199041401138479652
+    second: AllTileDesolation_34
+  - first:
+      213: -296440928146372239
+    second: AllTileDesolation_35
+  - first:
+      213: -8057498648648129863
+    second: AllTileDesolation_36
+  - first:
+      213: -6153695029220783738
+    second: AllTileDesolation_37
+  - first:
+      213: -4704111548641758779
+    second: AllTileDesolation_38
+  - first:
+      213: -4794214988197092843
+    second: AllTileDesolation_39
+  - first:
+      213: 3124997250322793549
+    second: AllTileDesolation_40
+  - first:
+      213: -8031705987725521979
+    second: AllTileDesolation_41
+  - first:
+      213: -6917336675295832382
+    second: AllTileDesolation_42
+  - first:
+      213: -623410958659836486
+    second: AllTileDesolation_43
+  - first:
+      213: 160546993331995323
+    second: AllTileDesolation_44
+  - first:
+      213: 7644487005242790508
+    second: AllTileDesolation_45
+  - first:
+      213: -2633698388501449563
+    second: AllTileDesolation_46
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: AllTileDesolation_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 233
+        width: 17
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b41a3b123ce152dc0800000000000000
+      internalID: -3664488898363154101
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AllTileDesolation_1
+      rect:
+        serializedVersion: 2
+        x: 31
+        y: 233
+        width: 18
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c6bfacedbfe0df6d0800000000000000
+      internalID: -2955189305547752596
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AllTileDesolation_2
+      rect:
+        serializedVersion: 2
+        x: 63
+        y: 233
+        width: 18
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1b6b39d1cfc288c00800000000000000
+      internalID: 903021186627385009
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AllTileDesolation_3
+      rect:
+        serializedVersion: 2
+        x: 95
+        y: 233
+        width: 18
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 13d4e19a57c0ed380800000000000000
+      internalID: -8944698110423184079
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AllTileDesolation_4
+      rect:
+        serializedVersion: 2
+        x: 127
+        y: 233
+        width: 18
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 13da8bfef3549e6b0800000000000000
+      internalID: -5266602148325970639
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AllTileDesolation_5
+      rect:
+        serializedVersion: 2
+        x: 159
+        y: 233
+        width: 18
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f0f152b735a388b10800000000000000
+      internalID: 1983899766079430415
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AllTileDesolation_6
+      rect:
+        serializedVersion: 2
+        x: 191
+        y: 233
+        width: 18
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fe2e72b305b50da40800000000000000
+      internalID: 5390909154110464751
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AllTileDesolation_7
+      rect:
+        serializedVersion: 2
+        x: 223
+        y: 233
+        width: 18
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 36401b97b4774ccb0800000000000000
+      internalID: -4844616133095914397
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AllTileDesolation_8
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 201
+        width: 17
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6b7ba0e5280c35850800000000000000
+      internalID: 6364642364560684982
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AllTileDesolation_9
+      rect:
+        serializedVersion: 2
+        x: 31
+        y: 201
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5c98c1b7d42ea1850800000000000000
+      internalID: 6348635447137962437
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AllTileDesolation_10
+      rect:
+        serializedVersion: 2
+        x: 63
+        y: 201
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 18e444c1a01ea57f0800000000000000
+      internalID: -622938164897231231
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AllTileDesolation_11
+      rect:
+        serializedVersion: 2
+        x: 95
+        y: 201
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7bd550ba28457a6b0800000000000000
+      internalID: -5285162717504250441
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AllTileDesolation_12
+      rect:
+        serializedVersion: 2
+        x: 127
+        y: 201
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e3faf7cd7ceaf0920800000000000000
+      internalID: 2958775653626785598
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AllTileDesolation_13
+      rect:
+        serializedVersion: 2
+        x: 159
+        y: 201
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bf1ca1d9fb7778e30800000000000000
+      internalID: 4505701617065705979
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AllTileDesolation_14
+      rect:
+        serializedVersion: 2
+        x: 191
+        y: 201
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 43a9bcde9e5703ff0800000000000000
+      internalID: -58417147578443212
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AllTileDesolation_15
+      rect:
+        serializedVersion: 2
+        x: 223
+        y: 201
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 14476446250c4a370800000000000000
+      internalID: 8332996670644450369
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AllTileDesolation_16
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 169
+        width: 17
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3bc069dc90329b3b0800000000000000
+      internalID: -5496323345218138957
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AllTileDesolation_17
+      rect:
+        serializedVersion: 2
+        x: 31
+        y: 169
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 324cfb4b39f4155a0800000000000000
+      internalID: -6534354088526625757
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AllTileDesolation_18
+      rect:
+        serializedVersion: 2
+        x: 63
+        y: 169
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5daac7cfdb8e6a350800000000000000
+      internalID: 6027761053964479189
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AllTileDesolation_19
+      rect:
+        serializedVersion: 2
+        x: 95
+        y: 169
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 51498d5a5d8f9e800800000000000000
+      internalID: 642318018371163157
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AllTileDesolation_20
+      rect:
+        serializedVersion: 2
+        x: 127
+        y: 169
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: eb8cdcf0276697190800000000000000
+      internalID: -7964221825950562114
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AllTileDesolation_21
+      rect:
+        serializedVersion: 2
+        x: 159
+        y: 169
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c74d2676ad076c1e0800000000000000
+      internalID: -2177929286447344516
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AllTileDesolation_22
+      rect:
+        serializedVersion: 2
+        x: 191
+        y: 169
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8af513c9dc7c4ea00800000000000000
+      internalID: 784971920972013480
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AllTileDesolation_23
+      rect:
+        serializedVersion: 2
+        x: 223
+        y: 169
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a9b6a70c75d9daac0800000000000000
+      internalID: -3842241906860201062
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AllTileDesolation_24
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 137
+        width: 17
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a93661f1e33404cc0800000000000000
+      internalID: -3728906557374176358
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AllTileDesolation_25
+      rect:
+        serializedVersion: 2
+        x: 31
+        y: 137
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0ea80eff2f1124600800000000000000
+      internalID: 450942648063134432
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AllTileDesolation_26
+      rect:
+        serializedVersion: 2
+        x: 63
+        y: 137
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 094d6e256860b68b0800000000000000
+      internalID: -5158021774236527472
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AllTileDesolation_27
+      rect:
+        serializedVersion: 2
+        x: 95
+        y: 137
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 428ab0ca8a565bbb0800000000000000
+      internalID: -4920915242717042652
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AllTileDesolation_28
+      rect:
+        serializedVersion: 2
+        x: 127
+        y: 137
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0e15aa2dd703ce510800000000000000
+      internalID: 1579690886263624160
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AllTileDesolation_29
+      rect:
+        serializedVersion: 2
+        x: 159
+        y: 137
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bb42ae703ffd29b50800000000000000
+      internalID: 6598582638954030267
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AllTileDesolation_30
+      rect:
+        serializedVersion: 2
+        x: 191
+        y: 137
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f11d88c04f3fbbb70800000000000000
+      internalID: 8915988116817891615
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AllTileDesolation_31
+      rect:
+        serializedVersion: 2
+        x: 223
+        y: 137
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 257bd7052dd77b5f0800000000000000
+      internalID: -740985271432136878
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AllTileDesolation_32
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 105
+        width: 17
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 20d5cc8f80673d460800000000000000
+      internalID: 7265280404784700674
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AllTileDesolation_33
+      rect:
+        serializedVersion: 2
+        x: 31
+        y: 105
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 536e32cdd9d879c10800000000000000
+      internalID: 2060271063688013365
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AllTileDesolation_34
+      rect:
+        serializedVersion: 2
+        x: 63
+        y: 105
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cdd7fc1ecfdd71c90800000000000000
+      internalID: -7199041401138479652
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AllTileDesolation_35
+      rect:
+        serializedVersion: 2
+        x: 95
+        y: 105
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 179c2f4eb84d2ebf0800000000000000
+      internalID: -296440928146372239
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AllTileDesolation_36
+      rect:
+        serializedVersion: 2
+        x: 127
+        y: 105
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9b263256ba30e2090800000000000000
+      internalID: -8057498648648129863
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AllTileDesolation_37
+      rect:
+        serializedVersion: 2
+        x: 159
+        y: 105
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 689453f79fea99aa0800000000000000
+      internalID: -6153695029220783738
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AllTileDesolation_38
+      rect:
+        serializedVersion: 2
+        x: 191
+        y: 105
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5c1356f4873a7beb0800000000000000
+      internalID: -4704111548641758779
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AllTileDesolation_39
+      rect:
+        serializedVersion: 2
+        x: 223
+        y: 105
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 512a8ab7ed6877db0800000000000000
+      internalID: -4794214988197092843
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AllTileDesolation_40
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 73
+        width: 17
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d44009531783e5b20800000000000000
+      internalID: 3124997250322793549
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AllTileDesolation_41
+      rect:
+        serializedVersion: 2
+        x: 31
+        y: 73
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5cb0e3d35f5a98090800000000000000
+      internalID: -8031705987725521979
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AllTileDesolation_42
+      rect:
+        serializedVersion: 2
+        x: 63
+        y: 73
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2c6d53581fea000a0800000000000000
+      internalID: -6917336675295832382
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AllTileDesolation_43
+      rect:
+        serializedVersion: 2
+        x: 95
+        y: 73
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ab5aefb39033957f0800000000000000
+      internalID: -623410958659836486
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AllTileDesolation_44
+      rect:
+        serializedVersion: 2
+        x: 127
+        y: 73
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bb28f4bc3a06a3200800000000000000
+      internalID: 160546993331995323
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AllTileDesolation_45
+      rect:
+        serializedVersion: 2
+        x: 159
+        y: 73
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c621695dd6ca61a60800000000000000
+      internalID: 7644487005242790508
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AllTileDesolation_46
+      rect:
+        serializedVersion: 2
+        x: 191
+        y: 73
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5a43ad30549337bd0800000000000000
+      internalID: -2633698388501449563
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable: {}
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
