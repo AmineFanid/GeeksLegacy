@@ -178,7 +178,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -216,7 +216,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -1307,7 +1307,55 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      AllTileForest_0: -8009244902054703573
+      AllTileForest_1: 3868057899957213924
+      AllTileForest_10: 6894847122022409921
+      AllTileForest_11: -4595427580525125631
+      AllTileForest_12: 5861988161269938673
+      AllTileForest_13: -609629214053811105
+      AllTileForest_14: -7011890028148700622
+      AllTileForest_15: 3837215344989285323
+      AllTileForest_16: 2353482664080892321
+      AllTileForest_17: -6378558848417719154
+      AllTileForest_18: -1263561594772184868
+      AllTileForest_19: 146646180094847509
+      AllTileForest_2: -3144107543992056544
+      AllTileForest_20: 847151475016306791
+      AllTileForest_21: 8067785503586685157
+      AllTileForest_22: 6111753547270716100
+      AllTileForest_23: 3504250500966507402
+      AllTileForest_24: -6027292557402268372
+      AllTileForest_25: -6564213852702503242
+      AllTileForest_26: -6037844821457088510
+      AllTileForest_27: 8056871833292071437
+      AllTileForest_28: 2463322556266783479
+      AllTileForest_29: -8163393865128907903
+      AllTileForest_3: -6533692083876849739
+      AllTileForest_30: -2874557278916922422
+      AllTileForest_31: 4708974217929993612
+      AllTileForest_32: -4353161735713392509
+      AllTileForest_33: 1228353640984521144
+      AllTileForest_34: -3670030086788468951
+      AllTileForest_35: -8861853233938806982
+      AllTileForest_36: 3469179805942768835
+      AllTileForest_37: 2988601515013251469
+      AllTileForest_38: 6555405184250533456
+      AllTileForest_39: 528676699295071664
+      AllTileForest_4: -2702302487040093302
+      AllTileForest_40: -2043746597320078621
+      AllTileForest_41: -8074963317634964121
+      AllTileForest_42: 597697835697533026
+      AllTileForest_43: -677594696392608344
+      AllTileForest_44: -7342843296852789841
+      AllTileForest_45: -8382161080151904366
+      AllTileForest_46: -2135022608500142505
+      AllTileForest_47: 1209691543130533424
+      AllTileForest_5: 5683933204782799107
+      AllTileForest_6: -1863272142174678277
+      AllTileForest_7: -5763643987388658011
+      AllTileForest_8: -7955527602996592350
+      AllTileForest_9: -8199898577652694483
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

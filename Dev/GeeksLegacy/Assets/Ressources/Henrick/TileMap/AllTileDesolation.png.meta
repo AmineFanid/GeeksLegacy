@@ -175,7 +175,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -213,7 +213,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -1282,7 +1282,54 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      AllTileDesolation_0: -3664488898363154101
+      AllTileDesolation_1: -2955189305547752596
+      AllTileDesolation_10: -622938164897231231
+      AllTileDesolation_11: -5285162717504250441
+      AllTileDesolation_12: 2958775653626785598
+      AllTileDesolation_13: 4505701617065705979
+      AllTileDesolation_14: -58417147578443212
+      AllTileDesolation_15: 8332996670644450369
+      AllTileDesolation_16: -5496323345218138957
+      AllTileDesolation_17: -6534354088526625757
+      AllTileDesolation_18: 6027761053964479189
+      AllTileDesolation_19: 642318018371163157
+      AllTileDesolation_2: 903021186627385009
+      AllTileDesolation_20: -7964221825950562114
+      AllTileDesolation_21: -2177929286447344516
+      AllTileDesolation_22: 784971920972013480
+      AllTileDesolation_23: -3842241906860201062
+      AllTileDesolation_24: -3728906557374176358
+      AllTileDesolation_25: 450942648063134432
+      AllTileDesolation_26: -5158021774236527472
+      AllTileDesolation_27: -4920915242717042652
+      AllTileDesolation_28: 1579690886263624160
+      AllTileDesolation_29: 6598582638954030267
+      AllTileDesolation_3: -8944698110423184079
+      AllTileDesolation_30: 8915988116817891615
+      AllTileDesolation_31: -740985271432136878
+      AllTileDesolation_32: 7265280404784700674
+      AllTileDesolation_33: 2060271063688013365
+      AllTileDesolation_34: -7199041401138479652
+      AllTileDesolation_35: -296440928146372239
+      AllTileDesolation_36: -8057498648648129863
+      AllTileDesolation_37: -6153695029220783738
+      AllTileDesolation_38: -4704111548641758779
+      AllTileDesolation_39: -4794214988197092843
+      AllTileDesolation_4: -5266602148325970639
+      AllTileDesolation_40: 3124997250322793549
+      AllTileDesolation_41: -8031705987725521979
+      AllTileDesolation_42: -6917336675295832382
+      AllTileDesolation_43: -623410958659836486
+      AllTileDesolation_44: 160546993331995323
+      AllTileDesolation_45: 7644487005242790508
+      AllTileDesolation_46: -2633698388501449563
+      AllTileDesolation_5: 1983899766079430415
+      AllTileDesolation_6: 5390909154110464751
+      AllTileDesolation_7: -4844616133095914397
+      AllTileDesolation_8: 6364642364560684982
+      AllTileDesolation_9: 6348635447137962437
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
