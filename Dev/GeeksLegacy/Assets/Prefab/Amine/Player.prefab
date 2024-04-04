@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 8910781800899847763}
   - component: {fileID: 4451106198261890404}
   - component: {fileID: -5476233858541403782}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -78,8 +78,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -97665325
+  m_SortingLayer: 5
   m_SortingOrder: 0
   m_Sprite: {fileID: 4074730352261746720, guid: 86477cc73ea16484f8cf31c35644176a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -203,7 +203,7 @@ GameObject:
   - component: {fileID: 7436422981607133408}
   - component: {fileID: 8846219251156588584}
   - component: {fileID: 6556368852219577492}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Main Camera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}

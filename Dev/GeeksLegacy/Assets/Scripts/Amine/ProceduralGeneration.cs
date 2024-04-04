@@ -251,7 +251,7 @@ public class ProceduralGeneration : MonoBehaviour
     }
 
 
-    public void GetSurfaceGround(int gridX, int gridY)
+    /*public void GetSurfaceGround(int gridX, int gridY)
     {
 
         if (map[gridX, gridY] == 1 && map[gridX, gridY + 1] == 0)
@@ -259,8 +259,23 @@ public class ProceduralGeneration : MonoBehaviour
             surface.Add(new int[] { gridX, (gridY+2) });
         }
 
+    }*/
+
+    public void GetSurfaceGround(int gridX, int gridY)
+    {
+        //Iteration vers le haut, à partir du tile courant, jusqua ce qu'un tile vide soit trouvé
+        for (int y = gridY; y < height; y++)
+        {
+            // Check si le tile courant est vide
+            if (map[gridX, y] == 0)
+            {
+                surface.Add(new int[] { gridX, y+2 }); // Ajoute le tile à la surface dans ma liste surface
+                return; // Sort de la fonction quand on a trouvé la tile de surface
+            }
+        }
     }
-    
+
+
     public int GetSurroundingGroundCount(int gridX, int gridY) 
     {
         //Fonction qui nous permet de compter les occurences de ground ou cave autour de chaque tile
@@ -341,10 +356,11 @@ public class ProceduralGeneration : MonoBehaviour
 
             // Spawn the character prefab at the calculated position
             Instantiate(characterPrefab, spawnPosition, Quaternion.identity);
+            Debug.LogWarning(surface.Count);
         }
         else
         {
-            Debug.LogWarning("Surface list is empty. Make sure to generate the terrain first.");
+            Debug.LogWarning("Surface list is empty. Make sure to generate the terrain first." + surface.Count);
         }
     }
 
