@@ -1,6 +1,10 @@
+using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(Animator))]
 [RequireComponent(typeof(Rigidbody2D))]
@@ -12,6 +16,8 @@ public class Monster : MonoBehaviour
 
     [SerializeField]
     private float _ForceMouvement = 10.0f;
+
+    [SerializeField] private float _MaxSpeed = 10.0f;
 
     [SerializeField]
     private bool _EstEnChasse = false;
@@ -38,13 +44,35 @@ public class Monster : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        float angleSup = 5.0f;
+        float angleInf = -5.0f;
         bool etaitEnChasse = _EstEnChasse;
         Vector2 delta = _Cible.position - this.gameObject.transform.position;
         Vector2 _DirectionVision = delta.normalized;
-        int layerMask = LayerMask.GetMask(new[] { "Obstacle", "Joueur" });
+        int layerMask = LayerMask.GetMask(new[] { "Obstacle", "Player" });
         RaycastHit2D hit = Physics2D.Raycast(this.gameObject.transform.position, _DirectionVision, _DistanceVision, layerMask);
+        for (int i = 0; i < 10; i++)
+        {
+            Quaternion rotation;
+            if (i < 4)
+            {
+                rotation = Quaternion.AngleAxis(angleSup, Vector3.forward);
+                angleSup += 5.0f;
+            }
+            else
+            {
+                rotation = Quaternion.AngleAxis(angleInf, Vector3.forward);
+                angleInf -= 5.0f;
+            }
+
+            Vector2 directionRotated = rotation * _DirectionVision;
+            RaycastHit2D Suphit = Physics2D.Raycast(this.gameObject.transform.position, _DirectionVision, _DistanceVision, layerMask);
+            _EstEnChasse = Suphit.collider && Suphit.collider.gameObject.layer == _Cible.gameObject.layer;
+            Debug.DrawRay(this.gameObject.transform.position, directionRotated * _DistanceVision, _EstEnChasse ? Color.red : Color.gray);
+        }
         _EstEnChasse = hit.collider && hit.collider.gameObject.layer == _Cible.gameObject.layer;
         Debug.DrawRay(this.gameObject.transform.position, _DirectionVision * _DistanceVision, _EstEnChasse ? Color.green : Color.gray);
+        
 
         if (_EstEnChasse)
         {
@@ -66,41 +94,32 @@ public class Monster : MonoBehaviour
         }
 
         float vitesse = _Rigidbody2D.velocity.magnitude;
-        _Animator.SetFloat("Vitesse", vitesse);
+        //_Animator.SetFloat("Vitesse", vitesse);
         if (vitesse > 0.01f)
         {
-            //Vector2 directionAssainie = ForceAnimationVirtualJoystick.ForceDirectionAxe(_DirectionMouvement);
-            //_Animator.SetFloat("MouvementX", directionAssainie.x);
-            //_Animator.SetFloat("MouvementY", directionAssainie.y);
+            Vector2 directionAssainie = ForceAnimationVirtualJoystick.ForceDirectionAxe(_DirectionMouvement);
+            _Animator.SetFloat("MouvementX", directionAssainie.x);
+            _Animator.SetFloat("MouvementY", directionAssainie.y);
+            //_Animator.SetBool();
         }
     }
 
     private void FixedUpdate()
     {
+        Debug.Log(_DirectionMouvement);
         _Rigidbody2D.AddForce(_DirectionMouvement * _ForceMouvement);
-    }
-
-    private IEnumerator PrintDebug(float InIntervalle)
-    {
-        int compte = 0;
-        while (true)
-        {
-            Debug.Log(compte);
-            compte++;
-            yield return new WaitForSeconds(InIntervalle);
-        }
+        if (_Rigidbody2D.velocity.x >= _MaxSpeed)
+            _Rigidbody2D.velocity = new Vector2(_MaxSpeed,_MaxSpeed);
     }
 
     private IEnumerator Errer()
     {
         while (true)
         {
-            //TODO: mettre valeur random pour le temps de mouvement
             _DirectionMouvement = Vector2.zero;
-            yield return new WaitForSeconds(1.5f);
-            //TODO: mettre valeur random dans l'attente
+            yield return new WaitForSeconds(Random.value*4);
             _DirectionMouvement = Random.insideUnitCircle.normalized;
-            yield return new WaitForSeconds(1.0f);
+            yield return new WaitForSeconds(Random.value*2);
         }
     }
 }
