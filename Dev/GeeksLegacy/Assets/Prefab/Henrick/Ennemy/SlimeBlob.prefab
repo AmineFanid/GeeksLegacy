@@ -77,8 +77,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 54268781
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: -7282886668606283007, guid: 63a89847a4dc84341840c70f045258fc, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -104,7 +104,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 0
+  m_LinearDrag: 1
   m_AngularDrag: 0.05
   m_GravityScale: 1
   m_Material: {fileID: 0}
@@ -116,8 +116,8 @@ Rigidbody2D:
     m_Bits: 0
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
+  m_CollisionDetection: 1
+  m_Constraints: 4
 --- !u!114 &6146254695222716942
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -130,10 +130,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1c3bae2dbf603a419289414b6bd17ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _Cible: {fileID: 3699161660515108619, guid: 00a63d34d2420f94f81450d39eac9ea2, type: 3}
+  _Cible: {fileID: 0}
   _ForceMouvement: 7
+  _MaxSpeed: 7
   _EstEnChasse: 1
-  _DistanceVision: 5
+  _DistanceVision: 7
 --- !u!95 &9179208932551167152
 Animator:
   serializedVersion: 7
@@ -190,6 +191,6 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0.019732658, y: 0.008603272}
-  m_Size: {x: 0.4782276, y: 0.40713724}
+  m_Offset: {x: 0.01973266, y: 0.025657011}
+  m_Size: {x: 0.47822782, y: 0.39794123}
   m_Direction: 1
