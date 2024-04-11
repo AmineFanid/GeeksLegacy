@@ -14,7 +14,6 @@ public class Inventory : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(Input.GetAxisRaw("Scroll"));
         if (Input.GetAxisRaw("Scroll") > 0.0f)
         {
             _AnimatorInv.SetTrigger("ScrollUp");
