@@ -105,7 +105,7 @@ Rigidbody2D:
   m_UseAutoMass: 0
   m_Mass: 1
   m_LinearDrag: 1
-  m_AngularDrag: 0.05
+  m_AngularDrag: 1
   m_GravityScale: 1
   m_Material: {fileID: 0}
   m_IncludeLayers:
@@ -131,10 +131,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _Cible: {fileID: 0}
-  _ForceMouvement: 7
+  _NameEnnemis: Slime
+  _ForceMouvement: 3
   _MaxSpeed: 7
   _EstEnChasse: 1
-  _DistanceVision: 7
+  _DistanceVision: 5
 --- !u!95 &9179208932551167152
 Animator:
   serializedVersion: 7
