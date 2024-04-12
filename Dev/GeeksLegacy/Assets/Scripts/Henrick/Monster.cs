@@ -72,7 +72,7 @@ public class Monster : MonoBehaviour
         }
         _EstEnChasse = hit.collider && hit.collider.gameObject.layer == _Cible.gameObject.layer;
         Debug.DrawRay(this.gameObject.transform.position, _DirectionVision * _DistanceVision, _EstEnChasse ? Color.green : Color.gray);
-        
+
 
         if (_EstEnChasse)
         {
@@ -93,23 +93,22 @@ public class Monster : MonoBehaviour
             }
         }
 
-        float vitesse = _Rigidbody2D.velocity.magnitude;
-        //_Animator.SetFloat("Vitesse", vitesse);
-        if (vitesse > 0.01f)
+        float vitesse = _Rigidbody2D.velocityX;
+        bool vitesseBouge = vitesse > 0.01f;
+        _Animator.SetBool("IsMoving", vitesseBouge);
+        if (vitesseBouge)
         {
             Vector2 directionAssainie = ForceAnimationVirtualJoystick.ForceDirectionAxe(_DirectionMouvement);
             _Animator.SetFloat("MouvementX", directionAssainie.x);
-            _Animator.SetFloat("MouvementY", directionAssainie.y);
-            //_Animator.SetBool();
         }
     }
 
     private void FixedUpdate()
     {
-        Debug.Log(_DirectionMouvement);
+        Debug.Log(_DirectionMouvement * _ForceMouvement);
         _Rigidbody2D.AddForce(_DirectionMouvement * _ForceMouvement);
         if (_Rigidbody2D.velocity.x >= _MaxSpeed)
-            _Rigidbody2D.velocity = new Vector2(_MaxSpeed,_MaxSpeed);
+            _Rigidbody2D.velocity = new Vector2(_MaxSpeed, _MaxSpeed);
     }
 
     private IEnumerator Errer()
@@ -117,9 +116,9 @@ public class Monster : MonoBehaviour
         while (true)
         {
             _DirectionMouvement = Vector2.zero;
-            yield return new WaitForSeconds(Random.value*4);
-            _DirectionMouvement = Random.insideUnitCircle.normalized;
-            yield return new WaitForSeconds(Random.value*2);
+            yield return new WaitForSeconds(Random.value * 4+1);
+            _DirectionMouvement.x = Random.Range(-1.0f, 1.0f);
+            yield return new WaitForSeconds(Random.value * 2+1);
         }
     }
 }
