@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -52,6 +53,11 @@ public class ProceduralGeneration : MonoBehaviour
     [SerializeField] Tilemap desolationTileMap;
     int thirdBiomeVal;
 
+    [Header("Background")]
+    [SerializeField] TileBase backgroundTile;
+    [SerializeField] Tilemap backgroundTileMap;
+    int backgroundVal;
+
     List<int[]> surface;
     int[,] map;
 
@@ -72,6 +78,7 @@ public class ProceduralGeneration : MonoBehaviour
 
     private void Update()
     {
+        RenderMap(map, groundTileMap, caveTileMap, desolationTileMap, desolationTile, groundTile, caveTile, backgroundTileMap);
         /*if(Input.GetKeyDown(KeyCode.Space))
         {
             Generation();
@@ -106,6 +113,7 @@ public class ProceduralGeneration : MonoBehaviour
         firstBiomeVal = l2[0];
         secondBiomeVal = l2[1];
         thirdBiomeVal = l2[2];
+        //Debug.Log(firstBiomeVal + "  " + secondBiomeVal + "  " + thirdBiomeVal);
     }
 
 
@@ -117,7 +125,7 @@ public class ProceduralGeneration : MonoBehaviour
         map = TerrainGeneration(map);
         smoothMap(nbSmoothing);
         GetSurfaceTiles();
-        RenderMap(map, groundTileMap, caveTileMap, desolationTileMap, desolationTile, groundTile, caveTile);
+        RenderMap(map, groundTileMap, caveTileMap, desolationTileMap, desolationTile, groundTile, caveTile, backgroundTileMap);
         SpawnCharacter(characterPrefab);
     }
 
@@ -304,7 +312,7 @@ public class ProceduralGeneration : MonoBehaviour
     }
 
     // DOIT MODIFIER CETTE FCT, GESTION DU SWITCH PAS COMPLETÉ
-    public void RenderMap(int[,] map, Tilemap groundTileMap, Tilemap caveTileMap, Tilemap desolationTileMap, TileBase desolationTile, TileBase groundTile, TileBase caveTile)
+    public void RenderMap(int[,] map, Tilemap groundTileMap, Tilemap caveTileMap, Tilemap desolationTileMap, TileBase desolationTile, TileBase groundTile, TileBase caveTile, Tilemap backgroundTileMap)
     {
         for(int x = 0; x < width; x++) {
             for (int y = 0; y < height; y++)
@@ -324,8 +332,13 @@ public class ProceduralGeneration : MonoBehaviour
                     case var value when value == caveVal: // BIZARRE OUI, MAIS REGLE UN BUG DE UNITY. J'AI TROUVÉ CE TRUC SUR STACK OVER FLOW :) ca prenait pas juste caveVal
                         caveTileMap.SetTile(new Vector3Int(x, y, 0), caveTile);
                         break;
+                    case var value when value == 0:
+                        groundTileMap.SetTile(new Vector3Int(x, y, 0), null);
+                        desolationTileMap.SetTile(new Vector3Int(x, y, 0), null);
+                        backgroundTileMap.SetTile(new Vector3Int(x, y, 0), null);
+                        break;
                     default:
-                        // code block
+                        //rien
                         break;
                 }
             }
@@ -343,12 +356,22 @@ public class ProceduralGeneration : MonoBehaviour
         return surface;
     }
 
+    public void updateMap(int x, int y, int val)
+    {
+        Debug.Log("updating....: " + x + ", " + y);
+        Debug.Log(map[x, y]);
+        Debug.Log(Enum.GetName(typeof(TileValue), map[x, y]));
+        map[x, y] = val;
+        backgroundTileMap.SetTile(new Vector3Int(x, y, 0), null);
+        //map[x, y].SetTile()
+    }
+
     public void SpawnCharacter(GameObject characterPrefab)
     {
         if (surface.Count > 0)
         {
             // Choose a random surface tile
-            int randomIndex = Random.Range(0, surface.Count);
+            int randomIndex = UnityEngine.Random.Range(0, surface.Count);
             int[] surfaceTile = surface[randomIndex];
 
             // Calculate the position to spawn the character
@@ -356,7 +379,6 @@ public class ProceduralGeneration : MonoBehaviour
 
             // Spawn the character prefab at the calculated position
             Instantiate(characterPrefab, spawnPosition, Quaternion.identity);
-            Debug.LogWarning(surface.Count);
         }
         else
         {
