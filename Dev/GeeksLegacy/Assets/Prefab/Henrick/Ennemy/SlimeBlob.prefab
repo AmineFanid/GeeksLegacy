@@ -103,9 +103,9 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 1
-  m_AngularDrag: 1
+  m_Mass: 0.8
+  m_LinearDrag: 0.5
+  m_AngularDrag: 0.5
   m_GravityScale: 1
   m_Material: {fileID: 0}
   m_IncludeLayers:
@@ -116,7 +116,7 @@ Rigidbody2D:
     m_Bits: 0
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 1
+  m_CollisionDetection: 0
   m_Constraints: 4
 --- !u!114 &6146254695222716942
 MonoBehaviour:
@@ -131,9 +131,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _Cible: {fileID: 0}
-  _NameEnnemis: Slime
-  _ForceMouvement: 3
-  _MaxSpeed: 7
+  _ForceMouvement: 7
+  _MaxSpeed: 3
   _EstEnChasse: 1
   _DistanceVision: 5
 --- !u!95 &9179208932551167152
