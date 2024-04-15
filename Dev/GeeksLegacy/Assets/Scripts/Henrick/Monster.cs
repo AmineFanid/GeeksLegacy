@@ -28,6 +28,7 @@ public class Monster : MonoBehaviour
     private Animator _Animator;
     private Rigidbody2D _Rigidbody2D;
     Vector2 _DirectionMouvement;
+    private Collider2D _ChildrenCollider2D;
 
     IEnumerator _Errer;
 
@@ -36,7 +37,7 @@ public class Monster : MonoBehaviour
     {
         _Animator = GetComponent<Animator>();
         _Rigidbody2D = GetComponent<Rigidbody2D>();
-
+        _ChildrenCollider2D = GetComponentInChildren<Collider2D>();
         _Errer = Errer();
         StartCoroutine(_Errer);
     }
@@ -95,7 +96,7 @@ public class Monster : MonoBehaviour
 
         float vitesse = _Rigidbody2D.velocityX;
         bool vitesseBouge = vitesse > 0.01f || vitesse < -0.01f;
-        Debug.Log(vitesse);
+        //Debug.Log(vitesse);
         _Animator.SetBool("IsMoving", vitesseBouge);
         if (vitesseBouge)
         {
@@ -108,9 +109,9 @@ public class Monster : MonoBehaviour
     {
         _Rigidbody2D.AddForce(_DirectionMouvement * _ForceMouvement);
         if (_Rigidbody2D.velocity.x >= _MaxSpeed)
-            _Rigidbody2D.velocity = new Vector2(_MaxSpeed, 0.0f);
+            _Rigidbody2D.velocity = new Vector2(_MaxSpeed, _Rigidbody2D.velocityY);
         if (_Rigidbody2D.velocity.x <= _MaxSpeed * -1)
-            _Rigidbody2D.velocity = new Vector2(_MaxSpeed*-1, 0.0f);
+            _Rigidbody2D.velocity = new Vector2(_MaxSpeed*-1, _Rigidbody2D.velocityY);
     }
 
     private IEnumerator Errer()
