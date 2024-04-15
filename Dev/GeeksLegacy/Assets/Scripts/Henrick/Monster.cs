@@ -71,7 +71,7 @@ public class Monster : MonoBehaviour
             Debug.DrawRay(this.gameObject.transform.position, directionRotated * _DistanceVision, _EstEnChasse ? Color.red : Color.gray);
         }
         _EstEnChasse = hit.collider && hit.collider.gameObject.layer == _Cible.gameObject.layer;
-        Debug.DrawRay(this.gameObject.transform.position, _DirectionVision * _DistanceVision, _EstEnChasse ? Color.green : Color.gray);
+        Debug.DrawRay(this.gameObject.transform.position, _DirectionVision * _DistanceVision, _EstEnChasse ? Color.green : Color.blue);
 
 
         if (_EstEnChasse)
@@ -94,7 +94,8 @@ public class Monster : MonoBehaviour
         }
 
         float vitesse = _Rigidbody2D.velocityX;
-        bool vitesseBouge = vitesse > 0.01f;
+        bool vitesseBouge = vitesse > 0.01f || vitesse < -0.01f;
+        Debug.Log(vitesse);
         _Animator.SetBool("IsMoving", vitesseBouge);
         if (vitesseBouge)
         {
@@ -105,10 +106,11 @@ public class Monster : MonoBehaviour
 
     private void FixedUpdate()
     {
-        Debug.Log(_DirectionMouvement * _ForceMouvement);
         _Rigidbody2D.AddForce(_DirectionMouvement * _ForceMouvement);
         if (_Rigidbody2D.velocity.x >= _MaxSpeed)
-            _Rigidbody2D.velocity = new Vector2(_MaxSpeed, _MaxSpeed);
+            _Rigidbody2D.velocity = new Vector2(_MaxSpeed, 0.0f);
+        if (_Rigidbody2D.velocity.x <= _MaxSpeed * -1)
+            _Rigidbody2D.velocity = new Vector2(_MaxSpeed*-1, 0.0f);
     }
 
     private IEnumerator Errer()
@@ -116,9 +118,75 @@ public class Monster : MonoBehaviour
         while (true)
         {
             _DirectionMouvement = Vector2.zero;
-            yield return new WaitForSeconds(Random.value * 4+1);
-            _DirectionMouvement.x = Random.Range(-1.0f, 1.0f);
             yield return new WaitForSeconds(Random.value * 2+1);
+            _DirectionMouvement.x = Random.Range(-1.0f, 1.0f);
+            yield return new WaitForSeconds(Random.value * 3+1);
         }
     }
 }
+
+/*
+ public interface IState
+{
+    public void Enter();
+    public void Execute();
+    public void Exit();
+}
+ 
+public class StateMachine
+{
+    IState currentState;
+ 
+    public void ChangeState(IState newState)
+    {
+        if (currentState != null)
+            currentState.Exit();
+ 
+        currentState = newState;
+        currentState.Enter();
+    }
+ 
+    public void Update()
+    {
+        if (currentState != null) currentState.Execute();
+    }
+}
+ 
+public class TestState : IState
+{
+    Unit owner;
+ 
+    public TestState(Unit owner) { this.owner = owner; }
+ 
+    public void Enter()
+    {
+        Debug.Log("entering test state");
+    }
+ 
+    public void Execute()
+    {
+        Debug.Log("updating test state");
+    }
+ 
+    public void Exit()
+    {
+        Debug.Log("exiting test state");
+    }
+}
+ 
+public class Unit : MonoBehaviour
+{
+    StateMachine stateMachine = new StateMachine();
+   
+    void Start()
+    {
+        stateMachine.ChangeState(new TestState(this));
+    }
+ 
+    void Update()
+    {
+        stateMachine.Update();
+    }
+}
+ 
+ */
