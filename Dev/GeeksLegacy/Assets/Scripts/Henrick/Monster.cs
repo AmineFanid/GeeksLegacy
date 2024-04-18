@@ -27,8 +27,7 @@ public class Monster : MonoBehaviour
 
     private Animator _Animator;
     private Rigidbody2D _Rigidbody2D;
-    Vector2 _DirectionMouvement;
-    private Collider2D _ChildrenCollider2D;
+    public Vector2 DirectionMouvement;
 
     IEnumerator _Errer;
 
@@ -37,7 +36,6 @@ public class Monster : MonoBehaviour
     {
         _Animator = GetComponent<Animator>();
         _Rigidbody2D = GetComponent<Rigidbody2D>();
-        _ChildrenCollider2D = GetComponentInChildren<Collider2D>();
         _Errer = Errer();
         StartCoroutine(_Errer);
     }
@@ -67,7 +65,7 @@ public class Monster : MonoBehaviour
             }
 
             Vector2 directionRotated = rotation * _DirectionVision;
-            RaycastHit2D Suphit = Physics2D.Raycast(this.gameObject.transform.position, _DirectionVision, _DistanceVision, layerMask);
+            RaycastHit2D Suphit = Physics2D.Raycast(this.gameObject.transform.position, directionRotated, _DistanceVision, layerMask);
             _EstEnChasse = Suphit.collider && Suphit.collider.gameObject.layer == _Cible.gameObject.layer;
             Debug.DrawRay(this.gameObject.transform.position, directionRotated * _DistanceVision, _EstEnChasse ? Color.red : Color.gray);
         }
@@ -83,7 +81,7 @@ public class Monster : MonoBehaviour
                 StopCoroutine(_Errer);
                 _Errer = Errer();
             }
-            _DirectionMouvement = _DirectionVision;
+            DirectionMouvement = new Vector2(_DirectionVision.x, 0.0f);
         }
         else
         { //Errance
@@ -100,29 +98,35 @@ public class Monster : MonoBehaviour
         _Animator.SetBool("IsMoving", vitesseBouge);
         if (vitesseBouge)
         {
-            Vector2 directionAssainie = ForceAnimationVirtualJoystick.ForceDirectionAxe(_DirectionMouvement);
+            Vector2 directionAssainie = ForceAnimationVirtualJoystick.ForceDirectionAxe(DirectionMouvement);
             _Animator.SetFloat("MouvementX", directionAssainie.x);
+            _Animator.SetFloat("MouvementY", directionAssainie.y);
         }
     }
 
     private void FixedUpdate()
     {
-        _Rigidbody2D.AddForce(_DirectionMouvement * _ForceMouvement);
+        _Rigidbody2D.AddForce(DirectionMouvement * _ForceMouvement);
         if (_Rigidbody2D.velocity.x >= _MaxSpeed)
-            _Rigidbody2D.velocity = new Vector2(_MaxSpeed, _Rigidbody2D.velocityY);
+            _Rigidbody2D.velocity = new Vector2(_MaxSpeed, _Rigidbody2D.velocity.y);
         if (_Rigidbody2D.velocity.x <= _MaxSpeed * -1)
-            _Rigidbody2D.velocity = new Vector2(_MaxSpeed*-1, _Rigidbody2D.velocityY);
+            _Rigidbody2D.velocity = new Vector2(_MaxSpeed*-1, _Rigidbody2D.velocity.y);
     }
 
     private IEnumerator Errer()
     {
         while (true)
         {
-            _DirectionMouvement = Vector2.zero;
+            DirectionMouvement = Vector2.zero;
             yield return new WaitForSeconds(Random.value * 2+1);
-            _DirectionMouvement.x = Random.Range(-1.0f, 1.0f);
+            DirectionMouvement.x = Random.Range(-1.0f, 1.0f);
             yield return new WaitForSeconds(Random.value * 3+1);
         }
+    }
+
+    public Vector2 GetDirectionMouvement() {
+        if (DirectionMouvement != null) return DirectionMouvement;
+        else return Vector2.zero;
     }
 }
 
