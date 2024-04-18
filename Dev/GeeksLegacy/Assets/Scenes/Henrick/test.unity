@@ -119,11 +119,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!4 &606497851 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 8156664620012122354, guid: 5bfa42b025cd03244a0a85f12d836046, type: 3}
-  m_PrefabInstance: {fileID: 5237095306842743929}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &761302841
 GameObject:
   m_ObjectHideFlags: 0
@@ -1438,6 +1433,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6591995019130043376, guid: 00a63d34d2420f94f81450d39eac9ea2, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1577,10 +1576,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: SlimeBlob
       objectReference: {fileID: 0}
-    - target: {fileID: 3295186018607216988, guid: 5bfa42b025cd03244a0a85f12d836046, type: 3}
-      propertyPath: m_GravityScale
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 6146254695222716942, guid: 5bfa42b025cd03244a0a85f12d836046, type: 3}
       propertyPath: _Cible
       value: 
@@ -1624,14 +1619,6 @@ PrefabInstance:
     - target: {fileID: 8156664620012122354, guid: 5bfa42b025cd03244a0a85f12d836046, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 3.419
-      objectReference: {fileID: 0}
-    - target: {fileID: 8970700920515389199, guid: 5bfa42b025cd03244a0a85f12d836046, type: 3}
-      propertyPath: _Parent
-      value: 
-      objectReference: {fileID: 606497851}
-    - target: {fileID: 8970700920515389199, guid: 5bfa42b025cd03244a0a85f12d836046, type: 3}
-      propertyPath: _JumpAmount
-      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
