@@ -446,12 +446,12 @@ MonoBehaviour:
   nbSmoothing: 10
   caveTile: {fileID: 11400000, guid: 68ce3d1314cfc9444b4c676fd4c62dd1, type: 2}
   caveTileMap: {fileID: 441166872}
-  groundTile: {fileID: 11400000, guid: 077238901e1d79b4f98d8092f196c2d3, type: 2}
-  groundTileMap: {fileID: 1566541656}
-  iceTile: {fileID: 11400000, guid: 077238901e1d79b4f98d8092f196c2d3, type: 2}
-  iceTileMap: {fileID: 1566541656}
-  desolationTile: {fileID: 11400000, guid: 7b6e465c5f7ce734eade8c31c3dd7a1d, type: 2}
-  desolationTileMap: {fileID: 1566541656}
+  firstTile: {fileID: 11400000, guid: 077238901e1d79b4f98d8092f196c2d3, type: 2}
+  firstTileMap: {fileID: 1566541656}
+  secondTile: {fileID: 11400000, guid: ea60cb42964beb04cb4d2648e3c3c0e4, type: 2}
+  secondTileMap: {fileID: 1566541656}
+  thirdTile: {fileID: 11400000, guid: 7b6e465c5f7ce734eade8c31c3dd7a1d, type: 2}
+  thirdTileMap: {fileID: 1566541656}
   backgroundTile: {fileID: 11400000, guid: 68ce3d1314cfc9444b4c676fd4c62dd1, type: 2}
   backgroundTileMap: {fileID: 1329462781}
   characterPrefab: {fileID: 4889261689804403610, guid: cb91870e4c9011947995cbfb0e52c426, type: 3}

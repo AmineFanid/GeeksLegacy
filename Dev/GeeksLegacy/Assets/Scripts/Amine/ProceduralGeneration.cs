@@ -38,20 +38,26 @@ public class ProceduralGeneration : MonoBehaviour
 
 
     [Header("Biome 1")]
-    [SerializeField] TileBase groundTile;
-    [SerializeField] Tilemap groundTileMap;
+    [SerializeField] TileBase firstTile;
+    [SerializeField] Tilemap firstTileMap;
     int firstBiomeVal;
+    Tilemap firstBiomeTileMap;
+    TileBase firstBiomeTile;
     
 
     [Header("Biome 2")]
-    [SerializeField] TileBase iceTile;
-    [SerializeField] Tilemap iceTileMap;
+    [SerializeField] TileBase secondTile;
+    [SerializeField] Tilemap secondTileMap;
     int secondBiomeVal;
+    Tilemap secondBiomeTileMap;
+    TileBase secondBiomeTile;
 
     [Header("Biome 3")]
-    [SerializeField] TileBase desolationTile;
-    [SerializeField] Tilemap desolationTileMap;
+    [SerializeField] TileBase thirdTile;
+    [SerializeField] Tilemap thirdTileMap;
     int thirdBiomeVal;
+    Tilemap thirdBiomeTileMap;
+    TileBase thirdBiomeTile;
 
     [Header("Background")]
     [SerializeField] TileBase backgroundTile;
@@ -78,7 +84,7 @@ public class ProceduralGeneration : MonoBehaviour
 
     private void Update()
     {
-        RenderMap(map, groundTileMap, caveTileMap, desolationTileMap, desolationTile, groundTile, caveTile, backgroundTileMap);
+        RenderMap(map);
         /*if(Input.GetKeyDown(KeyCode.Space))
         {
             Generation();
@@ -88,15 +94,23 @@ public class ProceduralGeneration : MonoBehaviour
     public int BiomeCount()
     {
         int biomeCount = 0;
-        if (groundTile != null) biomeCount++;
-        if (iceTile != null) biomeCount++;
-        if (desolationTile != null) biomeCount++;
+        if (firstTile != null) biomeCount++;
+        if (secondTile != null) biomeCount++;
+        if (thirdTile != null) biomeCount++;
         return biomeCount;
     }
 
+
     public void BiomeRandomization()
     {
-        List<TileValue> liste = new List<TileValue> { TileValue.BIOME1, TileValue.BIOME2, TileValue.BIOME3 };
+        //List<TileValue> liste = new List<TileValue> { TileValue.BIOME1, TileValue.BIOME2, TileValue.BIOME3 };
+        List<TileValue> liste = new List<TileValue>();
+
+        foreach(TileValue i in Enum.GetValues(typeof(TileValue)))
+        {
+            if(i != TileValue.CAVE) liste.Add(i);
+        }
+
         List<int> l2 = new List<int>();
 
         System.Random random = new System.Random();
@@ -110,10 +124,19 @@ public class ProceduralGeneration : MonoBehaviour
             l2.Add(randomValue); // Ajoute la valeur a l2
             liste.RemoveAt(randomIndex); // Enleve la valeur de la liste
         }
+
+        /*
         firstBiomeVal = l2[0];
         secondBiomeVal = l2[1];
         thirdBiomeVal = l2[2];
-        //Debug.Log(firstBiomeVal + "  " + secondBiomeVal + "  " + thirdBiomeVal);
+        */
+
+        firstBiomeVal = firstTile != null ? l2[0] : -1;
+        secondBiomeVal = secondTile != null ? l2[1] : -1;
+        thirdBiomeVal = thirdTile != null ? l2[2] : -1;
+
+
+        Debug.Log(firstBiomeVal + "  " + secondBiomeVal + "  " + thirdBiomeVal);
     }
 
 
@@ -125,7 +148,8 @@ public class ProceduralGeneration : MonoBehaviour
         map = TerrainGeneration(map);
         smoothMap(nbSmoothing);
         GetSurfaceTiles();
-        RenderMap(map, groundTileMap, caveTileMap, desolationTileMap, desolationTile, groundTile, caveTile, backgroundTileMap);
+        BiomeNumAssignation();
+        RenderMap(map);
         SpawnCharacter(characterPrefab);
     }
 
@@ -147,6 +171,7 @@ public class ProceduralGeneration : MonoBehaviour
     public int MapWidthDivision(int xWidth)
     {
         //System.Random pseudoRandom = new System.Random(seed.GetHashCode());
+        /*
         int limit;
         switch (biomeCount)
         {
@@ -172,20 +197,23 @@ public class ProceduralGeneration : MonoBehaviour
                 }
                 break;
         }
-        return firstBiomeVal;
-        /*
-        if(xWidth < limit)
+        return firstBiomeVal;*/
+        int sectionWidth = width / biomeCount; // Calcul la largeur des sections de biomes
+
+        // Determine le biome basé sur la position en x
+        int sectionIndex = xWidth / sectionWidth;
+
+        switch (sectionIndex)
         {
-            map[x, y] = (pseudoRandom.Next(1, 100) < randomFillPercent) ? firstBiomeVal : caveBiomeVal;
+            case 0:
+                return firstBiomeVal; // Return la valeur du 1er biome
+            case 1:
+                return secondBiomeVal; // Return la valeur du second biome
+            case 2:
+                return thirdBiomeVal; // Return la valeur du troisieme biome
+            default:
+                return firstBiomeVal; 
         }
-        if(xWidth < (limit * 2) && xWidth > limit)
-        {
-            map[x, y] = (pseudoRandom.Next(1, 100) < randomFillPercent) ? secondBiomeVal : caveBiomeVal;
-        }
-        if (xWidth < (limit * 3) && xWidth > (limit * 2))
-        {
-            map[x, y] = (pseudoRandom.Next(1, 100) < randomFillPercent) ? thirdBiomeVal : caveBiomeVal;
-        }*/
     }
 
     public int[,] TerrainGeneration(int[,] map)
@@ -203,7 +231,7 @@ public class ProceduralGeneration : MonoBehaviour
                 //int  caveValue = Mathf.RoundToInt(Mathf.PerlinNoise((x*modifier)+ seed, (y * modifier) + seed)); //Nous donne des 0 et des 1
                 //map[x, y] = (caveValue == 1) ? 2 : 1;
                 int num = MapWidthDivision(x);
-                map[x, y] = (pseudoRandom.Next(1, 100) < randomFillPercent) ? num : caveVal; //si la valeur du pseudoRandom est plus grande que le randomFillPercent, on place un groundTile, sinon un caveTile
+                map[x, y] = (pseudoRandom.Next(1, 100) < randomFillPercent) ? num : caveVal; //si la valeur du pseudoRandom est plus grande que le randomFillPercent, on place un groundTile/iceTile/desolationTile, sinon un caveTile
 
             }
         }
@@ -301,8 +329,6 @@ public class ProceduralGeneration : MonoBehaviour
                         {
                             groundCount++;
                         }
-
-
                     }
                 }
             }
@@ -311,8 +337,79 @@ public class ProceduralGeneration : MonoBehaviour
         return groundCount;
     }
 
+    public void BiomeNumAssignation() //Crée par Amine et amélioré par chatGPT
+    {
+        System.Random random = new System.Random();
+
+        // Randomize the order of biomes (TLDR)
+        // /Initialization of Lists: We start by initializing two lists, biomeTilemaps and biomeTiles, to store the available tilemaps and tiles for the biomes, respectively.
+        List<Tilemap> biomeTilemaps = new List<Tilemap>();
+        List<TileBase> biomeTiles = new List<TileBase>();
+
+
+        // Adding Available Biomes: We check each biome to see if it's available (i.e., if the biome value is greater than 0 and the corresponding tile is not null). If it is, we add its tilemap and tile to the lists.
+        if (firstBiomeVal > 0 && firstTile != null)
+        {
+            biomeTilemaps.Add(firstTileMap);
+            biomeTiles.Add(firstTile);
+        }
+
+        if (secondBiomeVal > 0 && secondTile != null)
+        {
+            biomeTilemaps.Add(secondTileMap);
+            biomeTiles.Add(secondTile);
+        }
+
+        if (thirdBiomeVal > 0 && thirdTile != null)
+        {
+            biomeTilemaps.Add(thirdTileMap);
+            biomeTiles.Add(thirdTile);
+        }
+
+        // Shuffle the biome order (TLDR)
+        // Shuffling the Lists: After adding the available biomes to the lists, we shuffle these lists to randomize the order of the biomes. We achieve this by iterating over the lists and swapping elements randomly.
+        for (int i = 0; i < biomeTiles.Count; i++)
+        {
+            int randomIndex = random.Next(i, biomeTiles.Count);
+            var tempTilemap = biomeTilemaps[i];
+            biomeTilemaps[i] = biomeTilemaps[randomIndex];
+            biomeTilemaps[randomIndex] = tempTilemap;
+
+            var tempTile = biomeTiles[i];
+            biomeTiles[i] = biomeTiles[randomIndex];
+            biomeTiles[randomIndex] = tempTile;
+        }
+
+        // Assign the shuffled tiles to biome tilemaps (TLDR)
+        // Assigning Shuffled Biomes to Tilemaps: Finally, we assign the shuffled tiles to the corresponding biome tilemaps. We iterate over the shuffled lists and assign each tile to the appropriate tilemap, handling cases where the tilemap or tile might be null.
+        for (int i = 0; i < biomeTilemaps.Count; i++)
+        {
+            if (biomeTilemaps[i] != null && biomeTiles[i] != null)
+            {
+                switch (i)
+                {
+                    case 0:
+                        firstBiomeTileMap = biomeTilemaps[i];
+                        firstBiomeTile = biomeTiles[i];
+                        break;
+                    case 1:
+                        secondBiomeTileMap = biomeTilemaps[i];
+                        secondBiomeTile = biomeTiles[i];
+                        break;
+                    case 2:
+                        thirdBiomeTileMap = biomeTilemaps[i];
+                        thirdBiomeTile = biomeTiles[i];
+                        break;
+                }
+            }
+        }
+
+        // This process ensures that the available biomes are randomly assigned to the available tilemaps while handling cases where some biomes or tilemaps might be null.
+    }
+
+
     // DOIT MODIFIER CETTE FCT, GESTION DU SWITCH PAS COMPLETÉ
-    public void RenderMap(int[,] map, Tilemap groundTileMap, Tilemap caveTileMap, Tilemap desolationTileMap, TileBase desolationTile, TileBase groundTile, TileBase caveTile, Tilemap backgroundTileMap)
+    public void RenderMap(int[,] map)
     {
         for(int x = 0; x < width; x++) {
             for (int y = 0; y < height; y++)
@@ -321,21 +418,28 @@ public class ProceduralGeneration : MonoBehaviour
                 switch (map[x, y])
                 {
                     case var value when value == firstBiomeVal:
-                        groundTileMap.SetTile(new Vector3Int(x, y, 0), groundTile);
+                        //if(desolationTile!=null && desolationTileMap) desolationTileMap.SetTile(new Vector3Int(x, y, 0), desolationTile);
+                        firstBiomeTileMap.SetTile(new Vector3Int(x, y, 0), firstBiomeTile);
                         break;
                     case var value when value == secondBiomeVal:
-                        desolationTileMap.SetTile(new Vector3Int(x, y, 0), desolationTile);
+                        //if (iceTile != null && iceTileMap) iceTileMap.SetTile(new Vector3Int(x, y, 0), iceTile);
+                        secondBiomeTileMap.SetTile(new Vector3Int(x, y, 0), secondBiomeTile);
                         break;
                     case var value when value == thirdBiomeVal:
-                        desolationTileMap.SetTile(new Vector3Int(x, y, 0), desolationTile);
+                        //if (groundTile != null && groundTileMap) groundTileMap.SetTile(new Vector3Int(x, y, 0), groundTile); 
+                        thirdBiomeTileMap.SetTile(new Vector3Int(x, y, 0), thirdBiomeTile);
                         break;
                     case var value when value == caveVal: // BIZARRE OUI, MAIS REGLE UN BUG DE UNITY. J'AI TROUVÉ CE TRUC SUR STACK OVER FLOW :) ca prenait pas juste caveVal
                         caveTileMap.SetTile(new Vector3Int(x, y, 0), caveTile);
                         break;
                     case var value when value == 0:
-                        groundTileMap.SetTile(new Vector3Int(x, y, 0), null);
-                        desolationTileMap.SetTile(new Vector3Int(x, y, 0), null);
-                        backgroundTileMap.SetTile(new Vector3Int(x, y, 0), null);
+                        //if (groundTile != null && groundTileMap) groundTileMap.SetTile(new Vector3Int(x, y, 0), null);
+                        //if (desolationTile != null && desolationTileMap) desolationTileMap.SetTile(new Vector3Int(x, y, 0), null);
+                        //if (iceTile != null && iceTileMap) iceTileMap.SetTile(new Vector3Int(x, y, 0), null);                        
+                        if (firstBiomeTileMap != null && firstBiomeTile != null) firstBiomeTileMap.SetTile(new Vector3Int(x, y, 0), null);
+                        if (secondBiomeTileMap != null && secondBiomeTile) secondBiomeTileMap.SetTile(new Vector3Int(x, y, 0), null);
+                        if (thirdBiomeTileMap != null && thirdBiomeTile) thirdBiomeTileMap.SetTile(new Vector3Int(x, y, 0), null);
+                        //backgroundTileMap.SetTile(new Vector3Int(x, y, 0), null);
                         break;
                     default:
                         //rien
@@ -348,7 +452,7 @@ public class ProceduralGeneration : MonoBehaviour
 
     public void clearMap() 
     {
-        groundTileMap.ClearAllTiles();
+        firstTileMap.ClearAllTiles();
         caveTileMap.ClearAllTiles();
     }
 
@@ -358,9 +462,9 @@ public class ProceduralGeneration : MonoBehaviour
 
     public void updateMap(int x, int y, int val)
     {
-        Debug.Log("updating....: " + x + ", " + y);
+       /* Debug.Log("updating....: " + x + ", " + y);
         Debug.Log(map[x, y]);
-        Debug.Log(Enum.GetName(typeof(TileValue), map[x, y]));
+        Debug.Log(Enum.GetName(typeof(TileValue), map[x, y]));*/
         map[x, y] = val;
         backgroundTileMap.SetTile(new Vector3Int(x, y, 0), null);
         //map[x, y].SetTile()
