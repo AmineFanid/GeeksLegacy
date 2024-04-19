@@ -11,24 +11,24 @@ using UnityEngine.SceneManagement;
 
 public class Monster : MonoBehaviour
 {
+    [Header("Target to chase")]
     [SerializeField]
     private Transform _Cible;
 
+    [Header("Mouvement settings")]
     [SerializeField]
     private float _ForceMouvement = 10.0f;
-
     [SerializeField] private float _MaxSpeed = 10.0f;
 
+    [Header("Target detection settings")]
     [SerializeField]
     private bool _EstEnChasse = false;
-
     [SerializeField]
     private float _DistanceVision = 5.0f;
 
     private Animator _Animator;
     private Rigidbody2D _Rigidbody2D;
     public Vector2 DirectionMouvement;
-
     IEnumerator _Errer;
 
     // Start is called before the first frame update
@@ -46,10 +46,18 @@ public class Monster : MonoBehaviour
         float angleSup = 5.0f;
         float angleInf = -5.0f;
         bool etaitEnChasse = _EstEnChasse;
+
+        //Vector représentant la direction de la cible
         Vector2 delta = _Cible.position - this.gameObject.transform.position;
+        //Normalisation du Vector
         Vector2 _DirectionVision = delta.normalized;
+
         int layerMask = LayerMask.GetMask(new[] { "Obstacle", "Player" });
+
+        //raycast original de la détection du joueur
         RaycastHit2D hit = Physics2D.Raycast(this.gameObject.transform.position, _DirectionVision, _DistanceVision, layerMask);
+
+        //Boucle pour générer plusieurs raycast a différent angle
         for (int i = 0; i < 10; i++)
         {
             Quaternion rotation;
@@ -65,10 +73,15 @@ public class Monster : MonoBehaviour
             }
 
             Vector2 directionRotated = rotation * _DirectionVision;
+
+            //Généré la hitbox
             RaycastHit2D Suphit = Physics2D.Raycast(this.gameObject.transform.position, directionRotated, _DistanceVision, layerMask);
+
+            //Si les raycast détecte un joueur, met a True la variable
             _EstEnChasse = Suphit.collider && Suphit.collider.gameObject.layer == _Cible.gameObject.layer;
             Debug.DrawRay(this.gameObject.transform.position, directionRotated * _DistanceVision, _EstEnChasse ? Color.red : Color.gray);
         }
+        //Si le raycast détecte un joueur, met a True la variable
         _EstEnChasse = hit.collider && hit.collider.gameObject.layer == _Cible.gameObject.layer;
         Debug.DrawRay(this.gameObject.transform.position, _DirectionVision * _DistanceVision, _EstEnChasse ? Color.green : Color.blue);
 
@@ -94,10 +107,11 @@ public class Monster : MonoBehaviour
 
         float vitesse = _Rigidbody2D.velocityX;
         bool vitesseBouge = vitesse > 0.01f || vitesse < -0.01f;
-        //Debug.Log(vitesse);
+
         _Animator.SetBool("IsMoving", vitesseBouge);
-        if (vitesseBouge)
+        if (vitesseBouge) //Si l'ennemi bouge
         {
+            //Active ses animations en fonction du mouvement
             Vector2 directionAssainie = ForceAnimationVirtualJoystick.ForceDirectionAxe(DirectionMouvement);
             _Animator.SetFloat("MouvementX", directionAssainie.x);
             _Animator.SetFloat("MouvementY", directionAssainie.y);
@@ -106,14 +120,17 @@ public class Monster : MonoBehaviour
 
     private void FixedUpdate()
     {
+        //Ajoute la force de déplacment de l'ennemi
         _Rigidbody2D.AddForce(DirectionMouvement * _ForceMouvement);
+
+        //Vérification pour limité la vitesse de l'ennemi
         if (_Rigidbody2D.velocity.x >= _MaxSpeed)
             _Rigidbody2D.velocity = new Vector2(_MaxSpeed, _Rigidbody2D.velocity.y);
         if (_Rigidbody2D.velocity.x <= _MaxSpeed * -1)
             _Rigidbody2D.velocity = new Vector2(_MaxSpeed*-1, _Rigidbody2D.velocity.y);
     }
 
-    private IEnumerator Errer()
+    private IEnumerator Errer() //Errence
     {
         while (true)
         {
@@ -124,74 +141,8 @@ public class Monster : MonoBehaviour
         }
     }
 
-    public Vector2 GetDirectionMouvement() {
+    public Vector2 GetDirectionMouvement() { //Getter de la direction de mouvement
         if (DirectionMouvement != null) return DirectionMouvement;
         else return Vector2.zero;
     }
 }
-
-/*
- public interface IState
-{
-    public void Enter();
-    public void Execute();
-    public void Exit();
-}
- 
-public class StateMachine
-{
-    IState currentState;
- 
-    public void ChangeState(IState newState)
-    {
-        if (currentState != null)
-            currentState.Exit();
- 
-        currentState = newState;
-        currentState.Enter();
-    }
- 
-    public void Update()
-    {
-        if (currentState != null) currentState.Execute();
-    }
-}
- 
-public class TestState : IState
-{
-    Unit owner;
- 
-    public TestState(Unit owner) { this.owner = owner; }
- 
-    public void Enter()
-    {
-        Debug.Log("entering test state");
-    }
- 
-    public void Execute()
-    {
-        Debug.Log("updating test state");
-    }
- 
-    public void Exit()
-    {
-        Debug.Log("exiting test state");
-    }
-}
- 
-public class Unit : MonoBehaviour
-{
-    StateMachine stateMachine = new StateMachine();
-   
-    void Start()
-    {
-        stateMachine.ChangeState(new TestState(this));
-    }
- 
-    void Update()
-    {
-        stateMachine.Update();
-    }
-}
- 
- */
