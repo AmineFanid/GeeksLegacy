@@ -72,8 +72,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c9d8b9db8f3a2e4a9d71eb3794ddf1e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _Cible: {fileID: 0}
   _JumpHeight: 1.5
   _Parent: {fileID: 8156664620012122354}
+  DistanceVision: 5
 --- !u!1 &3282144701167911265
 GameObject:
   m_ObjectHideFlags: 0
@@ -85,10 +87,10 @@ GameObject:
   - component: {fileID: 8156664620012122354}
   - component: {fileID: 4809063208921987325}
   - component: {fileID: 3295186018607216988}
-  - component: {fileID: 6146254695222716942}
   - component: {fileID: 9179208932551167152}
   - component: {fileID: 4193620545976088816}
-  m_Layer: 0
+  - component: {fileID: 5557090565954110730}
+  m_Layer: 10
   m_Name: SlimeBlob
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -193,24 +195,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &6146254695222716942
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3282144701167911265}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d1c3bae2dbf603a419289414b6bd17ef, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _Cible: {fileID: 0}
-  _ForceMouvement: 7
-  _MaxSpeed: 3
-  _EstEnChasse: 1
-  _DistanceVision: 5
-  DirectionMouvement: {x: 0, y: 0}
 --- !u!95 &9179208932551167152
 Animator:
   serializedVersion: 7
@@ -270,3 +254,20 @@ CapsuleCollider2D:
   m_Offset: {x: 0.01973266, y: 0.025657011}
   m_Size: {x: 0.47822782, y: 0.39794123}
   m_Direction: 1
+--- !u!114 &5557090565954110730
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3282144701167911265}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c2fbb6479fb9aa44b68386742e2c04b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _Cible: {fileID: 0}
+  _ForceMouvement: 7
+  _MaxSpeed: 2
+  _EstEnChasse: 1
+  DirectionMouvement: {x: 0, y: 0}
