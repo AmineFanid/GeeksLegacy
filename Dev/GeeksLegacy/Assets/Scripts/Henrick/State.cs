@@ -6,7 +6,7 @@ using System.Collections.Generic;
 /// Our objective is to implement a finite state machine using 
 /// the class based approach.
 /// 
-/// What is a finite state mcahine?
+/// What is a finite state machine?
 /// A finite state machine is a computational pattern that models 
 /// the state behaviour of a system. Such a system comprises a 
 /// finite number of states and at any given point in time the
@@ -42,7 +42,6 @@ namespace Patterns
         }
 
         public delegate void DelegateNoArg();
-
         public DelegateNoArg OnEnter;
         public DelegateNoArg OnExit;
         public DelegateNoArg OnUpdate;

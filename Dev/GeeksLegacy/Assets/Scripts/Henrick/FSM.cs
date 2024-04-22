@@ -16,7 +16,7 @@ namespace Patterns
         protected Dictionary<T, State<T>> mStates;
 
         // The current state.
-        protected State<T> mCurrentState;
+        protected State<T> mCurrentState; //Private ?
 
         public FiniteStateMachine()
         {
@@ -28,7 +28,7 @@ namespace Patterns
             mStates.Add(state.ID, state);
         }
 
-        public void Add(T stateID, State<T> state)
+        public void Add(T stateID, State<T> state) //Inutile ? pour 2 meme etat différent
         {
             mStates.Add(stateID, state);
         }
@@ -42,6 +42,7 @@ namespace Patterns
 
         public void SetCurrentState(T stateID)
         {
+            //Check dans le dict ?
             State<T> state = mStates[stateID];
             SetCurrentState(state);
         }
@@ -53,7 +54,7 @@ namespace Patterns
 
         public void SetCurrentState(State<T> state)
         {
-            if (mCurrentState == state)
+            if (mCurrentState == state) //METTRE UN PRINT POUR L'ÉTAT (MOINS LONG)
             {
                 return;
             }
