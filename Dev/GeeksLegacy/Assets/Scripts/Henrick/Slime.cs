@@ -43,7 +43,7 @@ public class Slime : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        Debug.Log("Start");
+        //Debug.Log("Start");
         mFsm.Add(
             new State<SlimeState>(
                 SlimeState.IDLE,
@@ -97,8 +97,7 @@ public class Slime : MonoBehaviour
         mFsm.SetCurrentState(SlimeState.IDLE);
         _Animator = GetComponent<Animator>();
         _Rigidbody2D = GetComponent<Rigidbody2D>();
-        _ChildRigidbody2D = GetComponentInChildren<Rigidbody2D>();
-        _Child = _ChildRigidbody2D.gameObject.GetComponent<TileDetection>();
+
     }
 
     private void Init_IdleState() {
@@ -147,7 +146,7 @@ public class Slime : MonoBehaviour
     {
         bool _IsChasing = ChaseDetection();
 
-        Debug.Log("SlimeState IDLE");
+        //Debug.Log("SlimeState IDLE");
 
         if (_IsChasing == true) mFsm.SetCurrentState(SlimeState.CHASE);
         else
@@ -171,12 +170,12 @@ public class Slime : MonoBehaviour
 
     void OnUpdateCHASE() //UPDATE OF THE CHASE STATE
     {
-        Debug.Log(ChaseDetection());
+        //Debug.Log(ChaseDetection());
 
         if (ChaseDetection() == false) mFsm.SetCurrentState(SlimeState.IDLE);
         else mFsm.SetCurrentState(SlimeState.CHASE);
 
-        Debug.Log("SlimeState CHASE");
+        //Debug.Log("SlimeState CHASE");
 
         //Vient de tomber en chasse
         if (!etaitEnChasse)
@@ -193,6 +192,9 @@ public class Slime : MonoBehaviour
         DirectionMouvement = new Vector2(_DirectionVision.x, 0.0f);
 
         Mouvement();
+
+        TileDetection t = FindFirstObjectByType<TileDetection>();
+        if (t.PlayerDetection()) mFsm.SetCurrentState(SlimeState.ATTACK);
     }
 
     void OnEnterATTACK() //ENTRY OF THE ATTACK STATE
@@ -202,9 +204,23 @@ public class Slime : MonoBehaviour
 
     void OnUpdateATTACK() //UPDATE OF THE ATTACK STATE
     {
+        TileDetection t = FindFirstObjectByType<TileDetection>();
+        if (ChaseDetection() == false) mFsm.SetCurrentState(SlimeState.IDLE);
+        else mFsm.SetCurrentState(SlimeState.CHASE);
+        if (t.PlayerDetection()) mFsm.SetCurrentState(SlimeState.ATTACK);
+
+        //Vector représentant la direction de la cible
+        Vector2 delta = _Cible.position - this.gameObject.transform.position;
+        //Normalisation du Vector
+        _DirectionVision = delta.normalized;
+
+        DirectionMouvement = new Vector2(_DirectionVision.x, 0.0f);
+
+        Mouvement();
         
-        Debug.Log("SlimeState ATTACK");
-        mFsm.SetCurrentState(SlimeState.ATTACK);
+        t.AttackPlayer();
+        //Debug.Log("SlimeState ATTACK");
+
     }
 
     void OnEnterDAMAGE() //ENTRY OF THE DAMAGE STATE
@@ -214,18 +230,18 @@ public class Slime : MonoBehaviour
 
     void OnUpdateDAMAGE() //UPDATE OF THE DAMAGE STATE
     {
-        Debug.Log("SlimeState DAMAGE");
+        //Debug.Log("SlimeState DAMAGE");
         mFsm.SetCurrentState(SlimeState.DAMAGE);
     }
 
     void OnEnterDIE()
     {
-        Debug.Log("Enter the " + mFsm.GetCurrentState().Name.ToString());
+        //Debug.Log("Enter the " + mFsm.GetCurrentState().Name.ToString());
     }
 
     void OnUpdateDIE()
     {
-        Debug.Log("SlimeState DIE");
+        //Debug.Log("SlimeState DIE");
         mFsm.SetCurrentState(SlimeState.DIE);
     }
     #endregion
@@ -235,12 +251,13 @@ public class Slime : MonoBehaviour
         while (true)
         {
             DirectionMouvement = Vector2.zero;
-            yield return new WaitForSeconds(Random.value * 2 + 1);
+            yield return new WaitForSeconds(Random.value * 2 + 2);
             DirectionMouvement.x = Random.Range(-1.0f, 1.0f);
             yield return new WaitForSeconds(Random.value * 3 + 1);
         }
     }
 
+    /*
     private IEnumerator Attack() //Attack
     {
         while (true)
@@ -250,7 +267,7 @@ public class Slime : MonoBehaviour
             DirectionMouvement.x = Random.Range(-1.0f, 1.0f);
             yield return new WaitForSeconds(Random.value * 3 + 1);
         }
-    }
+    }*/
 
     public Vector2 GetDirectionMouvement()
     { //Getter de la direction de mouvement
@@ -280,7 +297,7 @@ public class Slime : MonoBehaviour
         if (_Rigidbody2D.velocity.x <= _MaxSpeed * -1)
             _Rigidbody2D.velocity = new Vector2(_MaxSpeed * -1, _Rigidbody2D.velocity.y);
 
-        Debug.Log(_Rigidbody2D.velocity);
+        //Debug.Log(_Rigidbody2D.velocity);
     }
 
     private bool ChaseDetection()
