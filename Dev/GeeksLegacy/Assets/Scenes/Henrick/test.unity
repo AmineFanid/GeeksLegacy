@@ -1268,47 +1268,6 @@ TilemapCollider2D:
   m_MaximumTileChangeCount: 1000
   m_ExtrusionFactor: 0
   m_UseDelaunayMesh: 0
---- !u!1 &904329130 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 961198637643878728, guid: 5bfa42b025cd03244a0a85f12d836046, type: 3}
-  m_PrefabInstance: {fileID: 5237095306842743929}
-  m_PrefabAsset: {fileID: 0}
---- !u!58 &904329134
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 904329130}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_CompositeOperation: 0
-  m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
-  m_Radius: 0.98
 --- !u!4 &1139676293 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3699161660515108619, guid: 00a63d34d2420f94f81450d39eac9ea2, type: 3}
@@ -1435,6 +1394,10 @@ PrefabInstance:
       value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 3699161660515108619, guid: 00a63d34d2420f94f81450d39eac9ea2, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3699161660515108619, guid: 00a63d34d2420f94f81450d39eac9ea2, type: 3}
       propertyPath: m_LocalPosition.x
       value: -7.11
       objectReference: {fileID: 0}
@@ -1473,10 +1436,6 @@ PrefabInstance:
     - target: {fileID: 3699161660515108619, guid: 00a63d34d2420f94f81450d39eac9ea2, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6591995019130043376, guid: 00a63d34d2420f94f81450d39eac9ea2, type: 3}
-      propertyPath: m_CollisionDetection
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1661,25 +1620,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 3.419
       objectReference: {fileID: 0}
-    - target: {fileID: 8791713388477894916, guid: 5bfa42b025cd03244a0a85f12d836046, type: 3}
-      propertyPath: m_IncludeLayers.m_Bits
-      value: 2048
-      objectReference: {fileID: 0}
     - target: {fileID: 8970700920515389199, guid: 5bfa42b025cd03244a0a85f12d836046, type: 3}
       propertyPath: _Cible
       value: 
       objectReference: {fileID: 1139676293}
-    - target: {fileID: 8970700920515389199, guid: 5bfa42b025cd03244a0a85f12d836046, type: 3}
-      propertyPath: _DistanceVision
-      value: 10
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 961198637643878728, guid: 5bfa42b025cd03244a0a85f12d836046, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 904329134}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5bfa42b025cd03244a0a85f12d836046, type: 3}
 --- !u!1001 &5372761666426343739
 PrefabInstance:
@@ -1691,11 +1639,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 233878196666768366, guid: d9db0fcc5caaef647949c05ec5bebf23, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 9.69
+      value: 9.72
       objectReference: {fileID: 0}
     - target: {fileID: 233878196666768366, guid: d9db0fcc5caaef647949c05ec5bebf23, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -5.52
+      value: -5.6
       objectReference: {fileID: 0}
     - target: {fileID: 233878196666768366, guid: d9db0fcc5caaef647949c05ec5bebf23, type: 3}
       propertyPath: m_LocalPosition.z
