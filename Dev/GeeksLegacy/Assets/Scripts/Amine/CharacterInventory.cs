@@ -14,5 +14,16 @@ public class CharacterInventory : MonoBehaviour
         print("number of items = " + NumberOfItems);
     }
 
+    public void addItem(string itemName)
+    {
+        if (inventory.ContainsKey(itemName))
+        {
+            inventory[itemName]++;
+        }
+        else
+        {
+            inventory.Add(itemName, 1);
+        }
+    }
 
 }

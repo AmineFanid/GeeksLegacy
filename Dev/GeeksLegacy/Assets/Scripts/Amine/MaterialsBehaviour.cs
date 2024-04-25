@@ -10,6 +10,7 @@ public class MaterialsBehaviour : MonoBehaviour
     public float duration = 3f;
     private float _ElapsedTime;
     public Vector3 characpos;
+    [SerializeField] string itemName;
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -50,9 +51,10 @@ public class MaterialsBehaviour : MonoBehaviour
         CharacterInventory CharacInventory = other.GetComponent<CharacterInventory>();
         if(CharacInventory != null)
         {
-            print("charactingeru!!");
             CharacInventory.ItemsCollected();
+            //CharacInventory.addItem(itemName);
             gameObject.SetActive(false);
+            //Destroy(gameObject);
         }
     }
 }
