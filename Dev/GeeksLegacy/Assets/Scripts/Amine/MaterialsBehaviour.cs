@@ -1,24 +1,22 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class MaterialsBehaviour : MonoBehaviour
 {
-
-    public float amplitude = 0.1f;
-    public float speed = 4.0f;
     public float detectionRadius = 5.0f; // Rayon pour detecter le joueur quand y est proche
-    public Transform player;
-
-
+    private GameObject player;
     private bool _Collected = false;
-    private Vector3 _Destination = new Vector3(5, -2, 0);
     private Vector3 _Start;
     public float duration = 3f;
     private float _ElapsedTime;
-    
+    public Vector3 characpos;
+    [SerializeField] string itemName;
+
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        player = GameObject.FindGameObjectWithTag("Player");
         _Start = transform.position;
     }
 
@@ -26,25 +24,37 @@ public class MaterialsBehaviour : MonoBehaviour
     void Update()
     {
         _ElapsedTime += Time.deltaTime;
+        float distance = Vector3.Distance(transform.position, player.transform.position);
+        float finalSpeed = (distance / 5);
+
 
         if (!_Collected)
         {
-            Vector3 p = transform.position;
-            p.y = amplitude * Mathf.Cos(Time.time * speed);
-            transform.position = p;
 
-            if (Vector3.Distance(transform.position, player.position) < detectionRadius)
+            if (distance < detectionRadius)
             {
                 _Collected = true;
-                print("DETEXCTED A PLAYERR");
             }
         }
         else
         {
+
             float percentageDestination = _ElapsedTime / duration;
-            transform.position = Vector3.Lerp(transform.position, player.position, percentageDestination);
+
+            transform.position = Vector3.Lerp(transform.position, player.transform.position, Time.deltaTime/finalSpeed);
 
         }
-        print(" LE COLLECTED ESTTTTTTTTT " + _Collected);
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        CharacterInventory CharacInventory = other.GetComponent<CharacterInventory>();
+        if(CharacInventory != null)
+        {
+            CharacInventory.ItemsCollected();
+            //CharacInventory.addItem(itemName);
+            gameObject.SetActive(false);
+            //Destroy(gameObject);
+        }
     }
 }

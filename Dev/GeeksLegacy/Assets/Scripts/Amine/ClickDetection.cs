@@ -13,7 +13,9 @@ public class ClickDetection : MonoBehaviour
     //private float lastClickTime = 0f;
     public Tilemap tiles;
     public Tile tile;
+    public GameObject dirtPrefab;
     ProceduralGeneration proceduralGeneration;
+    
 
     public Vector3Int location;
     void Start()
@@ -45,7 +47,7 @@ public class ClickDetection : MonoBehaviour
                 // The method returned a non-null value
                 Vector3 location = clickLocation.Value;
                 // Now you can use 'location' for further processing
-                Debug.Log("Clicked on tile at position: " + location);
+                //Debug.Log("Clicked on tile at position: " + location);
                 if (proceduralGeneration) { 
                     destroyTile(location);
                 }
@@ -101,7 +103,13 @@ public class ClickDetection : MonoBehaviour
     public void destroyTile(Vector3 tilelocation)
     {
         proceduralGeneration.updateMap((int)tilelocation.x, (int)tilelocation.y, 0);
-        
+        // Spawn a block of dirt at the same location
+        tilelocation.y += 1;
+        tilelocation.x += 0.5f;
+        GameObject dirtBlock = Instantiate(dirtPrefab, tilelocation, Quaternion.identity);
+        // Attach the MaterialsBehaviour script to the spawned dirt block
+        dirtBlock.AddComponent<MaterialsBehaviour>();
+
     }
 
   

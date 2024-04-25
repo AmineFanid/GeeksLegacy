@@ -1182,6 +1182,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tiles: {fileID: 1566541656}
   tile: {fileID: 0}
+  dirtPrefab: {fileID: 7054309357132343790, guid: a3d5f6c5abbb9174486798c344cb4afe, type: 3}
   location: {x: 0, y: 0, z: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:

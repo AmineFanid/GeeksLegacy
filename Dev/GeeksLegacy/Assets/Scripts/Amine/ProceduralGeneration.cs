@@ -68,7 +68,7 @@ public class ProceduralGeneration : MonoBehaviour
     int[,] map;
 
     [Header("Charac")]
-    [SerializeField] GameObject characterPrefab;
+    [SerializeField] public GameObject characterPrefab;
 
     int biomeCount;
 
