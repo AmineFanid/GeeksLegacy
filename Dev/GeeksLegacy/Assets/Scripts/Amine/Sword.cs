@@ -5,16 +5,50 @@ using UnityEngine;
 public class Sword : Item
 {
 
+    public float damage;
 
     public Sword()
     {
-        itemName = "Sword";
+      
+    }
+
+    public void InflictDamageOn() // À coder
+    {
+
+    }
+
+}
+
+public class WoodenSword : Sword
+{
+
+
+    public WoodenSword()
+    {
+        itemName = "WoodenSword";
+        itemType = "Weapon";
+        itemDurability = 75.0f;
+        recipe = new Dictionary<string, int>
+        {
+            { "Wood", 50 }
+        };
+    }
+
+}
+
+public class IronSword : Sword
+{
+
+
+    public IronSword()
+    {
+        itemName = "IronSword";
         itemType = "Weapon";
         itemDurability = 150.0f;
         recipe = new Dictionary<string, int>
         {
-            { "Wood", 10 },
-            { "Iron", 5 }
+            { "Wood", 70 },
+            { "Iron", 80 }
         };
     }
 
