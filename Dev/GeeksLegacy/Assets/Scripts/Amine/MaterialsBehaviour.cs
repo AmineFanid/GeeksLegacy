@@ -1,3 +1,4 @@
+using System.Collections;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -11,13 +12,18 @@ public class MaterialsBehaviour : MonoBehaviour
     private float _ElapsedTime;
     public Vector3 characpos;
     [SerializeField] string itemName;
+    private CharacterInventory characInventory;
 
+
+    //public void 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        characInventory = FindFirstObjectByType<CharacterInventory>();
         player = GameObject.FindGameObjectWithTag("Player");
         _Start = transform.position;
+
     }
 
     // Update is called once per frame
@@ -38,23 +44,28 @@ public class MaterialsBehaviour : MonoBehaviour
         }
         else
         {
+            if (characInventory.canAddInventory()) {
+                float percentageDestination = _ElapsedTime / duration;
 
-            float percentageDestination = _ElapsedTime / duration;
+                transform.position = Vector3.Lerp(transform.position, player.transform.position, Time.deltaTime / finalSpeed);
+            }
 
-            transform.position = Vector3.Lerp(transform.position, player.transform.position, Time.deltaTime/finalSpeed);
-
+            
         }
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        CharacterInventory CharacInventory = other.GetComponent<CharacterInventory>();
-        if(CharacInventory != null)
+
+       //CharacInventory = other.GetComponent<CharacterInventory>();
+        if (characInventory != null)
         {
-            CharacInventory.ItemsCollected();
-            //CharacInventory.addItem(itemName);
-            gameObject.SetActive(false);
-            //Destroy(gameObject);
+            if(itemName != null && characInventory.canAddInventory())
+            {
+                characInventory.addItem(itemName);
+                Destroy(gameObject);
+            }
         }
     }
+
 }

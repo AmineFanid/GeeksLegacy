@@ -27,17 +27,7 @@ public class ClickDetection : MonoBehaviour
 
     void Update()
     {
-        /*
-        if(_IsColliding == true)
-        {
-            float collisionDuration = Time.time - _WaitTime;
-
-            if (collisionDuration >= 3.0f)
-            {
-                Debug.Log("Collision has been happening for more than 3 seconds");
-            }
-        }
-        */
+        
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
            //Vector3? est un nullable type, normalement on peut pas avoir de null pour les vector3 et puisqu'un vecteur3 (0,0,0) est une position réelle, on utilise le nullable vector? et on verifie s'il y a qlqchose dedans.
@@ -59,29 +49,8 @@ public class ClickDetection : MonoBehaviour
                 Debug.Log("Clicked outside of any tile.");
             }
 
-
-            /*
-            float currentTime = Time.time;
-            if (currentTime - lastClickTime <= clickInterval)
-            {
-                clickCount++;
-                Debug.Log("Click count: " + clickCount);
-            }
-            else
-            {
-                clickCount = 1;
-            }
-            lastClickTime = currentTime;
-            */
         }
-        /*
-        if (clickCount >= 3)
-        {
-            Debug.Log("Clicked repeatedly for 3 seconds!");
-            // Reset click count
-            clickCount = 0;
-            Destroy(gameObject);
-        }*/
+
     }
 
     public Vector3? GetTheTile()

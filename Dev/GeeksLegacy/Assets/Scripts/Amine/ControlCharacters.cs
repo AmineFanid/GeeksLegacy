@@ -9,7 +9,7 @@ using UnityEngine;
 public class ControlCharacters : MonoBehaviour
 {
 
-    private Animator AnimateurRobin;
+    private Animator AnimateurPlayer;
     private Rigidbody2D Rigidbody;
 
     private float ControleX;
@@ -21,16 +21,19 @@ public class ControlCharacters : MonoBehaviour
 
     private int _MaxJump = 2;
     private int _NumJump = 0;
-
-
+    public Player player;
+    public CharacterInventory inventory;
 
     private bool _isGrounded;
 
 
     public void Start() {
 
-        AnimateurRobin = GetComponent<Animator>();
+        AnimateurPlayer = GetComponent<Animator>();
         Rigidbody = GetComponent<Rigidbody2D>();
+        inventory = new CharacterInventory();
+        player = new Player(1000.0f, inventory);
+
     }
 
     public void Update()
@@ -56,14 +59,16 @@ public class ControlCharacters : MonoBehaviour
 
 
         // Pour la gestion de la vie du personnage
-        /* if(_Hp == 0.0f)
+        /* 
+         if(_Hp == 0.0f)
          {
              _Vivant == false;
          }
          if (!_Vivant)
          {
              Destroy(this.gameObject);
-         }*/
+         }
+        */
     }
 
     public void FixedUpdate()
@@ -85,4 +90,19 @@ public class ControlCharacters : MonoBehaviour
         //  _Hp -= (_Hp * 1 / 100);
         //}
     }
+}
+
+public class Player
+{
+    public float lifePoint;
+    public CharacterInventory inventory;
+
+    public Player(float lifePoint, CharacterInventory inventory)
+    {
+        this.lifePoint = lifePoint;
+        this.inventory = inventory;
+    }
+
+
+
 }
