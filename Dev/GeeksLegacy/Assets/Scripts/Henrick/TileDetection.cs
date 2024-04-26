@@ -1,7 +1,7 @@
 using System;
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
-
-[RequireComponent(typeof(Collider2D))]
 
 public class TileDetection : MonoBehaviour
 {
@@ -16,9 +16,11 @@ public class TileDetection : MonoBehaviour
     private Rigidbody2D _ParentBody;
     private bool _CanJump = true;
     private bool _IsTileGround;
+    private bool _EstEnAttack = false;
     private Vector2 _DirectionAbsolute;
     private int layerMask;
     public Vector2 attackd;
+    public bool etaitAttack;
 
     void Start()
     {
@@ -33,16 +35,16 @@ public class TileDetection : MonoBehaviour
         CanJump();
         JumpPhysics();
        
-        if (PlayerDetection()) AttackPlayer();
+        //if (PlayerDetection()) AttackPlayer();
     }
 
     public bool PlayerDetection() {
+        etaitAttack = _EstEnAttack;
         //Player and ennemie distance
         Vector2 distance = _Cible.position - this.gameObject.transform.position;
-        if (LtEq(distance, attackd) && GtEq(distance, attackd* -1)) { 
-            return true;
-        }
-        return false;
+        if (LtEq(distance, attackd) && GtEq(distance, attackd * -1)) _EstEnAttack = true;
+        else _EstEnAttack = false;
+        return _EstEnAttack;
     }
 
     public static bool LtEq(Vector2 first, Vector2 second) { 
@@ -63,11 +65,11 @@ public class TileDetection : MonoBehaviour
         Debug.DrawRay(this.gameObject.transform.position, _DirectionAbsolute * 0.6f, _IsTileGround ? Color.red : Color.gray);
     }
 
-    public void CanJump()
+    public bool CanJump()
     {
         //Vérif de la possibilité de sauter
-        _CanJump = Physics2D.Raycast(transform.position, Vector2.down, 0.3f, layerMask);
         Debug.DrawRay(this.gameObject.transform.position, Vector2.down * 0.3f, _CanJump ? Color.red : Color.gray);
+        return _CanJump = Physics2D.Raycast(transform.position, Vector2.down, 0.3f, layerMask);
     }
 
     public Vector2 DirectionAbsolution() {
