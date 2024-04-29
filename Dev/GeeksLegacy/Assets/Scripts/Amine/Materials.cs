@@ -28,7 +28,6 @@ public class Iron : Item
 
 public class Wood : Item
 {
-
     public Wood()
     {
         itemName = "Wood";
