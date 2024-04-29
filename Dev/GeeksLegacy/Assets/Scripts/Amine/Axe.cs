@@ -10,12 +10,6 @@ public class Axe : Item
     { 
 
     }
-
-    public void InflictDamageOn() // À coder
-    {
-
-    }
-
 }
 
 public class WoodenAxe : Axe
@@ -27,11 +21,17 @@ public class WoodenAxe : Axe
         itemName = "WoodenAxe";
         itemType = "Tool";
         itemDurability = 25.0f;
+        damage = 7.0f;
         recipe = new Dictionary<string, int>
         {
             { "Wood", 15 }
         };
         damage = 5.0f;
+    }
+
+    public override float DoDamage()
+    {
+        return damage;
     }
 
 }
@@ -45,12 +45,18 @@ public class IronAxe : Axe
         itemName = "IronAxe";
         itemType = "Tool";
         itemDurability = 100.0f;
+        damage = 14.0f;
         recipe = new Dictionary<string, int>
         {
             { "Wood", 15 },
             { "Iron", 15 }
         };
         damage = 10.0f;
+    }
+
+    public override float DoDamage()
+    {
+        return damage;
     }
 
 }
