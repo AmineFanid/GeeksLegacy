@@ -28,6 +28,7 @@ public class Slime : MonoBehaviour
     public Vector2 DirectionMouvement;
     IEnumerator _Wander;
     IEnumerator _AttackPlayer;
+    IEnumerator _Die;
 
     FiniteStateMachine<SlimeState> mFsm = new FiniteStateMachine<SlimeState>();
 
@@ -281,8 +282,9 @@ public class Slime : MonoBehaviour
 
     void OnUpdateDIE()
     {
-        //Debug.Log("SlimeState DIE");
         mFsm.SetCurrentState(SlimeState.DIE);
+        _Die = Die();
+        StartCoroutine(_Die);
     }
     #endregion
 
@@ -296,6 +298,30 @@ public class Slime : MonoBehaviour
             yield return new WaitForSeconds(Random.value * 2 + 2);
             DirectionMouvement.x = Random.Range(-1.0f, 1.0f);
             yield return new WaitForSeconds(Random.value * 3 + 1);
+        }
+    }
+
+    private IEnumerator AttackPlayer() //Wander
+    {
+        TileDetection t = FindFirstObjectByType<TileDetection>();
+        while (true)
+        {
+            _Rigidbody2D.velocity = Vector2.zero;
+            yield return new WaitForSeconds(0.8f);
+            if (t.CanJump())
+                _Rigidbody2D.velocity = new Vector2(DirectionMouvement.x * _ForceMouvement, Mathf.Sqrt(-2.0f * Physics2D.gravity.y * _JumpHeight));
+            yield return new WaitForSeconds(0.8f);
+        }
+    }
+
+    private IEnumerator Die() //Die
+    { 
+        while(true)
+        {
+            Debug.Log("MEURE");
+            yield return new WaitForSeconds(2.0f);
+            Destroy(this.gameObject);
+            StopCoroutine(_Die);
         }
     }
 
@@ -375,29 +401,20 @@ public class Slime : MonoBehaviour
         return _EstEnChasse;
     }
 
-    private IEnumerator AttackPlayer() //Wander
-    {
-        TileDetection t = FindFirstObjectByType<TileDetection>();
-        while (true)
-        {
-            _Rigidbody2D.velocity = Vector2.zero;
-            yield return new WaitForSeconds(0.8f);
-            /*------------*/
-            if (t.CanJump())
-            {
-                _Rigidbody2D.velocity = new Vector2(DirectionMouvement.x * _ForceMouvement, Mathf.Sqrt(-2.0f * Physics2D.gravity.y * _JumpHeight));
-            }
-            yield return new WaitForSeconds(0.8f);
-        }
-    }
-
     void OnCollisionEnter2D(Collision2D collision)
     {
-
-        if (collision.gameObject.layer == LayerMask.NameToLayer("Weapon")){
+        Debug.Log(_CurrentHealth);
+        if (collision.gameObject.layer == LayerMask.GetMask(new[] { "Weapon", "Tool" }))
+        {
             mFsm.SetCurrentState(SlimeState.DAMAGE);
-            //if (_CurrentHealth - )
-            _CurrentHealth -= (_TotalHealth * 1 / 100);
+            Item collisionObject = collision.gameObject.GetComponent<Item>();
+            if (collisionObject != null)
+            {
+                if (_CurrentHealth - collisionObject.DoDamage() >= 0)
+                    _CurrentHealth -= collisionObject.DoDamage();
+                else if (_CurrentHealth <= 0)
+                    mFsm.SetCurrentState(SlimeState.DIE);
+            }
         }
     }
 }
