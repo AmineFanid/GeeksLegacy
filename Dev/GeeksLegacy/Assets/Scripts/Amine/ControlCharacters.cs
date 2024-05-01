@@ -13,7 +13,6 @@ public class ControlCharacters : MonoBehaviour
     private Rigidbody2D _Rigidbody;
 
     private float ControleX;
-    private float ControleY;
     [Header("Character Settings")]
     [SerializeField] private float _JumpHeight = 2.0f;
     [SerializeField] private float _Speed = 5.0f;
@@ -21,10 +20,12 @@ public class ControlCharacters : MonoBehaviour
     [SerializeField] private float _GravityScale = 1.0f;
     [SerializeField] private float _FallingGravityScale = 10.0f;
     [SerializeField] private float _MaxSpeed = 7.0f;
+    [SerializeField] private float _PlayerLife;
 
     private int _MaxJump = 2;
     private int _NumJump = 0;
     private Vector2 movement;
+    public float _CurrentLife;
     public Player player;
     public CharacterInventory inventory;
 
@@ -36,13 +37,12 @@ public class ControlCharacters : MonoBehaviour
         _Animator = GetComponent<Animator>();
         _Rigidbody = GetComponent<Rigidbody2D>();
         inventory = new CharacterInventory();
-        player = new Player(1000.0f, inventory);
+        player = new Player(_PlayerLife, inventory);
     }
 
     public void Update()
     {
         ControleX = Input.GetAxis("Horizontal");
-        ControleY = Mathf.Max(0, Input.GetAxis("Vertical"));
 
         // Move horizontally    
         movement = new Vector2(ControleX, 0f);
@@ -63,18 +63,6 @@ public class ControlCharacters : MonoBehaviour
             _Rigidbody.gravityScale = _FallingGravityScale;
         else if (_Rigidbody.velocityY >= 0)
             _Rigidbody.gravityScale = _GravityScale;
-         
-        // Pour la gestion de la vie du personnage
-        /* 
-         if(_Hp == 0.0f)
-         {
-             _Vivant == false;
-         }
-         if (!_Vivant)
-         {
-             Destroy(this.gameObject);
-         }
-        */
     }
 
     public void FixedUpdate()
@@ -88,13 +76,10 @@ public class ControlCharacters : MonoBehaviour
         }
 
         float vitesse = _Rigidbody.velocityX;
-        Debug.Log(_Rigidbody.velocityX);
         bool vitesseBouge = vitesse > 0.01f || vitesse < -0.01f;
         _Animator.SetBool("IsMoving", vitesseBouge);
-        Debug.Log(vitesseBouge);
         if (vitesseBouge) //Si l'ennemi bouge
         {
-            Debug.Log("BOUGE");
             //Active ses animations en fonction du mouvement
             Vector2 directionAssainie = ForceAnimationVirtualJoystick.ForceDirectionAxe(movement);
             _Animator.SetFloat("MouvementX", directionAssainie.x);
@@ -110,13 +95,25 @@ public class ControlCharacters : MonoBehaviour
 
     public void OnCollisionEnter2D(Collision2D collision)
     {
-        // exemple de dommage suite à un contact avec un ennemi
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Ennemies")) {
+            
+            player.TakeDamage(10.0f);
+            Debug.Log("Player : " + player.GetLifePoint());
+        }
+    }
 
-        //if (collision.gameObject.layer == LayerMask.NameToLayer("Ennemis")){
-        //  _Hp -= (_Hp * 1 / 100);
-        //}
+    private IEnumerator Invincibility() //Invincibilité
+    {
+        while (true)
+        {
+            Physics.IgnoreLayerCollision(LayerMask.NameToLayer("Player"), LayerMask.NameToLayer("Ennemies"), true);
+            yield return new WaitForSeconds(0.8f);
+
+        }
     }
 }
+
+
 
 public class Player
 {
@@ -127,5 +124,13 @@ public class Player
     {
         this.lifePoint = lifePoint;
         this.inventory = inventory;
+    }
+
+    public float GetLifePoint() {
+        return this.lifePoint;
+    }
+
+    public void TakeDamage(float damage) {       
+        this.lifePoint -= damage;
     }
 }
