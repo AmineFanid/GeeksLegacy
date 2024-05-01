@@ -403,7 +403,7 @@ public class Slime : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        Debug.Log(_CurrentHealth);
+        Debug.Log("Slime : " + _CurrentHealth);
         if (collision.gameObject.layer == LayerMask.GetMask(new[] { "Weapon", "Tool" }))
         {
             mFsm.SetCurrentState(SlimeState.DAMAGE);
