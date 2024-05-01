@@ -1329,8 +1329,16 @@ PrefabInstance:
       value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 1729173041213638938, guid: 00a63d34d2420f94f81450d39eac9ea2, type: 3}
+      propertyPath: _KnockBack
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 1729173041213638938, guid: 00a63d34d2420f94f81450d39eac9ea2, type: 3}
       propertyPath: _JumpHeight
       value: 33
+      objectReference: {fileID: 0}
+    - target: {fileID: 1729173041213638938, guid: 00a63d34d2420f94f81450d39eac9ea2, type: 3}
+      propertyPath: _PlayerLife
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 1729173041213638938, guid: 00a63d34d2420f94f81450d39eac9ea2, type: 3}
       propertyPath: _GravityScale
@@ -1489,10 +1497,6 @@ PrefabInstance:
       propertyPath: _Cible
       value: 
       objectReference: {fileID: 1139676293}
-    - target: {fileID: 5557090565954110730, guid: 5bfa42b025cd03244a0a85f12d836046, type: 3}
-      propertyPath: _TotalHealth
-      value: 100
-      objectReference: {fileID: 0}
     - target: {fileID: 8156664620012122354, guid: 5bfa42b025cd03244a0a85f12d836046, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.919
