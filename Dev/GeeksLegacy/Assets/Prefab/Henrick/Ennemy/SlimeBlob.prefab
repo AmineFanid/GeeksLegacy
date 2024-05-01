@@ -246,4 +246,5 @@ MonoBehaviour:
   _JumpHeight: 1.2
   _EstEnChasse: 1
   _DistanceVision: 5
+  _TotalHealth: 100
   DirectionMouvement: {x: 0, y: 0}
