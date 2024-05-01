@@ -20,11 +20,14 @@ public class ControlCharacters : MonoBehaviour
     [SerializeField] private float _GravityScale = 1.0f;
     [SerializeField] private float _FallingGravityScale = 10.0f;
     [SerializeField] private float _MaxSpeed = 7.0f;
-    [SerializeField] private float _PlayerLife;
+    [SerializeField] private float _PlayerLife = 100.0f;
+    [SerializeField] private float _KnockBack = 4.0f;
 
     private int _MaxJump = 2;
+    private bool _HasCollided;
     private int _NumJump = 0;
     private Vector2 movement;
+    private IEnumerator _Invincibility;
     public float _CurrentLife;
     public Player player;
     public CharacterInventory inventory;
@@ -95,21 +98,24 @@ public class ControlCharacters : MonoBehaviour
 
     public void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.layer == LayerMask.NameToLayer("Ennemies")) {
-            
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Ennemies")) { //QUESTION : POURQUOI QUAND L'ENNEMIS ME TOUCHE C'EST LONG ET QUAND JE TOUCHE L'ENNEMIS CEST RAPIDE???
+            Vector2 dir = transform.position - collision.gameObject.transform.position;
+            dir = dir.normalized;
+            _Rigidbody.AddForce(dir * _KnockBack, ForceMode2D.Impulse);
+            Debug.Log("KNOCKKKKKKK");
             player.TakeDamage(10.0f);
-            Debug.Log("Player : " + player.GetLifePoint());
+            //Debug.Log("Player : " + player.GetLifePoint());
+            //_Invincibility = Invincibility(collision);
+            //StartCoroutine(_Invincibility);
         }
     }
 
-    private IEnumerator Invincibility() //Invincibilité
+    private IEnumerator Invincibility(Collision2D collision) //Invincibilité
     {
-        while (true)
-        {
-            Physics.IgnoreLayerCollision(LayerMask.NameToLayer("Player"), LayerMask.NameToLayer("Ennemies"), true);
-            yield return new WaitForSeconds(0.8f);
-
-        }
+        
+        Debug.Log("INVINCIBILITÉ !!!");
+        Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("Player"), LayerMask.NameToLayer("Ennemies"), true);
+        yield return new WaitForSeconds(0.0f);
     }
 }
 
