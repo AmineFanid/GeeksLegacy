@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8308210126736711449}
   - component: {fileID: 2936170827748377070}
   - component: {fileID: 2710140623464218676}
-  m_Layer: 5
+  m_Layer: 31
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -139,6 +139,7 @@ Transform:
   m_Children:
   - {fileID: 2381348912966801815}
   - {fileID: 2629389433843337742}
+  - {fileID: 7648906918059467180}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &7386719642461484304
@@ -209,9 +210,9 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 1
-  m_AngularDrag: 1
-  m_GravityScale: 10
+  m_LinearDrag: 10
+  m_AngularDrag: 10
+  m_GravityScale: 15
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -294,8 +295,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d8d5244ac908a1458dd434ff9ed2068, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _Speed: 5
-  _JumpForce: 25
+  _JumpHeight: 33
+  _Speed: 23
+  _JumpForce: 50
+  _GravityScale: 10
+  _FallingGravityScale: 20
+  _MaxSpeed: 4
+  _PlayerLife: 100
+  _KnockBack: 20
+  _KBCounter: 0
+  _KBTotalTime: 0.1
+  _InvCounter: 0
+  _InvTotalTime: 1
+  _CurrentLife: 100
+  inventory: {fileID: 0}
+  knockRight: 0
 --- !u!1 &7720756602636209623
 GameObject:
   m_ObjectHideFlags: 0
@@ -388,6 +402,37 @@ AudioListener:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7720756602636209623}
   m_Enabled: 1
+--- !u!1 &8738370483307362064
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7648906918059467180}
+  m_Layer: 11
+  m_Name: Core
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7648906918059467180
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8738370483307362064}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3699161660515108619}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &558370372441722871
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -407,6 +452,10 @@ PrefabInstance:
     - target: {fileID: 5053877235808560257, guid: f1dc890e048ad794ba737f69c5101ff2, type: 3}
       propertyPath: m_Name
       value: QuickInventory
+      objectReference: {fileID: 0}
+    - target: {fileID: 5053877235808560257, guid: f1dc890e048ad794ba737f69c5101ff2, type: 3}
+      propertyPath: m_Layer
+      value: 31
       objectReference: {fileID: 0}
     - target: {fileID: 5472194020310001080, guid: f1dc890e048ad794ba737f69c5101ff2, type: 3}
       propertyPath: m_LocalScale.x
@@ -533,6 +582,10 @@ PrefabInstance:
     - target: {fileID: 5159514327551620604, guid: 7a1a190b423c80d4daa73d371a6dd470, type: 3}
       propertyPath: m_Name
       value: HealtBar
+      objectReference: {fileID: 0}
+    - target: {fileID: 5159514327551620604, guid: 7a1a190b423c80d4daa73d371a6dd470, type: 3}
+      propertyPath: m_Layer
+      value: 31
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
