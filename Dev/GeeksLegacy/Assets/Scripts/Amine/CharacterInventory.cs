@@ -2,12 +2,12 @@ using UnityEngine;
 using System.Collections.Generic;
 
 
-public class CharacterInventory : MonoBehaviour
+public class CharacterInventory
 {
 
 //    [SerializeField] private GameObject inventoryPrefab;
     public int NumberOfItems { get; private set; } //n'importe quel script peut get la valeur, mais seulement ce script peut modifier la valeur
-    public Dictionary<string, int> inventory;
+    public Dictionary<string, int> inventory { get; private set; }
     public int maxSize;
 
     public CharacterInventory()
@@ -44,4 +44,8 @@ public class CharacterInventory : MonoBehaviour
         
     }
 
+    public int inventoryCount()
+    {
+        return inventory.Count;
+    }
 }
