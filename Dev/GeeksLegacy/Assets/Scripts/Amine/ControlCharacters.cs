@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using Unity.VisualScripting;
 using UnityEngine;
+using Debug = UnityEngine.Debug;
 
 [RequireComponent(typeof(Animator))]
 [RequireComponent(typeof(Rigidbody2D))]
@@ -22,6 +24,10 @@ public class ControlCharacters : MonoBehaviour
     [SerializeField] private float _MaxSpeed = 7.0f;
     [SerializeField] private float _PlayerLife = 100.0f;
     [SerializeField] private float _KnockBack = 4.0f;
+    [SerializeField] public float _KBCounter = 0.0f;
+    [SerializeField] public float _KBTotalTime = 1.0f;
+    [SerializeField] public float _InvCounter = 0.0f;
+    [SerializeField] public float _InvTotalTime = 1.0f;
 
     private int _MaxJump = 2;
     private bool _HasCollided;
@@ -31,12 +37,13 @@ public class ControlCharacters : MonoBehaviour
     public float _CurrentLife;
     public Player player;
     public CharacterInventory inventory;
+    public bool knockRight;
 
     private bool _isGrounded;
 
 
     public void Start() {
-
+        Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("Ennemies"), this.gameObject.layer, false);
         _Animator = GetComponent<Animator>();
         _Rigidbody = GetComponent<Rigidbody2D>();
         inventory = new CharacterInventory();
@@ -70,52 +77,74 @@ public class ControlCharacters : MonoBehaviour
 
     public void FixedUpdate()
     {
-        int groundLayerMask = LayerMask.GetMask("Ground"); 
-        _isGrounded = Physics2D.Raycast(transform.position, Vector2.down, 0.9f, groundLayerMask);
-
-        if ((_NumJump >= _MaxJump) && _isGrounded)
+        if (_KBCounter <= 0)
         {
-            _NumJump = 0;
+
+            Debug.Log("no hit");
+            int groundLayerMask = LayerMask.GetMask("Ground");
+            _isGrounded = Physics2D.Raycast(transform.position, Vector2.down, 0.9f, groundLayerMask);
+
+            if ((_NumJump >= _MaxJump) && _isGrounded)
+            {
+                _NumJump = 0;
+            }
+
+            float vitesse = _Rigidbody.velocityX;
+            bool vitesseBouge = vitesse > 0.01f || vitesse < -0.01f;
+            _Animator.SetBool("IsMoving", vitesseBouge);
+            if (vitesseBouge) //Si l'ennemi bouge
+            {
+                //Active ses animations en fonction du mouvement
+                Vector2 directionAssainie = ForceAnimationVirtualJoystick.ForceDirectionAxe(movement);
+                _Animator.SetFloat("MouvementX", directionAssainie.x);
+                _Animator.SetFloat("MouvementY", directionAssainie.y);
+            }
+
+            //Vérification pour limité la vitesse de l'ennemi
+            if (_Rigidbody.velocity.x >= _MaxSpeed)
+                _Rigidbody.velocity = new Vector2(_MaxSpeed, _Rigidbody.velocity.y);
+            if (_Rigidbody.velocity.x <= _MaxSpeed * -1)
+                _Rigidbody.velocity = new Vector2(_MaxSpeed * -1, _Rigidbody.velocity.y);
+        }
+        else {
+            if (knockRight)
+                _Rigidbody.velocity = new Vector2(-_KnockBack, _KnockBack/2);
+            else
+                _Rigidbody.velocity = new Vector2(_KnockBack, _KnockBack/2);
+            _KBCounter -= Time.deltaTime;
+
         }
 
-        float vitesse = _Rigidbody.velocityX;
-        bool vitesseBouge = vitesse > 0.01f || vitesse < -0.01f;
-        _Animator.SetBool("IsMoving", vitesseBouge);
-        if (vitesseBouge) //Si l'ennemi bouge
+        if (_InvCounter <= 0)
         {
-            //Active ses animations en fonction du mouvement
-            Vector2 directionAssainie = ForceAnimationVirtualJoystick.ForceDirectionAxe(movement);
-            _Animator.SetFloat("MouvementX", directionAssainie.x);
-            _Animator.SetFloat("MouvementY", directionAssainie.y);
+            Debug.Log("normal");
+            _Animator.SetBool("GetHit", false);
+        }
+        else
+        {
+            _Animator.SetBool("GetHit", true);
+            _InvCounter -= Time.deltaTime;
         }
 
-        //Vérification pour limité la vitesse de l'ennemi
-        if (_Rigidbody.velocity.x >= _MaxSpeed)
-            _Rigidbody.velocity = new Vector2(_MaxSpeed, _Rigidbody.velocity.y);
-        if (_Rigidbody.velocity.x <= _MaxSpeed * -1)
-            _Rigidbody.velocity = new Vector2(_MaxSpeed * -1, _Rigidbody.velocity.y);
+
     }
 
     public void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.layer == LayerMask.NameToLayer("Ennemies")) { //QUESTION : POURQUOI QUAND L'ENNEMIS ME TOUCHE C'EST LONG ET QUAND JE TOUCHE L'ENNEMIS CEST RAPIDE???
-            Vector2 dir = transform.position - collision.gameObject.transform.position;
-            dir = dir.normalized;
-            _Rigidbody.AddForce(dir * _KnockBack, ForceMode2D.Impulse);
-            Debug.Log("KNOCKKKKKKK");
-            player.TakeDamage(10.0f);
-            //Debug.Log("Player : " + player.GetLifePoint());
-            //_Invincibility = Invincibility(collision);
-            //StartCoroutine(_Invincibility);
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Ennemies")) {
+            IEnumerator Inv = Invincibility(collision);
         }
+        
     }
 
-    private IEnumerator Invincibility(Collision2D collision) //Invincibilité
+    IEnumerator Invincibility(Collision2D collision)
     {
-        
-        Debug.Log("INVINCIBILITÉ !!!");
-        Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("Player"), LayerMask.NameToLayer("Ennemies"), true);
-        yield return new WaitForSeconds(0.0f);
+        Debug.Log("La coroutine a démarré.");
+        Physics2D.IgnoreCollision(this.gameObject.GetComponent<Collider2D>(), collision.collider, true);
+        // Attendre pendant 3 secondes
+        yield return new WaitForSeconds(1.0f);
+        Physics2D.IgnoreCollision(this.gameObject.GetComponent<Collider2D>(), collision.collider, false);
+        Debug.Log("La coroutine a terminé après avoir attendu 3 secondes.");
     }
 }
 
