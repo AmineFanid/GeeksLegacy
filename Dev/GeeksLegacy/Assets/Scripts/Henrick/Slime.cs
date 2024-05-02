@@ -4,6 +4,7 @@ using Unity.VisualScripting;
 using System.Net.NetworkInformation;
 using System.Collections;
 using static UnityEditor.Progress;
+using JetBrains.Annotations;
 
 [RequireComponent(typeof(Animator))]
 [RequireComponent(typeof(Rigidbody2D))]
@@ -22,10 +23,12 @@ public class Slime : MonoBehaviour
     [SerializeField] private float _DistanceVision = 5.0f;
     [Header("Slime stats")]
     [SerializeField] private float _TotalHealth = 100.0f;
+    [SerializeField] public ControlCharacters player;
 
     private Animator _Animator;
     private Rigidbody2D _Rigidbody2D;
     public Vector2 DirectionMouvement;
+    
     IEnumerator _Wander;
     IEnumerator _AttackPlayer;
     IEnumerator _Die;
@@ -415,6 +418,16 @@ public class Slime : MonoBehaviour
                 else if (_CurrentHealth <= 0)
                     mFsm.SetCurrentState(SlimeState.DIE);
             }
+        }
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Player"))
+        {
+            player._KBCounter = player._KBTotalTime;
+            player._InvCounter = player._InvTotalTime;
+            if (collision.gameObject.transform.position.x <= transform.position.x)
+                player.knockRight = true;
+            else
+                player.knockRight = false;
+            player.player.TakeDamage(10.0f);
         }
     }
 }
