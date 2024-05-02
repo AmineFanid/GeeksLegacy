@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Threading.Tasks;
+using JetBrains.Annotations;
 using Unity.VisualScripting;
 using UnityEngine;
 using Debug = UnityEngine.Debug;
@@ -30,10 +32,11 @@ public class ControlCharacters : MonoBehaviour
     [SerializeField] public float _InvTotalTime = 1.0f;
 
     private int _MaxJump = 2;
+    private bool InInv = false;
     private bool _HasCollided;
     private int _NumJump = 0;
     private Vector2 movement;
-    private IEnumerator _Invincibility;
+    public IEnumerator invincibility;
     public float _CurrentLife;
     public Player player;
     public CharacterInventory inventory;
@@ -43,7 +46,6 @@ public class ControlCharacters : MonoBehaviour
 
 
     public void Start() {
-        Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("Ennemies"), this.gameObject.layer, false);
         _Animator = GetComponent<Animator>();
         _Rigidbody = GetComponent<Rigidbody2D>();
         inventory = new CharacterInventory();
@@ -52,11 +54,11 @@ public class ControlCharacters : MonoBehaviour
 
     public void Update()
     {
+
         ControleX = Input.GetAxis("Horizontal");
 
         // Move horizontally    
         movement = new Vector2(ControleX, 0f);
-
         _Rigidbody.AddForce(movement * _Speed);
 
         // Saute
@@ -77,10 +79,10 @@ public class ControlCharacters : MonoBehaviour
 
     public void FixedUpdate()
     {
+        int playerLayer = LayerMask.NameToLayer("Player");
+        int ennemiesLayer = LayerMask.NameToLayer("Ennemies");
         if (_KBCounter <= 0)
         {
-
-            Debug.Log("no hit");
             int groundLayerMask = LayerMask.GetMask("Ground");
             _isGrounded = Physics2D.Raycast(transform.position, Vector2.down, 0.9f, groundLayerMask);
 
@@ -107,21 +109,25 @@ public class ControlCharacters : MonoBehaviour
                 _Rigidbody.velocity = new Vector2(_MaxSpeed * -1, _Rigidbody.velocity.y);
         }
         else {
-            if (knockRight)
+            if (knockRight) //PROBLEME D'OVERWRITE DE LA VÉLOCITÉ À RÉGLÉ
                 _Rigidbody.velocity = new Vector2(-_KnockBack, _KnockBack/2);
             else
-                _Rigidbody.velocity = new Vector2(_KnockBack, _KnockBack/2);
+                _Rigidbody.velocity = new Vector2(-_KnockBack, _KnockBack / 2);
             _KBCounter -= Time.deltaTime;
 
         }
 
         if (_InvCounter <= 0)
         {
+            Physics2D.IgnoreLayerCollision(playerLayer, ennemiesLayer, false);
             Debug.Log("normal");
             _Animator.SetBool("GetHit", false);
+            
         }
         else
         {
+            Debug.Log("INV");
+            Physics2D.IgnoreLayerCollision(playerLayer, ennemiesLayer, true);
             _Animator.SetBool("GetHit", true);
             _InvCounter -= Time.deltaTime;
         }
@@ -129,22 +135,8 @@ public class ControlCharacters : MonoBehaviour
 
     }
 
-    public void OnCollisionEnter2D(Collision2D collision)
+    void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.layer == LayerMask.NameToLayer("Ennemies")) {
-            IEnumerator Inv = Invincibility(collision);
-        }
-        
-    }
-
-    IEnumerator Invincibility(Collision2D collision)
-    {
-        Debug.Log("La coroutine a démarré.");
-        Physics2D.IgnoreCollision(this.gameObject.GetComponent<Collider2D>(), collision.collider, true);
-        // Attendre pendant 3 secondes
-        yield return new WaitForSeconds(1.0f);
-        Physics2D.IgnoreCollision(this.gameObject.GetComponent<Collider2D>(), collision.collider, false);
-        Debug.Log("La coroutine a terminé après avoir attendu 3 secondes.");
     }
 }
 
