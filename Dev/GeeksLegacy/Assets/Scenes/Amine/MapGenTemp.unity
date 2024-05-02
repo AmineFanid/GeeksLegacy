@@ -454,7 +454,7 @@ MonoBehaviour:
   thirdTileMap: {fileID: 1566541656}
   backgroundTile: {fileID: 11400000, guid: 68ce3d1314cfc9444b4c676fd4c62dd1, type: 2}
   backgroundTileMap: {fileID: 1329462781}
-  characterPrefab: {fileID: 2622479609039233554, guid: 8d6b0da9fa4d3ac499d6505dc2e23232, type: 3}
+  characterPrefab: {fileID: 2622479609039233554, guid: 5ca508ca236109d44863926db969dfce, type: 3}
 --- !u!1 &1065168886
 GameObject:
   m_ObjectHideFlags: 0

@@ -5,7 +5,9 @@ using UnityEngine;
 public class MaterialsBehaviour : MonoBehaviour
 {
     public float detectionRadius = 5.0f; // Rayon pour detecter le joueur quand y est proche
-    private GameObject player;
+    private GameObject pushingP;
+    private Player player;
+    private ControlCharacters playerControl;
     private bool _Collected = false;
     private Vector3 _Start;
     public float duration = 3f;
@@ -20,9 +22,16 @@ public class MaterialsBehaviour : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        characInventory = FindFirstObjectByType<CharacterInventory>();
-        player = GameObject.FindGameObjectWithTag("Player");
+        //characInventory = FindFirstObjectByType<CharacterInventory>();
+        ///////////////
+        pushingP = GameObject.FindGameObjectWithTag("Player");
+        playerControl = pushingP.GetComponent<ControlCharacters>();
+        ///////////
+        characInventory = playerControl.findPlayerObject().inventory;
+        //player = GameObject.FindGameObjectWithTag("Player");
+        //player = playerControl.findPlayerObject();
         _Start = transform.position;
+        
 
     }
 
@@ -30,7 +39,7 @@ public class MaterialsBehaviour : MonoBehaviour
     void Update()
     {
         _ElapsedTime += Time.deltaTime;
-        float distance = Vector3.Distance(transform.position, player.transform.position);
+        float distance = Vector3.Distance(transform.position, pushingP.transform.position);
         float finalSpeed = (distance / 5);
 
 
@@ -47,10 +56,8 @@ public class MaterialsBehaviour : MonoBehaviour
             if (characInventory.canAddInventory()) {
                 float percentageDestination = _ElapsedTime / duration;
 
-                transform.position = Vector3.Lerp(transform.position, player.transform.position, Time.deltaTime / finalSpeed);
-            }
-
-            
+                transform.position = Vector3.Lerp(transform.position, pushingP.transform.position, Time.deltaTime / finalSpeed);
+            }            
         }
     }
 
