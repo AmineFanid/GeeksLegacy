@@ -87,14 +87,12 @@ public class ControlCharacters : MonoBehaviour
             _isGrounded = Physics2D.Raycast(transform.position, Vector2.down, 0.9f, groundLayerMask);
 
             if ((_NumJump >= _MaxJump) && _isGrounded)
-            {
                 _NumJump = 0;
-            }
 
             float vitesse = _Rigidbody.velocityX;
-            bool vitesseBouge = vitesse > 0.01f || vitesse < -0.01f;
+            bool vitesseBouge = vitesse > 0.1f || vitesse < -0.1f;
             _Animator.SetBool("IsMoving", vitesseBouge);
-            if (vitesseBouge) //Si l'ennemi bouge
+            if (vitesseBouge)
             {
                 //Active ses animations en fonction du mouvement
                 Vector2 directionAssainie = ForceAnimationVirtualJoystick.ForceDirectionAxe(movement);
@@ -109,20 +107,19 @@ public class ControlCharacters : MonoBehaviour
                 _Rigidbody.velocity = new Vector2(_MaxSpeed * -1, _Rigidbody.velocity.y);
         }
         else {
-            if (knockRight) //PROBLEME D'OVERWRITE DE LA VÉLOCITÉ À RÉGLÉ
+            if (knockRight)
                 _Rigidbody.velocity = new Vector2(-_KnockBack, _KnockBack/2);
             else
                 _Rigidbody.velocity = new Vector2(-_KnockBack, _KnockBack / 2);
-            _KBCounter -= Time.deltaTime;
 
+            _KBCounter -= Time.deltaTime;
         }
 
         if (_InvCounter <= 0)
         {
             Physics2D.IgnoreLayerCollision(playerLayer, ennemiesLayer, false);
             Debug.Log("normal");
-            _Animator.SetBool("GetHit", false);
-            
+            _Animator.SetBool("GetHit", false);  
         }
         else
         {
@@ -131,12 +128,6 @@ public class ControlCharacters : MonoBehaviour
             _Animator.SetBool("GetHit", true);
             _InvCounter -= Time.deltaTime;
         }
-
-
-    }
-
-    void OnCollisionEnter2D(Collision2D collision)
-    {
     }
 }
 
