@@ -14,7 +14,7 @@ public class TileDetection : MonoBehaviour
     [SerializeField] public Transform _Parent;
 
     private Rigidbody2D _ParentBody;
-    private bool _CanJump = true;
+    private bool _CanJump;
     private bool _IsTileGround;
     private bool _EstEnAttack = false;
     private Vector2 _DirectionAbsolute;
@@ -58,11 +58,12 @@ public class TileDetection : MonoBehaviour
         return false;
     }
 
-    public void TileDetections() {
+    public bool TileDetections() {
         _DirectionAbsolute = DirectionAbsolution();
         //Vérif de la hitbox de saut selon la direction du monstre
-        _IsTileGround = Physics2D.Raycast(transform.position, _DirectionAbsolute, 0.6f, layerMask);
         Debug.DrawRay(this.gameObject.transform.position, _DirectionAbsolute * 0.6f, _IsTileGround ? Color.red : Color.gray);
+        return _IsTileGround = Physics2D.Raycast(transform.position, _DirectionAbsolute, 0.6f, layerMask);
+        
     }
 
     public bool CanJump()
@@ -82,7 +83,7 @@ public class TileDetection : MonoBehaviour
     public void JumpPhysics() {
         //Meilleur physique de jump
         if (_ParentBody.velocity.y < 0) _ParentBody.velocity += Vector2.up * Physics.gravity.y * (3.0f - 1) * Time.deltaTime;
-        if ((_IsTileGround) && _CanJump) _ParentBody.velocity = new Vector2(0, Mathf.Sqrt(-2.5f * Physics2D.gravity.y * _JumpHeight-1));
+        if (TileDetections() && CanJump()) _ParentBody.velocity = new Vector2(0, Mathf.Sqrt(-2.5f * Physics2D.gravity.y * _JumpHeight-1));
     }
 
     public void AttackPlayer()
