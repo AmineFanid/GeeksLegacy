@@ -30,6 +30,7 @@ public class ControlCharacters : MonoBehaviour
     [SerializeField] public float _KBTotalTime = 1.0f;
     [SerializeField] public float _InvCounter = 0.0f;
     [SerializeField] public float _InvTotalTime = 1.0f;
+    [SerializeField] public float _MaxYSpeed = 20.0f;
 
     private int _MaxJump = 2;
     private int _NumJump = 0;
@@ -69,14 +70,19 @@ public class ControlCharacters : MonoBehaviour
             }
         }
 
-        if (_Rigidbody.velocityY < 0)
-            _Rigidbody.gravityScale = _FallingGravityScale;
-        else if (_Rigidbody.velocityY >= 0)
-            _Rigidbody.gravityScale = _GravityScale;
+        Debug.Log(_Rigidbody.velocity);
+        Debug.Log(_GravityScale);
+        Debug.Log(_Rigidbody.gravityScale);
     }
 
     public void FixedUpdate()
     {
+        if (_Rigidbody.velocity.y >= -0.001f)
+            _Rigidbody.gravityScale = _GravityScale;
+        else { 
+            _Rigidbody.gravityScale += _FallingGravityScale;
+        }
+
         int playerLayer = LayerMask.NameToLayer("Player");
         int ennemiesLayer = LayerMask.NameToLayer("Ennemies");
         if (_KBCounter <= 0)
@@ -100,7 +106,7 @@ public class ControlCharacters : MonoBehaviour
                 _Animator.SetFloat("MouvementY", directionAssainie.y);
             }
 
-            //Vérification pour limité la vitesse de l'ennemi
+            //Vérification pour limité la vitesse en x
             if (_Rigidbody.velocity.x >= _MaxSpeed)
                 _Rigidbody.velocity = new Vector2(_MaxSpeed, _Rigidbody.velocity.y);
             if (_Rigidbody.velocity.x <= _MaxSpeed * -1)
@@ -117,6 +123,11 @@ public class ControlCharacters : MonoBehaviour
 
             _KBCounter -= Time.deltaTime;
         }
+    }
+
+    public Player findPlayerObject()
+    {
+        return player;
     }
 }
 
