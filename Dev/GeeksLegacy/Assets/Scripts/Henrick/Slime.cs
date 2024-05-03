@@ -204,6 +204,10 @@ public class Slime : MonoBehaviour
             else mFsm.SetCurrentState(SlimeState.CHASE);
         }
 
+        if (t.CanJump() && t.TileDetections()) {
+            t.JumpPhysics();
+        }
+
         //Vient de tomber en chasse
         if (!etaitEnChasse)
         {
@@ -237,6 +241,13 @@ public class Slime : MonoBehaviour
         {
             if (ChaseDetection() == false) mFsm.SetCurrentState(SlimeState.IDLE);
             else mFsm.SetCurrentState(SlimeState.CHASE);
+        }
+
+        if (t.CanJump() && t.TileDetections())
+        {
+            Debug.Log("bloc saute");
+            Mouvement();
+            t.JumpPhysics();
         }
 
         //Vector représentant la direction de la cible
@@ -310,7 +321,7 @@ public class Slime : MonoBehaviour
         while (true)
         {
             _Rigidbody2D.velocity = Vector2.zero;
-            yield return new WaitForSeconds(0.8f);
+            yield return new WaitForSeconds(0.5f);
             if (t.CanJump())
                 _Rigidbody2D.velocity = new Vector2(DirectionMouvement.x * _ForceMouvement, Mathf.Sqrt(-2.0f * Physics2D.gravity.y * _JumpHeight));
             yield return new WaitForSeconds(0.8f);
@@ -422,7 +433,6 @@ public class Slime : MonoBehaviour
         if (collision.gameObject.layer == LayerMask.NameToLayer("Player"))
         {
             player._KBCounter = player._KBTotalTime;
-            player._InvCounter = player._InvTotalTime;
             if (collision.gameObject.transform.position.x <= transform.position.x)
                 player.knockRight = true;
             else
