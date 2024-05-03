@@ -32,8 +32,6 @@ public class ControlCharacters : MonoBehaviour
     [SerializeField] public float _InvTotalTime = 1.0f;
 
     private int _MaxJump = 2;
-    private bool InInv = false;
-    private bool _HasCollided;
     private int _NumJump = 0;
     private Vector2 movement;
     public IEnumerator invincibility;
@@ -83,6 +81,8 @@ public class ControlCharacters : MonoBehaviour
         int ennemiesLayer = LayerMask.NameToLayer("Ennemies");
         if (_KBCounter <= 0)
         {
+            _Animator.SetBool("GetHit", false);
+            Physics2D.IgnoreLayerCollision(playerLayer, ennemiesLayer, false);
             int groundLayerMask = LayerMask.GetMask("Ground");
             _isGrounded = Physics2D.Raycast(transform.position, Vector2.down, 0.9f, groundLayerMask);
 
@@ -107,31 +107,18 @@ public class ControlCharacters : MonoBehaviour
                 _Rigidbody.velocity = new Vector2(_MaxSpeed * -1, _Rigidbody.velocity.y);
         }
         else {
+            _Animator.SetBool("GetHit", true);
+            Physics2D.IgnoreLayerCollision(playerLayer, ennemiesLayer, true);
+            Debug.Log(knockRight);
             if (knockRight)
                 _Rigidbody.velocity = new Vector2(-_KnockBack, _KnockBack/2);
             else
-                _Rigidbody.velocity = new Vector2(-_KnockBack, _KnockBack / 2);
+                _Rigidbody.velocity = new Vector2(_KnockBack, _KnockBack / 2);
 
             _KBCounter -= Time.deltaTime;
         }
-
-        if (_InvCounter <= 0)
-        {
-            Physics2D.IgnoreLayerCollision(playerLayer, ennemiesLayer, false);
-            Debug.Log("normal");
-            _Animator.SetBool("GetHit", false);  
-        }
-        else
-        {
-            Debug.Log("INV");
-            Physics2D.IgnoreLayerCollision(playerLayer, ennemiesLayer, true);
-            _Animator.SetBool("GetHit", true);
-            _InvCounter -= Time.deltaTime;
-        }
     }
 }
-
-
 
 public class Player
 {
