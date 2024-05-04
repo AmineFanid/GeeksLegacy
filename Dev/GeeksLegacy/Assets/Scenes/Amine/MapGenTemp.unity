@@ -404,6 +404,7 @@ GameObject:
   m_Component:
   - component: {fileID: 525119255}
   - component: {fileID: 525119256}
+  - component: {fileID: 525119257}
   m_Layer: 0
   m_Name: ProceduralGeneration
   m_TagString: Untagged
@@ -455,6 +456,18 @@ MonoBehaviour:
   backgroundTile: {fileID: 11400000, guid: 68ce3d1314cfc9444b4c676fd4c62dd1, type: 2}
   backgroundTileMap: {fileID: 1329462781}
   characterPrefab: {fileID: 2622479609039233554, guid: 5ca508ca236109d44863926db969dfce, type: 3}
+--- !u!114 &525119257
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 525119254}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 87e5cd8e828380a47b763890cf23e533, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1065168886
 GameObject:
   m_ObjectHideFlags: 0
