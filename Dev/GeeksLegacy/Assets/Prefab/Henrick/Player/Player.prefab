@@ -119,7 +119,7 @@ GameObject:
   - component: {fileID: 1729173041213638938}
   m_Layer: 11
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -212,7 +212,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 10
   m_AngularDrag: 10
-  m_GravityScale: 15
+  m_GravityScale: 1
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -296,10 +296,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _JumpHeight: 33
-  _Speed: 23
+  _Speed: 40
   _JumpForce: 50
   _GravityScale: 10
-  _FallingGravityScale: 20
+  _FallingGravityScale: 5
   _MaxSpeed: 4
   _PlayerLife: 100
   _KnockBack: 20
@@ -307,8 +307,8 @@ MonoBehaviour:
   _KBTotalTime: 0.1
   _InvCounter: 0
   _InvTotalTime: 1
+  _MaxYSpeed: 20
   _CurrentLife: 100
-  inventory: {fileID: 0}
   knockRight: 0
 --- !u!1 &7720756602636209623
 GameObject:
