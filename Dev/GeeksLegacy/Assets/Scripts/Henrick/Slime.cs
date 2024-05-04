@@ -29,9 +29,9 @@ public class Slime : MonoBehaviour
     private Rigidbody2D _Rigidbody2D;
     public Vector2 DirectionMouvement;
     
-    IEnumerator _Wander;
-    IEnumerator _AttackPlayer;
-    IEnumerator _Die;
+    private IEnumerator _Wander;
+    private IEnumerator _AttackPlayer;
+    private IEnumerator _Die;
 
     FiniteStateMachine<SlimeState> mFsm = new FiniteStateMachine<SlimeState>();
 
@@ -40,11 +40,7 @@ public class Slime : MonoBehaviour
     private bool etaitEnChasse;
     private bool etaitAttack;
     private Vector2 _DirectionVision;
-    private float _Timer;
-    private Rigidbody2D _ChildRigidbody2D;
-    private TileDetection _Child;
     private float _CurrentHealth;
-    private Item weapon;
 
     public enum SlimeState 
     {
@@ -432,7 +428,7 @@ public class Slime : MonoBehaviour
         }
         if (collision.gameObject.layer == LayerMask.NameToLayer("Player"))
         {
-            player._KBCounter = player._KBTotalTime;
+            player.kBCounter = player.kBTotalTime;
             if (collision.gameObject.transform.position.x <= transform.position.x)
                 player.knockRight = true;
             else
