@@ -63,7 +63,6 @@ public class TileDetection : MonoBehaviour
         //Vérif de la hitbox de saut selon la direction du monstre
         Debug.DrawRay(this.gameObject.transform.position, _DirectionAbsolute * 0.6f, _IsTileGround ? Color.red : Color.gray);
         return _IsTileGround = Physics2D.Raycast(transform.position, _DirectionAbsolute, 0.6f, layerMask);
-        
     }
 
     public bool CanJump()
