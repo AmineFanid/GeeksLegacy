@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8308210126736711449}
   - component: {fileID: 2936170827748377070}
   - component: {fileID: 2710140623464218676}
-  m_Layer: 5
+  m_Layer: 31
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -295,19 +295,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _JumpHeight: 33
-  _Speed: 33
-  _JumpForce: 50
+  _MaxJump: 2
   _GravityScale: 10
   _FallingGravityScale: 20
+  _Speed: 33
   _MaxSpeed: 4
+  _MaxYSpeed: 20
   _PlayerLife: 100
   _KnockBack: 20
-  _KBCounter: 0
-  _KBTotalTime: 0.1
-  _InvCounter: 0
-  _InvTotalTime: 1
-  _CurrentLife: 100
-  inventory: {fileID: 0}
+  kBCounter: 0
+  kBTotalTime: 1
   knockRight: 0
 --- !u!1 &7720756602636209623
 GameObject:
@@ -421,6 +418,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: QuickInventory
       objectReference: {fileID: 0}
+    - target: {fileID: 5053877235808560257, guid: f1dc890e048ad794ba737f69c5101ff2, type: 3}
+      propertyPath: m_Layer
+      value: 31
+      objectReference: {fileID: 0}
     - target: {fileID: 5472194020310001080, guid: f1dc890e048ad794ba737f69c5101ff2, type: 3}
       propertyPath: m_LocalScale.x
       value: 53.133266
@@ -492,18 +493,6 @@ PrefabInstance:
     m_TransformParent: {fileID: 2381348912966801815}
     m_Modifications:
     - target: {fileID: 4978255190308683379, guid: 7a1a190b423c80d4daa73d371a6dd470, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 73.113754
-      objectReference: {fileID: 0}
-    - target: {fileID: 4978255190308683379, guid: 7a1a190b423c80d4daa73d371a6dd470, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 73.113754
-      objectReference: {fileID: 0}
-    - target: {fileID: 4978255190308683379, guid: 7a1a190b423c80d4daa73d371a6dd470, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 73.17773
-      objectReference: {fileID: 0}
-    - target: {fileID: 4978255190308683379, guid: 7a1a190b423c80d4daa73d371a6dd470, type: 3}
       propertyPath: m_LocalPosition.x
       value: 128.7
       objectReference: {fileID: 0}
@@ -547,43 +536,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: HealtBar
       objectReference: {fileID: 0}
+    - target: {fileID: 5159514327551620604, guid: 7a1a190b423c80d4daa73d371a6dd470, type: 3}
+      propertyPath: m_Layer
+      value: 31
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 5159514327551620604, guid: 7a1a190b423c80d4daa73d371a6dd470, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1361141254270065793}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7a1a190b423c80d4daa73d371a6dd470, type: 3}
 --- !u!4 &6645336402674546733 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4978255190308683379, guid: 7a1a190b423c80d4daa73d371a6dd470, type: 3}
   m_PrefabInstance: {fileID: 1814575200263767646}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &6824339327035913122 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5159514327551620604, guid: 7a1a190b423c80d4daa73d371a6dd470, type: 3}
-  m_PrefabInstance: {fileID: 1814575200263767646}
-  m_PrefabAsset: {fileID: 0}
---- !u!95 &1361141254270065793
-Animator:
-  serializedVersion: 7
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6824339327035913122}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 958ce6a24caab3242971c36b4a29a6a6, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_AnimatePhysics: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
