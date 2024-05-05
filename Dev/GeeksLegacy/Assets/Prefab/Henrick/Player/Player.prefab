@@ -296,19 +296,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _JumpHeight: 33
+  _MaxJump: 2
+  _GravityScale: 8
+  _FallingGravityScale: 2
   _Speed: 40
-  _JumpForce: 50
-  _GravityScale: 10
-  _FallingGravityScale: 5
   _MaxSpeed: 4
+  _MaxYSpeed: 20
   _PlayerLife: 100
   _KnockBack: 20
-  _KBCounter: 0
-  _KBTotalTime: 0.1
-  _InvCounter: 0
-  _InvTotalTime: 1
-  _MaxYSpeed: 20
-  _CurrentLife: 100
+  kBCounter: 0
+  kBTotalTime: 1
   knockRight: 0
 --- !u!1 &7720756602636209623
 GameObject:
