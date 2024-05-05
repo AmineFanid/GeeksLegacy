@@ -16,6 +16,7 @@ public class Slime : MonoBehaviour
     [Header("Mouvement settings")]
     [SerializeField] private float _ForceMouvement = 10.0f;
     [SerializeField] private float _MaxSpeed = 10.0f;
+    [SerializeField] private float _MaxYSpeed = 20.0f;
     [Header("Jump settings")]
     [SerializeField] private float _JumpHeight;
     [Header("Target detection settings")]
@@ -23,7 +24,9 @@ public class Slime : MonoBehaviour
     [SerializeField] private float _DistanceVision = 5.0f;
     [Header("Slime stats")]
     [SerializeField] private float _TotalHealth = 100.0f;
+    [Header("Others")]
     [SerializeField] public ControlCharacters player;
+    [SerializeField] private float _KbTaken = 10.0f;
 
     private Animator _Animator;
     private Rigidbody2D _Rigidbody2D;
@@ -272,6 +275,9 @@ public class Slime : MonoBehaviour
     void OnEnterDAMAGE() //ENTRY OF THE DAMAGE STATE
     {
         Debug.Log("Enter the " + mFsm.GetCurrentState().Name.ToString());
+        Vector2 direction = GetDirectionMouvement();
+        Vector2 directionForce = (direction.x < 0.01f) ? Vector2.left : Vector2.right;
+        _Rigidbody2D.AddForce(directionForce * _KbTaken, ForceMode2D.Impulse);
     }
 
     void OnUpdateDAMAGE() //UPDATE OF THE DAMAGE STATE
@@ -358,12 +364,32 @@ public class Slime : MonoBehaviour
         _Rigidbody2D.AddForce(DirectionMouvement * _ForceMouvement);
 
         //Vérification pour limité la vitesse de l'ennemi
-        if (_Rigidbody2D.velocity.x >= _MaxSpeed)
-            _Rigidbody2D.velocity = new Vector2(_MaxSpeed, _Rigidbody2D.velocity.y);
-        if (_Rigidbody2D.velocity.x <= _MaxSpeed * -1)
-            _Rigidbody2D.velocity = new Vector2(_MaxSpeed * -1, _Rigidbody2D.velocity.y);
+        MaxingSpeed();
 
         //Debug.Log(_Rigidbody2D.velocity);
+    }
+
+    public void MaxingSpeed()
+    {
+        //Vérification pour limité la vitesse en x positif
+        if (_Rigidbody2D.velocity.x >= _MaxSpeed)
+        {
+            _Rigidbody2D.velocity = new Vector2(_MaxSpeed, _Rigidbody2D.velocity.y);
+            //Vérification pour limité la vitesse en y négatif
+            if (_Rigidbody2D.velocity.y <= _MaxYSpeed * -1)
+                _Rigidbody2D.velocity = new Vector2(_MaxSpeed, _MaxYSpeed * -1);
+        }
+        //Vérification pour limité la vitesse en x négatif
+        if (_Rigidbody2D.velocity.x <= _MaxSpeed * -1)
+        {
+            _Rigidbody2D.velocity = new Vector2(_MaxSpeed * -1, _Rigidbody2D.velocity.y);
+            //Vérification pour limité la vitesse en y négatif
+            if (_Rigidbody2D.velocity.y <= _MaxYSpeed * -1)
+                _Rigidbody2D.velocity = new Vector2(_MaxSpeed * -1, _MaxYSpeed * -1);
+        }
+        //Vérification pour limité la vitesse en y négatif
+        if (_Rigidbody2D.velocity.y <= _MaxYSpeed * -1)
+            _Rigidbody2D.velocity = new Vector2(_Rigidbody2D.velocity.x, _MaxYSpeed * -1);
     }
 
     private bool ChaseDetection()
