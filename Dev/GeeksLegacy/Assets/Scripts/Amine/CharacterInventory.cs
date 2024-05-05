@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections.Generic;
+using System;
 
 
 public class CharacterInventory
@@ -42,6 +43,20 @@ public class CharacterInventory
             inventory.Add(itemName, 1);
         }
         
+    }
+
+    public void insideOfInventory()
+    {
+        foreach (KeyValuePair<string, int> kvp in this.inventory)
+        {
+            Debug.Log("clé : " + kvp.Key);
+            Debug.Log("valeur : " + kvp.Value);
+        }
+    }
+
+    public Dictionary <string, int> getInventoryDict()
+    {
+        return this.inventory;
     }
 
     public int inventoryCount()

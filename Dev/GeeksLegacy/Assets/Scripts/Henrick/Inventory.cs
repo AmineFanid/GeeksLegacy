@@ -1,17 +1,25 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class Inventory : MonoBehaviour
 {
+    public SpriteRenderer spriteRenderer;
     private GameObject _PLayerObject;
     private ControlCharacters _PlayerControl;
     public CharacterInventory inventory;
 
     private Animator _AnimatorInv;
     int InventoryIndex = 0;
+    public Sprite[] spriteArray;
+    int keyIndex = -1;
+
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
         _AnimatorInv = GetComponent<Animator>();
 
         _PLayerObject = GameObject.FindGameObjectWithTag("Player");
@@ -32,5 +40,55 @@ public class Inventory : MonoBehaviour
             _AnimatorInv.SetTrigger("ScrollDown");
             InventoryIndex--;
         }
+        //// ICI ON VA AVOIR LA GESTION DU VISUEL DE SPRITE
+        if(inventory.inventoryCount() > 0)
+        {
+
+            // If keyIndex is not set or out of bounds, set it to 0
+            if (keyIndex == -1 || keyIndex >= inventory.inventoryCount())
+            {
+                keyIndex = 0;
+            }
+            
+
+            //inventory.insideOfInventory();
+            foreach (KeyValuePair<string, int> kvp in inventory.getInventoryDict())
+            {
+                string keyAtIndex = inventory.getInventoryDict().Keys.ElementAt(keyIndex); //Pas sur encore. a verifier quand on a plus de chose dans notre dictionaire
+                //Debug.Log("Key at index " + keyIndex + ": " + keyAtIndex); 
+                //Debug.Log("clé : " + kvp.Key);
+                
+                //Debug.Log("valeur : " + kvp.Value);
+                GameObject slot = this.gameObject.transform.GetChild(keyIndex).gameObject;
+                slot.GetComponent<SpriteRenderer>().sprite = spriteArray[changeSprite(kvp.Key)];
+            }
+        }
+    }
+
+    public int changeSprite(string dictKey)
+    {
+        switch (dictKey)
+        {
+            case "Dirt":
+                return 0;
+
+            case "Iron":
+                return 1;
+
+            case "Wood":
+                return 2;            
+            
+            case "Axe":
+                return 3;  
+                
+            case "PickAxe":
+                return 4;     
+                
+            case "sword":
+                return 5;
+        }
+
+        return 99;
+     //spriteRenderer.sprite = spriteArray[inventoryIndex];
     }
 }
