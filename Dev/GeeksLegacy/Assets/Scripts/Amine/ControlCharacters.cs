@@ -37,6 +37,7 @@ public class ControlCharacters : MonoBehaviour
     private float _ControleX;
     private int playerLayer;
     private int ennemiesLayer;
+    private Rigidbody2D _ToolRigidBody;
 
     public void Start() {
         _Animator = GetComponent<Animator>();
@@ -45,10 +46,13 @@ public class ControlCharacters : MonoBehaviour
         player = new Player(_PlayerLife, inventory);
         playerLayer = LayerMask.NameToLayer("Player");
         ennemiesLayer = LayerMask.NameToLayer("Ennemies");
+        _ToolRigidBody = this.gameObject.GetComponentInChildren<Rigidbody2D>();
     }
 
     public void Update()
     {
+        Debug.Log(_ToolRigidBody);
+
         //Vérif pour l'animation d'attaque
         MousePosition();
 
@@ -83,8 +87,8 @@ public class ControlCharacters : MonoBehaviour
     public void MousePosition() {
         bool IsRight = false;
         if (Input.GetKeyUp(KeyCode.Mouse0)) {
-            Vector3 mp = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            if (mp.x > this.gameObject.transform.localPosition.x) {
+            Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            if (mousePosition.x > this.gameObject.transform.localPosition.x) {
                 IsRight = true;
             }
             if (!_Animator.GetBool("Attacking"))
@@ -98,7 +102,7 @@ public class ControlCharacters : MonoBehaviour
     {
         _Animator.SetBool("FaceRight", IsRight);
         _Animator.SetBool("Attacking", true);
-        yield return new WaitForSeconds(0.4f);
+        yield return new WaitForSeconds(0.35f);
         _Animator.SetBool("Attacking", false);
         _Animator.SetBool("FaceRight", false);
         StopCoroutine(_AttackingAnimation);
