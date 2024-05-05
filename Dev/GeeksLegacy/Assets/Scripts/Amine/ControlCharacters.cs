@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using UnityEngine;
+using static UnityEditor.FilePathAttribute;
 
 [RequireComponent(typeof(Animator))]
 [RequireComponent(typeof(Rigidbody2D))]
@@ -24,6 +25,7 @@ public class ControlCharacters : MonoBehaviour
     [SerializeField] public float kBTotalTime = 1.0f;
 
     public IEnumerator invincibility;
+    private IEnumerator _AttackingAnimation;
     public Player player;
     public CharacterInventory inventory;
     public bool knockRight;
@@ -47,6 +49,9 @@ public class ControlCharacters : MonoBehaviour
 
     public void Update()
     {
+        //Vérif pour l'animation d'attaque
+        MousePosition();
+
         //Mouvement horizontal
         _ControleX = Input.GetAxis("Horizontal");  
         _Movement = new Vector2(_ControleX, 0f);
@@ -73,6 +78,30 @@ public class ControlCharacters : MonoBehaviour
 
         //Vérification de KnockBack
         KnockBackVerif();
+    }
+
+    public void MousePosition() {
+        bool IsRight = false;
+        if (Input.GetKeyUp(KeyCode.Mouse0)) {
+            Vector3 mp = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            if (mp.x > this.gameObject.transform.localPosition.x) {
+                IsRight = true;
+            }
+            if (!_Animator.GetBool("Attacking"))
+            {
+                _AttackingAnimation = AttackingAnimation(IsRight);
+                StartCoroutine(_AttackingAnimation);
+            }
+        }
+    }
+    private IEnumerator AttackingAnimation(bool IsRight) //Attacking
+    {
+        _Animator.SetBool("FaceRight", IsRight);
+        _Animator.SetBool("Attacking", true);
+        yield return new WaitForSeconds(0.4f);
+        _Animator.SetBool("Attacking", false);
+        _Animator.SetBool("FaceRight", false);
+        StopCoroutine(_AttackingAnimation);
     }
 
     public void KnockBack()
@@ -120,6 +149,11 @@ public class ControlCharacters : MonoBehaviour
             _Animator.SetFloat("MouvementX", directionAssainie.x);
             _Animator.SetFloat("MouvementY", directionAssainie.y);
         }
+    }
+
+    public Vector2 GetDirectionPersonnage() {
+        Vector2 directionAssainie = ForceAnimationVirtualJoystick.ForceDirectionAxe(_Movement);
+        return directionAssainie;
     }
 
     public void MaxingSpeed()
