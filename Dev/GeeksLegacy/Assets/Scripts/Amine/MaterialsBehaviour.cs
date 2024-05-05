@@ -28,7 +28,7 @@ public class MaterialsBehaviour : MonoBehaviour
         playerControl = pushingP.GetComponent<ControlCharacters>();
         ///////////
         //characInventory = playerControl.inventory;
-        characInventory = playerControl.findPlayerObject().inventory;
+        characInventory = playerControl.findPlayerObject().GetPlayerInventory();
         //player = GameObject.FindGameObjectWithTag("Player");
         //player = playerControl.findPlayerObject();
         _Start = transform.position;

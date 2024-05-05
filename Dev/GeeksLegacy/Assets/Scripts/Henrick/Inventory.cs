@@ -2,6 +2,9 @@ using UnityEngine;
 
 public class Inventory : MonoBehaviour
 {
+    private GameObject _PLayerObject;
+    private ControlCharacters _PlayerControl;
+    public CharacterInventory inventory;
 
     private Animator _AnimatorInv;
     int InventoryIndex = 0;
@@ -10,6 +13,10 @@ public class Inventory : MonoBehaviour
     void Start()
     {
         _AnimatorInv = GetComponent<Animator>();
+
+        _PLayerObject = GameObject.FindGameObjectWithTag("Player");
+        _PlayerControl = _PLayerObject.GetComponent<ControlCharacters>();
+        inventory = _PlayerControl.findPlayerObject().GetPlayerInventory();
     }
 
     // Update is called once per frame
