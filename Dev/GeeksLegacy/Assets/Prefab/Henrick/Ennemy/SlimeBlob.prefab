@@ -81,7 +81,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0.029831985, w: 0.999555}
   m_LocalPosition: {x: -0.486, y: -4.742, z: 0.002886591}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.3798, y: 1.3798, z: 1.3798}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1798144198227227074}
@@ -243,8 +243,11 @@ MonoBehaviour:
   _Cible: {fileID: 0}
   _ForceMouvement: 7
   _MaxSpeed: 2
+  _MaxYSpeed: 20
   _JumpHeight: 1.2
   _EstEnChasse: 1
   _DistanceVision: 5
   _TotalHealth: 100
+  player: {fileID: 0}
+  _KbTaken: 10
   DirectionMouvement: {x: 0, y: 0}
