@@ -1,19 +1,16 @@
 fileFormatVersion: 2
-guid: 4b0e32652f58c394181b1f29679a5f8f
+guid: 313fa0de5e5747c4dbf481ad9f0ab101
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -2377207091340232601
-    second: PAUL-ATTACK-RIGHT_0
+      213: 617148985709790176
+    second: PAUL-WALK-LEFT_0
   - first:
-      213: 2388586000171512004
-    second: PAUL-ATTACK-RIGHT_1
+      213: -6915768029233517372
+    second: PAUL-WALK-LEFT_1
   - first:
-      213: 3244417289450952709
-    second: PAUL-ATTACK-RIGHT_2
-  - first:
-      213: -545271437004340153
-    second: PAUL-ATTACK-RIGHT_3
+      213: 4077126604530485617
+    second: PAUL-WALK-LEFT_2
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -109,89 +106,67 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: PAUL-ATTACK-RIGHT_0
+      name: PAUL-WALK-LEFT_0
       rect:
         serializedVersion: 2
-        x: 10
-        y: 68
-        width: 13
-        height: 25
+        x: 1
+        y: 0
+        width: 14
+        height: 27
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 7683023deb6720fd0800000000000000
-      internalID: -2377207091340232601
+      spriteID: 0e389b29bbd809800800000000000000
+      internalID: 617148985709790176
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PAUL-ATTACK-RIGHT_1
+      name: PAUL-WALK-LEFT_1
       rect:
         serializedVersion: 2
-        x: 30
-        y: 68
-        width: 13
-        height: 25
+        x: 17
+        y: 0
+        width: 14
+        height: 27
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 4c0b1b7df46f52120800000000000000
-      internalID: 2388586000171512004
+      spriteID: 4cc68846e914600a0800000000000000
+      internalID: -6915768029233517372
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PAUL-ATTACK-RIGHT_2
+      name: PAUL-WALK-LEFT_2
       rect:
         serializedVersion: 2
-        x: 50
-        y: 68
-        width: 12
-        height: 25
+        x: 32
+        y: 0
+        width: 16
+        height: 27
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 5081cd8c55c760d20800000000000000
-      internalID: 3244417289450952709
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: PAUL-ATTACK-RIGHT_3
-      rect:
-        serializedVersion: 2
-        x: 70
-        y: 68
-        width: 12
-        height: 25
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 744803b548ece68f0800000000000000
-      internalID: -545271437004340153
+      spriteID: 17985579b0dd49830800000000000000
+      internalID: 4077126604530485617
       vertices: []
       indices: 
       edges: []
@@ -200,7 +175,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 1580b2582c7101b46b3465a220ce7a1b
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -208,10 +183,9 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      PAUL-ATTACK-RIGHT_0: -2377207091340232601
-      PAUL-ATTACK-RIGHT_1: 2388586000171512004
-      PAUL-ATTACK-RIGHT_2: 3244417289450952709
-      PAUL-ATTACK-RIGHT_3: -545271437004340153
+      PAUL-WALK-LEFT_0: 617148985709790176
+      PAUL-WALK-LEFT_1: -6915768029233517372
+      PAUL-WALK-LEFT_2: 4077126604530485617
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
