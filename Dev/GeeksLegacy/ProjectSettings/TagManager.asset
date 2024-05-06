@@ -14,7 +14,7 @@ TagManager:
   - Background
   - Ground
   - Cave
-  - 
+  - Tool
   - Ennemies
   - Player
   - 
@@ -35,8 +35,8 @@ TagManager:
   - 
   - 
   - 
-  - 
   - UserInterface
+  - UserInterfaceSurface
   m_SortingLayers:
   - name: Default
     uniqueID: 0
