@@ -51,8 +51,6 @@ public class ControlCharacters : MonoBehaviour
 
     public void Update()
     {
-        Debug.Log(_ToolRigidBody);
-
         //Vérif pour l'animation d'attaque
         MousePosition();
 
