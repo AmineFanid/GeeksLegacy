@@ -462,12 +462,8 @@ public class ProceduralGeneration : MonoBehaviour
 
     public void updateMap(int x, int y, int val)
     {
-       /* Debug.Log("updating....: " + x + ", " + y);
-        Debug.Log(map[x, y]);
-        Debug.Log(Enum.GetName(typeof(TileValue), map[x, y]));*/
         map[x, y] = val;
         backgroundTileMap.SetTile(new Vector3Int(x, y, 0), null);
-        //map[x, y].SetTile()
     }
 
     public void SpawnCharacter(GameObject characterPrefab)

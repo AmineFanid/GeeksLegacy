@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
+using TMPro;
 using UnityEngine;
 
 public class Inventory : MonoBehaviour
@@ -60,8 +62,62 @@ public class Inventory : MonoBehaviour
                 
                 //Debug.Log("valeur : " + kvp.Value);
                 GameObject slot = this.gameObject.transform.GetChild(keyIndex).gameObject;
-                slot.GetComponent<SpriteRenderer>().sprite = spriteArray[changeSprite(kvp.Key)];
+                if(kvp.Value > 0)
+                {
+                    slot.GetComponent<SpriteRenderer>().sprite = spriteArray[changeSprite(kvp.Key)];
+                    slot.transform.GetChild(0).GetComponent<TMP_Text>().text = kvp.Value.ToString();
+                }
+                else
+                {
+                    slot.GetComponent<SpriteRenderer>().sprite = spriteArray[changeSprite("empty")];
+                    slot.transform.GetChild(0).GetComponent<TMP_Text>().text = "";
+                }
             }
+
+            if (Input.GetButtonDown("Throw"))
+            {
+                try
+                {
+                    throwAwaySum(InventoryIndex%9);
+                    Item dirt = ItemFactory.CreateItem("Dirt");
+
+                }
+                catch (Exception e)
+                {
+                    print(e);
+                }
+            }
+        
+        }
+        try { 
+            inventory.updateInventory();
+        }
+        catch(Exception e)
+        {
+            print(e);            
+        }
+    }
+
+    /*public void refreshInventory()
+    {
+        foreach (KeyValuePair<string, int> kvp in inventory.getInventoryDict())
+        {
+            
+        }
+    }*/
+
+    public void throwAwaySum(int indexInventory)
+    {
+        int i = 0;
+        int hehe = inventory.inventoryCount();
+        foreach (KeyValuePair<string, int> kvp in inventory.getInventoryDict())
+        {
+            if (i == indexInventory)
+            {
+                string s = kvp.Key;
+                inventory.deleteOne(s, _PlayerControl);
+            }
+            i++;
         }
     }
 
@@ -84,11 +140,12 @@ public class Inventory : MonoBehaviour
             case "PickAxe":
                 return 4;     
                 
-            case "sword":
+            case "Sword":
                 return 5;
+            case "empty":
+                return 8;
         }
 
-        return 99;
-     //spriteRenderer.sprite = spriteArray[inventoryIndex];
+        return 0;
     }
 }

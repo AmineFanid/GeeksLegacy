@@ -6,6 +6,8 @@ public abstract class Item : MonoBehaviour
 {
     public string itemName { get; set; }
     public string itemType { get; set; }
+    public Sprite itemSprite { get; set; }
+    public GameObject itemPrefab { get; set; }
 
     public virtual float DoDamage()
     {
