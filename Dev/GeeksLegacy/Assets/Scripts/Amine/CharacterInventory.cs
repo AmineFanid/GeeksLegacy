@@ -10,7 +10,7 @@ public class CharacterInventory
     public int NumberOfItems { get; private set; } //n'importe quel script peut get la valeur, mais seulement ce script peut modifier la valeur
     public Dictionary<string, int> inventory { get; private set; }
 
-    private Dictionary<string, Type> resourceTypeMap = new Dictionary<string, Type>()
+    private Dictionary<string, Type> itemTypeMap = new Dictionary<string, Type>()
     {
         { "Dirt", typeof(Dirt) },
         { "Iron", typeof(Iron) },
