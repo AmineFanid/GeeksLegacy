@@ -64,7 +64,6 @@ public class MaterialsBehaviour : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-
        //CharacInventory = other.GetComponent<CharacterInventory>();
         if (characInventory != null)
         {

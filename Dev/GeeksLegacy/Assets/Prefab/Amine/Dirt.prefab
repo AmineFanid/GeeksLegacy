@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 9171548591742397894}
   - component: {fileID: 3741964277965695900}
   - component: {fileID: 1693437760950041558}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Dirt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -151,7 +151,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5337608371606351209}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Core
   m_TagString: Untagged
   m_Icon: {fileID: 0}

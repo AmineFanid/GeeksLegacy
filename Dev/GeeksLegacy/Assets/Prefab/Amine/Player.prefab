@@ -292,20 +292,20 @@ MonoBehaviour:
   m_GameObject: {fileID: 2622479609039233554}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7d8d5244ac908a1458dd434ff9ed2068, type: 3}
+  m_Script: {fileID: 11500000, guid: f8700e8b49aed4f4592c987ba22df4d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _JumpHeight: 33
+  _JumpHeight: 2
   _MaxJump: 2
-  _GravityScale: 8
-  _FallingGravityScale: 2
-  _Speed: 20
-  _MaxSpeed: 4
+  _GravityScale: 1
+  _FallingGravityScale: 10
+  _Speed: 5
+  _MaxSpeed: 7
   _MaxYSpeed: 20
   _PlayerLife: 100
-  _KnockBack: 20
+  _KnockBack: 4
   kBCounter: 0
-  kBTotalTime: 0.2
+  kBTotalTime: 1
   knockRight: 0
 --- !u!1 &7720756602636209623
 GameObject:

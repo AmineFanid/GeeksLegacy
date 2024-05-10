@@ -78,9 +78,8 @@ public class Inventory : MonoBehaviour
             {
                 try
                 {
+                    Debug.Log("hehe inventory");
                     throwAwaySum(InventoryIndex%9);
-                    Item dirt = ItemFactory.CreateItem("Dirt");
-
                 }
                 catch (Exception e)
                 {
