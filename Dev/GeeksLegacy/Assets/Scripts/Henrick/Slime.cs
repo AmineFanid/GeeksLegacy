@@ -1,10 +1,6 @@
 using UnityEngine;
 using Patterns;
-using Unity.VisualScripting;
-using System.Net.NetworkInformation;
 using System.Collections;
-using static UnityEditor.Progress;
-using JetBrains.Annotations;
 
 [RequireComponent(typeof(Animator))]
 [RequireComponent(typeof(Rigidbody2D))]
@@ -153,7 +149,7 @@ public class Slime : MonoBehaviour
     }
 
     private void FixedUpdate()
-    {
+    {  
         mFsm.FixedUpdate();
     }
 
@@ -244,7 +240,6 @@ public class Slime : MonoBehaviour
 
         if (t.CanJump() && t.TileDetections())
         {
-            Debug.Log("bloc saute");
             Mouvement();
             t.JumpPhysics();
         }
@@ -285,8 +280,9 @@ public class Slime : MonoBehaviour
         //Debug.Log("SlimeState DAMAGE");
         mFsm.SetCurrentState(SlimeState.DAMAGE);
 
+       
+        Debug.Log("Slime : " + _CurrentHealth);
 
-        
     }
 
     /* --------------------------DIE------------------------------- */
@@ -440,10 +436,10 @@ public class Slime : MonoBehaviour
     void OnCollisionEnter2D(Collision2D collision)
     {
         Debug.Log("Slime : " + _CurrentHealth);
-        if (collision.gameObject.layer == LayerMask.GetMask(new[] { "Weapon", "Tool" }))
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Tool"))
         {
-            mFsm.SetCurrentState(SlimeState.DAMAGE);
             Item collisionObject = collision.gameObject.GetComponent<Item>();
+            Debug.Log(collision.gameObject);
             if (collisionObject != null)
             {
                 if (_CurrentHealth - collisionObject.DoDamage() >= 0)
@@ -451,6 +447,7 @@ public class Slime : MonoBehaviour
                 else if (_CurrentHealth <= 0)
                     mFsm.SetCurrentState(SlimeState.DIE);
             }
+            mFsm.SetCurrentState(SlimeState.DAMAGE);
         }
         if (collision.gameObject.layer == LayerMask.NameToLayer("Player"))
         {
