@@ -248,6 +248,6 @@ MonoBehaviour:
   _EstEnChasse: 1
   _DistanceVision: 5
   _TotalHealth: 100
-  player: {fileID: 0}
+  player: {fileID: 5889672386683807847, guid: 00a63d34d2420f94f81450d39eac9ea2, type: 3}
   _KbTaken: 10
   DirectionMouvement: {x: 0, y: 0}
