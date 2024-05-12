@@ -11,7 +11,8 @@ public class ProceduralGeneration : MonoBehaviour
         CAVE = 99,
         BIOME1 = 1,
         BIOME2 = 2,
-        BIOME3 = 3
+        BIOME3 = 3,
+        MINERAL1 = 4
     }
     
     [SerializeField] float seed;
@@ -23,13 +24,21 @@ public class ProceduralGeneration : MonoBehaviour
     int[] perlinHeightList;
 
 
+    [Header("Minerals")]
+    [Range(90, 100)]
+    [SerializeField] int randomFillPercentMinerals;
+    [SerializeField] int nbSmoothingMinerals = 1;
+
+    [Header("Mineral 1")]
+    [SerializeField] TileBase mineralTile;
+    [SerializeField] Tilemap mineralTileMap;
+    [SerializeField] string firstMineralDrops;
+    int firstMineralVal = (int)TileValue.MINERAL1;
+
     [Header("Cave Gen")]
-    //[Range(0, 1)]
-    //[SerializeField] float modifier;
     [Range(0,100)]
     [SerializeField] int randomFillPercent;
     [SerializeField] int nbSmoothing = 1;
-    //[SerializeField][Range(1, 3)] int nbBiomes = 1;
 
     [Header("Cavern")]
     [SerializeField] TileBase caveTile;
@@ -40,6 +49,7 @@ public class ProceduralGeneration : MonoBehaviour
     [Header("Biome 1")]
     [SerializeField] TileBase firstTile;
     [SerializeField] Tilemap firstTileMap;
+    [SerializeField] string firstBiomeDrops;
     int firstBiomeVal;
     Tilemap firstBiomeTileMap;
     TileBase firstBiomeTile;
@@ -48,16 +58,20 @@ public class ProceduralGeneration : MonoBehaviour
     [Header("Biome 2")]
     [SerializeField] TileBase secondTile;
     [SerializeField] Tilemap secondTileMap;
+    [SerializeField] string secondBiomeDrops;
     int secondBiomeVal;
     Tilemap secondBiomeTileMap;
     TileBase secondBiomeTile;
 
+
     [Header("Biome 3")]
     [SerializeField] TileBase thirdTile;
     [SerializeField] Tilemap thirdTileMap;
+    [SerializeField] string thirdBiomeDrops;
     int thirdBiomeVal;
     Tilemap thirdBiomeTileMap;
     TileBase thirdBiomeTile;
+
 
     [Header("Background")]
     [SerializeField] TileBase backgroundTile;
@@ -65,6 +79,7 @@ public class ProceduralGeneration : MonoBehaviour
     int backgroundVal;
 
     List<int[]> surface;
+    Dictionary<int,string> biomeNames;
     int[,] map;
 
     [Header("Charac")]
@@ -79,16 +94,17 @@ public class ProceduralGeneration : MonoBehaviour
         BiomeRandomization();
         perlinHeightList = new int[width]; //liste de la taille de notre width
         surface = new List<int[]>();
+        biomeNames = new Dictionary<int, string>();
+        if(mineralTile != null)
+        {
+            biomeNames[firstMineralVal] = firstMineralDrops;
+        }
         Generation();
     }
 
     private void Update()
     {
         RenderMap(map);
-        /*if(Input.GetKeyDown(KeyCode.Space))
-        {
-            Generation();
-        }*/
     }
 
     public int BiomeCount()
@@ -108,7 +124,7 @@ public class ProceduralGeneration : MonoBehaviour
 
         foreach(TileValue i in Enum.GetValues(typeof(TileValue)))
         {
-            if(i != TileValue.CAVE) liste.Add(i);
+            if(i != TileValue.CAVE && i != TileValue.MINERAL1) liste.Add(i);
         }
 
         List<int> l2 = new List<int>();
@@ -125,12 +141,6 @@ public class ProceduralGeneration : MonoBehaviour
             liste.RemoveAt(randomIndex); // Enleve la valeur de la liste
         }
 
-        /*
-        firstBiomeVal = l2[0];
-        secondBiomeVal = l2[1];
-        thirdBiomeVal = l2[2];
-        */
-
         firstBiomeVal = firstTile != null ? l2[0] : -1;
         secondBiomeVal = secondTile != null ? l2[1] : -1;
         thirdBiomeVal = thirdTile != null ? l2[2] : -1;
@@ -142,13 +152,17 @@ public class ProceduralGeneration : MonoBehaviour
 
     public void Generation()
     {
-        //seed = Time.time;
         clearMap();
         map = GenerateArray(width, height, true);
         map = TerrainGeneration(map);
         smoothMap(nbSmoothing);
         GetSurfaceTiles();
         BiomeNumAssignation();
+        if(mineralTile != null)
+        {
+            placeMinerals(map);
+            mineralSmoothing(nbSmoothingMinerals);
+        }
         RenderMap(map);
         SpawnCharacter(characterPrefab);
     }
@@ -170,34 +184,6 @@ public class ProceduralGeneration : MonoBehaviour
 
     public int MapWidthDivision(int xWidth)
     {
-        //System.Random pseudoRandom = new System.Random(seed.GetHashCode());
-        /*
-        int limit;
-        switch (biomeCount)
-        {
-            case 1:
-                limit = width;
-                if (xWidth < limit)
-                {
-                    return firstBiomeVal;
-                }
-                break;
-            case 2:
-                limit = width / 2;
-                if (xWidth < (limit * 2) && xWidth > limit)
-                {
-                    return secondBiomeVal;
-                }
-                break;
-            case 3: 
-                limit = width / 3;
-                if (xWidth < (limit * 3) && xWidth > (limit * 2))
-                {
-                    return thirdBiomeVal;
-                }
-                break;
-        }
-        return firstBiomeVal;*/
         int sectionWidth = width / biomeCount; // Calcul la largeur des sections de biomes
 
         // Determine le biome basé sur la position en x
@@ -227,12 +213,8 @@ public class ProceduralGeneration : MonoBehaviour
             perlinHeightList[x] = perlinhHeight;
             for (int y = 0; y < perlinhHeight; y++)
             {
-                //map[x, y] = 1;
-                //int  caveValue = Mathf.RoundToInt(Mathf.PerlinNoise((x*modifier)+ seed, (y * modifier) + seed)); //Nous donne des 0 et des 1
-                //map[x, y] = (caveValue == 1) ? 2 : 1;
                 int num = MapWidthDivision(x);
                 map[x, y] = (pseudoRandom.Next(1, 100) < randomFillPercent) ? num : caveVal; //si la valeur du pseudoRandom est plus grande que le randomFillPercent, on place un groundTile/iceTile/desolationTile, sinon un caveTile
-
             }
         }
         return map;
@@ -269,8 +251,26 @@ public class ProceduralGeneration : MonoBehaviour
                 }
             }            
         }
+    }
 
+    public void mineralSmoothing(int nbSmoothingMinerals)
+    {
+        for (int i = 0; i < nbSmoothingMinerals; i++)
+        {
+            for (int x = 0; x < width; x++) //loop à travers la width de notre map
+            {
+                for (int y = 0; y < perlinHeightList[x]; y++) //loop à travers une liste de nos valeur de PerlinHeignt
+                {
 
+                    int surroundingGroundCount = GetSurroundingGroundCount(x, y);
+                    if (surroundingGroundCount < 4)
+                    {
+                        map[x, y] = firstMineralVal;
+                    }
+                 
+                }
+            }
+        }
     }
 
     public void GetSurfaceTiles()
@@ -285,17 +285,6 @@ public class ProceduralGeneration : MonoBehaviour
             }
         }
     }
-
-
-    /*public void GetSurfaceGround(int gridX, int gridY)
-    {
-
-        if (map[gridX, gridY] == 1 && map[gridX, gridY + 1] == 0)
-        {
-            surface.Add(new int[] { gridX, (gridY+2) });
-        }
-
-    }*/
 
     public void GetSurfaceGround(int gridX, int gridY)
     {
@@ -391,14 +380,17 @@ public class ProceduralGeneration : MonoBehaviour
                     case 0:
                         firstBiomeTileMap = biomeTilemaps[i];
                         firstBiomeTile = biomeTiles[i];
+                        biomeNames[firstBiomeVal] = firstBiomeDrops;
                         break;
                     case 1:
                         secondBiomeTileMap = biomeTilemaps[i];
                         secondBiomeTile = biomeTiles[i];
+                        biomeNames[secondBiomeVal] = secondBiomeDrops;
                         break;
                     case 2:
                         thirdBiomeTileMap = biomeTilemaps[i];
                         thirdBiomeTile = biomeTiles[i];
+                        biomeNames[thirdBiomeVal] = thirdBiomeDrops;
                         break;
                 }
             }
@@ -408,7 +400,6 @@ public class ProceduralGeneration : MonoBehaviour
     }
 
 
-    // DOIT MODIFIER CETTE FCT, GESTION DU SWITCH PAS COMPLETÉ
     public void RenderMap(int[,] map)
     {
         for(int x = 0; x < width; x++) {
@@ -418,28 +409,25 @@ public class ProceduralGeneration : MonoBehaviour
                 switch (map[x, y])
                 {
                     case var value when value == firstBiomeVal:
-                        //if(desolationTile!=null && desolationTileMap) desolationTileMap.SetTile(new Vector3Int(x, y, 0), desolationTile);
                         firstBiomeTileMap.SetTile(new Vector3Int(x, y, 0), firstBiomeTile);
                         break;
                     case var value when value == secondBiomeVal:
-                        //if (iceTile != null && iceTileMap) iceTileMap.SetTile(new Vector3Int(x, y, 0), iceTile);
                         secondBiomeTileMap.SetTile(new Vector3Int(x, y, 0), secondBiomeTile);
                         break;
                     case var value when value == thirdBiomeVal:
-                        //if (groundTile != null && groundTileMap) groundTileMap.SetTile(new Vector3Int(x, y, 0), groundTile); 
                         thirdBiomeTileMap.SetTile(new Vector3Int(x, y, 0), thirdBiomeTile);
                         break;
                     case var value when value == caveVal: // BIZARRE OUI, MAIS REGLE UN BUG DE UNITY. J'AI TROUVÉ CE TRUC SUR STACK OVER FLOW :) ca prenait pas juste caveVal
                         caveTileMap.SetTile(new Vector3Int(x, y, 0), caveTile);
                         break;
+                    case var value when value == firstMineralVal: // BIZARRE OUI, MAIS REGLE UN BUG DE UNITY. J'AI TROUVÉ CE TRUC SUR STACK OVER FLOW :) ca prenait pas juste caveVal
+                        caveTileMap.SetTile(new Vector3Int(x, y, 0), caveTile);
+                        mineralTileMap.SetTile(new Vector3Int(x, y, 0), mineralTile);
+                        break;
                     case var value when value == 0:
-                        //if (groundTile != null && groundTileMap) groundTileMap.SetTile(new Vector3Int(x, y, 0), null);
-                        //if (desolationTile != null && desolationTileMap) desolationTileMap.SetTile(new Vector3Int(x, y, 0), null);
-                        //if (iceTile != null && iceTileMap) iceTileMap.SetTile(new Vector3Int(x, y, 0), null);                        
                         if (firstBiomeTileMap != null && firstBiomeTile != null) firstBiomeTileMap.SetTile(new Vector3Int(x, y, 0), null);
                         if (secondBiomeTileMap != null && secondBiomeTile) secondBiomeTileMap.SetTile(new Vector3Int(x, y, 0), null);
                         if (thirdBiomeTileMap != null && thirdBiomeTile) thirdBiomeTileMap.SetTile(new Vector3Int(x, y, 0), null);
-                        //backgroundTileMap.SetTile(new Vector3Int(x, y, 0), null);
                         break;
                     default:
                         //rien
@@ -484,6 +472,32 @@ public class ProceduralGeneration : MonoBehaviour
         {
             Debug.LogWarning("Surface list is empty. Make sure to generate the terrain first." + surface.Count);
         }
+    }
+
+    public void placeMinerals(int[,] map)
+    {
+        System.Random pseudoRandom = new System.Random(seed.GetHashCode()); //Nous donne des valeurs aléatoires selon notre seed
+        for (int x = 0; x < width; x++)
+        {
+            for (int y = 0; y < perlinHeightList[x]; y++)
+            {
+                if(map[x, y] != caveVal)
+                {
+                    if(pseudoRandom.Next(1, 100) > randomFillPercentMinerals)
+                    {
+                        map[x, y] = firstMineralVal;
+                    }
+                    //map[x, y] = (pseudoRandom.Next(1, 100) < randomFillPercentMinerals) ? num : firstMineral; //si la valeur du pseudoRandom est plus grande que le randomFillPercent, on place un groundTile/iceTile/desolationTile, sinon un mineral
+                
+                }
+            }
+        }
+
+    }
+
+    public string getTileVal(int x, int y)
+    {
+        return biomeNames[map[x, y]];
     }
 
 

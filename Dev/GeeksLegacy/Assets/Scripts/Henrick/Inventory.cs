@@ -57,10 +57,7 @@ public class Inventory : MonoBehaviour
             foreach (KeyValuePair<string, int> kvp in inventory.getInventoryDict())
             {
                 string keyAtIndex = inventory.getInventoryDict().Keys.ElementAt(keyIndex); //Pas sur encore. a verifier quand on a plus de chose dans notre dictionaire
-                //Debug.Log("Key at index " + keyIndex + ": " + keyAtIndex); 
-                //Debug.Log("clé : " + kvp.Key);
-                
-                //Debug.Log("valeur : " + kvp.Value);
+
                 GameObject slot = this.gameObject.transform.GetChild(keyIndex).gameObject;
                 if(kvp.Value > 0)
                 {
@@ -77,15 +74,6 @@ public class Inventory : MonoBehaviour
             if (Input.GetButtonDown("Throw"))
             {
                 throwAwaySum(InventoryIndex%9);
-                /*
-                try
-                {
-                    Debug.Log("hehe inventory");
-                }
-                catch (Exception e)
-                {
-                    print(e);
-                }*/
             }
         
         }
@@ -97,14 +85,6 @@ public class Inventory : MonoBehaviour
             print(e);            
         }
     }
-
-    /*public void refreshInventory()
-    {
-        foreach (KeyValuePair<string, int> kvp in inventory.getInventoryDict())
-        {
-            
-        }
-    }*/
 
     public void throwAwaySum(int indexInventory)
     {
@@ -120,8 +100,6 @@ public class Inventory : MonoBehaviour
                 if (inventory.inInventory(s)) { 
                     Vector3 characPosition = _PlayerControl.transform.position;
                     Vector2 direction = _PlayerControl.GetDirectionPersonnage();
-                    //if ()
-                    //characPosition.x += direction.x if direction.x > 0.0f else 1.0f;
                     characPosition.x += direction.x != 0.0f ? (direction.x * 2) : 2.0f;
                     GameObject temp = iFactory.getPrefab(s);
                     Instantiate(temp, characPosition, Quaternion.identity);

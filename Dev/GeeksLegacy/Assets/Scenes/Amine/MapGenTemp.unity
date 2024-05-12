@@ -368,8 +368,8 @@ TilemapRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -2042834071
-  m_SortingLayer: 3
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
@@ -443,16 +443,24 @@ MonoBehaviour:
   width: 250
   height: 75
   smoothness: 85
+  randomFillPercentMinerals: 100
+  nbSmoothingMinerals: 99
+  mineralTile: {fileID: 11400000, guid: 43bc918a0221b7d4ea196557f1ba4c35, type: 2}
+  mineralTileMap: {fileID: 1566541656}
+  firstMineralDrops: Iron
   randomFillPercent: 55
   nbSmoothing: 10
   caveTile: {fileID: 11400000, guid: 68ce3d1314cfc9444b4c676fd4c62dd1, type: 2}
   caveTileMap: {fileID: 441166872}
   firstTile: {fileID: 11400000, guid: 077238901e1d79b4f98d8092f196c2d3, type: 2}
   firstTileMap: {fileID: 1566541656}
+  firstBiomeDrops: Dirt
   secondTile: {fileID: 11400000, guid: ea60cb42964beb04cb4d2648e3c3c0e4, type: 2}
   secondTileMap: {fileID: 1566541656}
+  secondBiomeDrops: Dirt
   thirdTile: {fileID: 11400000, guid: 7b6e465c5f7ce734eade8c31c3dd7a1d, type: 2}
   thirdTileMap: {fileID: 1566541656}
+  thirdBiomeDrops: Dirt
   backgroundTile: {fileID: 11400000, guid: 68ce3d1314cfc9444b4c676fd4c62dd1, type: 2}
   backgroundTileMap: {fileID: 1329462781}
   characterPrefab: {fileID: 2622479609039233554, guid: 00a63d34d2420f94f81450d39eac9ea2, type: 3}
