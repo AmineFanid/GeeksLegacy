@@ -19,7 +19,7 @@ public class HealthBar : MonoBehaviour
         _PLayerObject = GameObject.FindGameObjectWithTag("Player");
         _PlayerControl = _PLayerObject.GetComponent<ControlCharacters>();
         playersLife = _PlayerControl.findPlayerObject().GetLifePoint(); // Pour initialiser la variable playersLife avec la vie actuelle du joueur
-        EventManager.StartListening(EventManager.PossibleEvent.eVieJoueurChange, _EcouteurBruit); // Subscribe to ePlayerLifeChanged event
+        EventManager.StartListening(EventManager.PossibleEvent.eVieJoueurChange, _EcouteurBruit); // Subscribe to eVieJoueurChange event
 
 
     }

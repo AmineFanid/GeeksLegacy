@@ -22,15 +22,9 @@ public class MaterialsBehaviour : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        //characInventory = FindFirstObjectByType<CharacterInventory>();
-        ///////////////
         pushingP = GameObject.FindGameObjectWithTag("Player");
         playerControl = pushingP.GetComponent<ControlCharacters>();
-        ///////////
-        //characInventory = playerControl.inventory;
         characInventory = playerControl.findPlayerObject().GetPlayerInventory();
-        //player = GameObject.FindGameObjectWithTag("Player");
-        //player = playerControl.findPlayerObject();
         _Start = transform.position;
         
 

@@ -11,13 +11,11 @@ public class Inventory : MonoBehaviour
     private GameObject _PLayerObject;
     private ControlCharacters _PlayerControl;
     public CharacterInventory inventory;
-
     private Animator _AnimatorInv;
     int InventoryIndex = 0;
     public Sprite[] spriteArray;
     int keyIndex = -1;
-
-
+    public ItemFactory iFactory;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -27,6 +25,8 @@ public class Inventory : MonoBehaviour
         _PLayerObject = GameObject.FindGameObjectWithTag("Player");
         _PlayerControl = _PLayerObject.GetComponent<ControlCharacters>();
         inventory = _PlayerControl.findPlayerObject().GetPlayerInventory();
+        iFactory = FindFirstObjectByType<ItemFactory>();
+
     }
 
     // Update is called once per frame
@@ -76,15 +76,16 @@ public class Inventory : MonoBehaviour
 
             if (Input.GetButtonDown("Throw"))
             {
+                throwAwaySum(InventoryIndex%9);
+                /*
                 try
                 {
                     Debug.Log("hehe inventory");
-                    throwAwaySum(InventoryIndex%9);
                 }
                 catch (Exception e)
                 {
                     print(e);
-                }
+                }*/
             }
         
         }
@@ -108,15 +109,31 @@ public class Inventory : MonoBehaviour
     public void throwAwaySum(int indexInventory)
     {
         int i = 0;
-        int hehe = inventory.inventoryCount();
-        foreach (KeyValuePair<string, int> kvp in inventory.getInventoryDict())
+        Dictionary<string, int> tempDict = inventory.getInventoryDict();
+        List<string> keysToRemove = new List<string>();
+        foreach (KeyValuePair<string, int> kvp in tempDict)
         {
             if (i == indexInventory)
             {
                 string s = kvp.Key;
-                inventory.deleteOne(s, _PlayerControl);
+                //EventManager.TriggerEvent(EventManager.PossibleEvent.eVieJoueurChange, s); // Utilisation de l'observer
+                if (inventory.inInventory(s)) { 
+                    Vector3 characPosition = _PlayerControl.transform.position;
+                    Vector2 direction = _PlayerControl.GetDirectionPersonnage();
+                    //if ()
+                    //characPosition.x += direction.x if direction.x > 0.0f else 1.0f;
+                    characPosition.x += direction.x != 0.0f ? (direction.x * 2) : 2.0f;
+                    GameObject temp = iFactory.getPrefab(s);
+                    Instantiate(temp, characPosition, Quaternion.identity);
+                    keysToRemove.Add(s);
+                    break;
+                }
             }
             i++;
+        }
+        foreach (string key in keysToRemove)
+        {
+            inventory.deleteOne(key);
         }
     }
 
