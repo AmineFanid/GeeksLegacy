@@ -6,7 +6,6 @@ using UnityEngine;
 public class TileDetection : MonoBehaviour
 {
     [Header("Target to chase")]
-    [SerializeField] public Transform _Cible;
     [SerializeField] private float _AttackDistance;
     [Header("Jump settings")]
     [SerializeField] private float _JumpHeight;
@@ -21,12 +20,15 @@ public class TileDetection : MonoBehaviour
     private int layerMask;
     public Vector2 attackd;
     public bool etaitAttack;
+    private Transform _Cible;
 
     void Start()
     {
         layerMask = LayerMask.GetMask(new[] {"Ground"});
         _ParentBody = _Parent.GetComponent<Rigidbody2D>();
         attackd = new Vector2(_AttackDistance, _AttackDistance);
+        _Cible = GameObject.FindGameObjectWithTag("Player").transform;
+        Debug.Log(_Cible);
     }
 
     void Update()

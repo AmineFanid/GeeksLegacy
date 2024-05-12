@@ -1,14 +1,13 @@
 using UnityEngine;
 using Patterns;
 using System.Collections;
+using Unity.VisualScripting;
 
 [RequireComponent(typeof(Animator))]
 [RequireComponent(typeof(Rigidbody2D))]
 
 public class Slime : MonoBehaviour
 {
-    [Header("Target to chase")]
-    [SerializeField] private Transform _Cible;
     [Header("Mouvement settings")]
     [SerializeField] private float _ForceMouvement = 10.0f;
     [SerializeField] private float _MaxSpeed = 10.0f;
@@ -27,7 +26,9 @@ public class Slime : MonoBehaviour
     private Animator _Animator;
     private Rigidbody2D _Rigidbody2D;
     public Vector2 DirectionMouvement;
-    
+    private Transform _Cible;
+    private Player _Player;
+
     private IEnumerator _Wander;
     private IEnumerator _AttackPlayer;
     private IEnumerator _Die;
@@ -113,6 +114,8 @@ public class Slime : MonoBehaviour
         _Animator = GetComponent<Animator>();
         _Rigidbody2D = GetComponent<Rigidbody2D>();
         _CurrentHealth = _TotalHealth;
+        _Cible = GameObject.FindGameObjectWithTag("Player").transform;
+        _Player = player.findPlayerObject();
     }
 
     /* --------------------------INIT------------------------------- */
@@ -435,6 +438,7 @@ public class Slime : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
+        Debug.Log(_Player);
         Debug.Log("Slime : " + _CurrentHealth);
         if (collision.gameObject.layer == LayerMask.NameToLayer("Tool"))
         {
@@ -456,7 +460,7 @@ public class Slime : MonoBehaviour
                 player.knockRight = true;
             else
                 player.knockRight = false;
-            player.player.TakeDamage(10.0f);
+            //_Player.TakeDamage(10.0f); //Deuxieme player null
         }
     }
 }
