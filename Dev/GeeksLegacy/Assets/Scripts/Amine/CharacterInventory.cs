@@ -53,6 +53,7 @@ public class CharacterInventory
         
     }
 
+    /*
     public void insideOfInventory()
     {
         foreach (KeyValuePair<string, int> kvp in this.inventory)
@@ -60,7 +61,7 @@ public class CharacterInventory
             Debug.Log("clé : " + kvp.Key);
             Debug.Log("valeur : " + kvp.Value);
         }
-    }
+    }*/
 
     public void updateInventory()
     {
@@ -80,20 +81,14 @@ public class CharacterInventory
         }
     }
 
-    public void deleteOne(string itemName, ControlCharacters charac)
+    public bool inInventory(string itemName)
     {
-        Vector3 characPosition = charac.transform.position;
+        return inventory.ContainsKey(itemName);
+    }
 
-        if (inventory.ContainsKey(itemName))
-        {
-            inventory[itemName]--;
-
-            //MonoBehaviour.Instantiate(dirtPrefab, characPosition, Quaternion.identity);
-        }
-        else
-        {
-            Debug.Log("Impossible de supprimer de l'inventaire, car n'existe pas");
-        }
+    public void deleteOne(string itemName) //SVP TOUJOURS VERIFIER SI L'ITEM EST DANS L'INVENTAIRE, A L'AIDE de inInventory()
+    {        
+        inventory[itemName]--;
     }
 
     public Dictionary <string, int> getInventoryDict()

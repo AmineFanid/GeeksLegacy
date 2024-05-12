@@ -368,8 +368,8 @@ TilemapRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -2042834071
-  m_SortingLayer: 3
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
@@ -443,16 +443,24 @@ MonoBehaviour:
   width: 250
   height: 75
   smoothness: 85
+  randomFillPercentMinerals: 100
+  nbSmoothingMinerals: 99
+  mineralTile: {fileID: 11400000, guid: 43bc918a0221b7d4ea196557f1ba4c35, type: 2}
+  mineralTileMap: {fileID: 1566541656}
+  firstMineralDrops: Iron
   randomFillPercent: 55
   nbSmoothing: 10
   caveTile: {fileID: 11400000, guid: 68ce3d1314cfc9444b4c676fd4c62dd1, type: 2}
   caveTileMap: {fileID: 441166872}
   firstTile: {fileID: 11400000, guid: 077238901e1d79b4f98d8092f196c2d3, type: 2}
   firstTileMap: {fileID: 1566541656}
+  firstBiomeDrops: Dirt
   secondTile: {fileID: 11400000, guid: ea60cb42964beb04cb4d2648e3c3c0e4, type: 2}
   secondTileMap: {fileID: 1566541656}
+  secondBiomeDrops: Dirt
   thirdTile: {fileID: 11400000, guid: 7b6e465c5f7ce734eade8c31c3dd7a1d, type: 2}
   thirdTileMap: {fileID: 1566541656}
+  thirdBiomeDrops: Dirt
   backgroundTile: {fileID: 11400000, guid: 68ce3d1314cfc9444b4c676fd4c62dd1, type: 2}
   backgroundTileMap: {fileID: 1329462781}
   characterPrefab: {fileID: 2622479609039233554, guid: 00a63d34d2420f94f81450d39eac9ea2, type: 3}
@@ -468,6 +476,53 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87e5cd8e828380a47b763890cf23e533, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &585344579
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 585344581}
+  - component: {fileID: 585344580}
+  m_Layer: 0
+  m_Name: ItemFactoryScriptHolder
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &585344580
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 585344579}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8148bf09eee13474882744ef4b6c10d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dirtPrefab: {fileID: 7054309357132343790, guid: a3d5f6c5abbb9174486798c344cb4afe, type: 3}
+  ironPrefab: {fileID: 7367333545840301507, guid: 7694314b50a06b14fb8bf3e8ad5d9855, type: 3}
+  woodPrefab: {fileID: 8224937143210050450, guid: 5bd37d23f4017784a80c99a08179266d, type: 3}
+--- !u!4 &585344581
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 585344579}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1065168886
 GameObject:
   m_ObjectHideFlags: 0
@@ -1203,3 +1258,4 @@ SceneRoots:
   m_Roots:
   - {fileID: 1065168888}
   - {fileID: 525119255}
+  - {fileID: 585344581}

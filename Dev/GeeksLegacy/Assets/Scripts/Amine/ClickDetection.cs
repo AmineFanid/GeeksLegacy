@@ -7,21 +7,19 @@ using UnityEngine.Tilemaps;
 
 public class ClickDetection : MonoBehaviour
 {
-
-    //private float clickInterval = 0.3f; // Adjust this value as needed
-    //private int clickCount = 0;
-    //private float lastClickTime = 0f;
     public Tilemap tiles;
     public Tile tile;
-    public GameObject dirtPrefab;
     ProceduralGeneration proceduralGeneration;
-    
+    public ItemFactory iFactory;
+
+
 
     public Vector3Int location;
     void Start()
     {
         proceduralGeneration = FindFirstObjectByType<ProceduralGeneration>();
-        
+        iFactory = FindFirstObjectByType<ItemFactory>();
+
     }
 
 
@@ -71,13 +69,12 @@ public class ClickDetection : MonoBehaviour
 
     public void destroyTile(Vector3 tilelocation)
     {
+        GameObject tempPrefab = iFactory.getPrefab(proceduralGeneration.getTileVal((int)tilelocation.x, (int)tilelocation.y));
         proceduralGeneration.updateMap((int)tilelocation.x, (int)tilelocation.y, 0);
-        // Spawn a block of dirt at the same location
         tilelocation.y += 1;
         tilelocation.x += 0.5f;
-        GameObject dirtBlock = Instantiate(dirtPrefab, tilelocation, Quaternion.identity);
-        // Attach the MaterialsBehaviour script to the spawned dirt block
-        dirtBlock.AddComponent<MaterialsBehaviour>();
+        GameObject dirtBlock = Instantiate(tempPrefab, tilelocation, Quaternion.identity);
+        dirtBlock.AddComponent<MaterialsBehaviour>(); //Attache le script a l''objet
 
     }
 
