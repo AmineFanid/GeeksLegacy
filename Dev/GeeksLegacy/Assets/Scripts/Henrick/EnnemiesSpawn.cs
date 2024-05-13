@@ -33,10 +33,10 @@ public class EnnemiesSpawn : MonoBehaviour
     [SerializeField] private float _XSpawnLimitEnd = 21.0f;
     [SerializeField] private float _YSpawnLimitStart = 8.0f;
     [SerializeField] private float _YSpawnLimitEnd = 13.0f;
-    [SerializeField] private float _MaxSpawnableX = 100.0f;
-    [SerializeField] private float _MinSpawnableX = -100.0f;
-    [SerializeField] private float _MaxSpawnableY = 70.0f;
-    [SerializeField] private float _MinSpawnableY = -70.0f;
+    [SerializeField] private float _MaxSpawnableX = 21.0f;
+    [SerializeField] private float _MinSpawnableX = -21.0f;
+    [SerializeField] private float _MaxSpawnableY = 13.0f;
+    [SerializeField] private float _MinSpawnableY = -13.0f;
     [Header("Ennemies")]
     [SerializeField] private GameObject _Slime;
     [SerializeField] private GameObject _Wolf;
@@ -49,6 +49,7 @@ public class EnnemiesSpawn : MonoBehaviour
     private EnnemiesSpawn _List;
     private bool _CanSpawn = false;
     private GameObject _Character;
+    private ProceduralGeneration _Generation;
 
 
     //Donne un type d'ennemi aléatoire selon un % de chance donné
@@ -74,8 +75,11 @@ public class EnnemiesSpawn : MonoBehaviour
     //Ajoute un noeud à la liste chainé, donc génère un ennemi
     public void AddNode()
     {
+
+        //Debug.Log(enemyCount);
         GameObject enemyInstance = null;
         Node newNode = null;
+        _CanSpawn = false;
 
         if (enemyCount >= maxEnemies)
         {
@@ -93,20 +97,21 @@ public class EnnemiesSpawn : MonoBehaviour
 
         while (!_CanSpawn)
         {
-            float randomX = Random.Range(_MinSpawnableX, _MaxSpawnableX);
-            float randomY = Random.Range(_MinSpawnableY, _MaxSpawnableY);
+            _PlayerPosition = GameObject.FindGameObjectWithTag("Player").transform.position;
+            float randomX = Random.Range(_MinSpawnableX + _PlayerPosition.x, _MaxSpawnableX + _PlayerPosition.x);
+            float randomY = Random.Range(_MinSpawnableY + _PlayerPosition.y, _MaxSpawnableY + _PlayerPosition.y);
 
             // Créer un Vector2 aléatoire à partir des valeurs générées
             Vector2 ennemieSpawnPoint = new Vector2(randomX, randomY);
 
-            Debug.Log(enemyPrefab);
+            //Debug.Log(enemyPrefab);
 
             if (CanSpawnArea(ennemieSpawnPoint))
             {
+                //Debug.Log("SPAWN");
                 _CanSpawn = true;
                 enemyInstance = Instantiate(enemyPrefab, ennemieSpawnPoint, Quaternion.identity); // Instancier l'ennemi
             }
-
         }
 
         if (enemyInstance != null)
@@ -182,18 +187,22 @@ public class EnnemiesSpawn : MonoBehaviour
     public bool CanSpawnArea(Vector2 ennemieSpawnPoint) {
         _PlayerPosition = GameObject.FindGameObjectWithTag("Player").transform.position;
 
+        List<int[]> temp = _Generation.GetSurface();
+
+        Debug.Log(temp);
+        
         //Limite gauche
-        bool leftLimit = ennemieSpawnPoint.x + _PlayerPosition.x  < -_XSpawnLimitStart
-            && ennemieSpawnPoint.x + _PlayerPosition.x >= -_XSpawnLimitEnd;
+        bool leftLimit = ennemieSpawnPoint.x < -_XSpawnLimitStart - _PlayerPosition.x
+            && ennemieSpawnPoint.x >= -_XSpawnLimitEnd - _PlayerPosition.x;
         //Limite droite
-        bool rightLimit = ennemieSpawnPoint.x + _PlayerPosition.x > _XSpawnLimitStart
-            && ennemieSpawnPoint.x + _PlayerPosition.x <= _XSpawnLimitEnd;
+        bool rightLimit = ennemieSpawnPoint.x > _XSpawnLimitStart + _PlayerPosition.x
+            && ennemieSpawnPoint.x <= _XSpawnLimitEnd + _PlayerPosition.x;
         //Limite haute
-        bool upperLimit = ennemieSpawnPoint.y + _PlayerPosition.y < -_YSpawnLimitStart
-            && ennemieSpawnPoint.y + _PlayerPosition.y >= -_YSpawnLimitEnd;
+        bool upperLimit = ennemieSpawnPoint.y < -_YSpawnLimitStart - _PlayerPosition.y
+            && ennemieSpawnPoint.y >= -_YSpawnLimitEnd - _PlayerPosition.y;
         //Limite basse
-        bool underLimit = ennemieSpawnPoint.y + _PlayerPosition.y > _YSpawnLimitStart
-            && ennemieSpawnPoint.y + _PlayerPosition.y <= _YSpawnLimitEnd;
+        bool underLimit = ennemieSpawnPoint.y > _YSpawnLimitStart + _PlayerPosition.y
+            && ennemieSpawnPoint.y <= _YSpawnLimitEnd + _PlayerPosition.y;
 
         if (leftLimit || rightLimit || upperLimit || underLimit)
             return true;
@@ -217,6 +226,6 @@ public class EnnemiesSpawn : MonoBehaviour
     {
         _List = new EnnemiesSpawn();
         InvokeRepeating("AddNode", 5.0f, 5.0f);
-        Debug.Log(GameObject.FindGameObjectWithTag("Player").transform.position);
+        _Generation.GetComponent<ProceduralGeneration>();
     }
 }

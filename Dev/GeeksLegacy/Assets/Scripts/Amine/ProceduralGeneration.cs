@@ -300,6 +300,10 @@ public class ProceduralGeneration : MonoBehaviour
         }
     }
 
+    public List<int[]> GetSurface() {
+        return surface;
+    }
+
 
     public int GetSurroundingGroundCount(int gridX, int gridY) 
     {

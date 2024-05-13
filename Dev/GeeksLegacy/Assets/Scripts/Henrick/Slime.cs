@@ -27,7 +27,6 @@ public class Slime : MonoBehaviour
     private Rigidbody2D _Rigidbody2D;
     public Vector2 DirectionMouvement;
     private Transform _Cible;
-    private Player _Player;
 
     private IEnumerator _Wander;
     private IEnumerator _AttackPlayer;
@@ -115,7 +114,6 @@ public class Slime : MonoBehaviour
         _Rigidbody2D = GetComponent<Rigidbody2D>();
         _CurrentHealth = _TotalHealth;
         _Cible = GameObject.FindGameObjectWithTag("Player").transform;
-        _Player = player.findPlayerObject();
     }
 
     /* --------------------------INIT------------------------------- */
@@ -195,7 +193,10 @@ public class Slime : MonoBehaviour
     {
         //Debug.Log(ChaseDetection());
         TileDetection t = FindFirstObjectByType<TileDetection>();
-        if (t.PlayerDetection()) mFsm.SetCurrentState(SlimeState.ATTACK);
+        if (t.PlayerDetection()) 
+        {
+            mFsm.SetCurrentState(SlimeState.ATTACK);
+        }
         else
         {
             if (ChaseDetection() == false) mFsm.SetCurrentState(SlimeState.IDLE);
@@ -284,7 +285,7 @@ public class Slime : MonoBehaviour
         mFsm.SetCurrentState(SlimeState.DAMAGE);
 
        
-        Debug.Log("Slime : " + _CurrentHealth);
+        //Debug.Log("Slime : " + _CurrentHealth);
 
     }
 
@@ -318,6 +319,7 @@ public class Slime : MonoBehaviour
 
     private IEnumerator AttackPlayer() //Wander
     {
+        Debug.Log("ATACCKKKKKK");
         TileDetection t = FindFirstObjectByType<TileDetection>();
         while (true)
         {
@@ -438,12 +440,12 @@ public class Slime : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        Debug.Log(_Player);
-        Debug.Log("Slime : " + _CurrentHealth);
+        //Debug.Log(_Player);
+        //Debug.Log("Slime : " + _CurrentHealth);
         if (collision.gameObject.layer == LayerMask.NameToLayer("Tool"))
         {
             Item collisionObject = collision.gameObject.GetComponent<Item>();
-            Debug.Log(collision.gameObject);
+            //Debug.Log(collision.gameObject);
             if (collisionObject != null)
             {
                 if (_CurrentHealth - collisionObject.DoDamage() >= 0)
