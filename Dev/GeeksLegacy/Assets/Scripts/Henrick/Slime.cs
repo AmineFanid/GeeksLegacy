@@ -114,6 +114,7 @@ public class Slime : MonoBehaviour
         _Rigidbody2D = GetComponent<Rigidbody2D>();
         _CurrentHealth = _TotalHealth;
         _Cible = GameObject.FindGameObjectWithTag("Player").transform;
+        Debug.Log("FSM : " + mFsm._CurrentGuid); //Meme FSM ?????????
     }
 
     /* --------------------------INIT------------------------------- */
@@ -161,18 +162,25 @@ public class Slime : MonoBehaviour
     {
         _Wander = Wander();
         StartCoroutine(_Wander);
-        Debug.Log("Enter the " + mFsm.GetCurrentState().Name.ToString());
+        //Debug.Log("Enter the " + mFsm.GetCurrentState().Name.ToString());
     }
 
     void OnUpdateIDLE() //UPDATE OF THE IDLE STATE
     {
+        //Debug.Log(_Wander);
         //Debug.Log("SlimeState IDLE");
         TileDetection t = FindFirstObjectByType<TileDetection>();
         if (t.PlayerDetection()) mFsm.SetCurrentState(SlimeState.ATTACK);
         else
         {
-            if (ChaseDetection() == false) mFsm.SetCurrentState(SlimeState.IDLE);
-            else mFsm.SetCurrentState(SlimeState.CHASE);
+            if (!ChaseDetection())
+            {
+                mFsm.SetCurrentState(SlimeState.IDLE);
+            }
+            else
+            {
+                mFsm.SetCurrentState(SlimeState.CHASE);
+            }
         }
         Mouvement();
     }
@@ -186,7 +194,7 @@ public class Slime : MonoBehaviour
 
     void OnEnterCHASE() //ENTRY OF THE CHASE STATE
     {
-        Debug.Log("Enter the " + mFsm.GetCurrentState().Name.ToString());
+        //Debug.Log("Enter the " + mFsm.GetCurrentState().Name.ToString());
     }
 
     void OnUpdateCHASE() //UPDATE OF THE CHASE STATE
@@ -228,13 +236,21 @@ public class Slime : MonoBehaviour
 
     void OnEnterATTACK() //ENTRY OF THE ATTACK STATE
     {
-        Debug.Log("Enter the " + mFsm.GetCurrentState().Name.ToString());
-        etaitAttack = false;
+        //Debug.Log("Enter the " + mFsm.GetCurrentState().Name.ToString());
+        //etaitAttack = false;
+        //Debug.Log("Mon ID: " + GetInstanceID()); //Pas le meme ID
+        //Debug.Log("_Cible.position:  " + _Cible.position); //meme cible
+        //Debug.Log("delta:  " + delta); //Pas le meme Delta
+        //Debug.Log("this.gameObject.transform.position:  " + this.gameObject.transform.position); //Pas la meme position
+
+        _AttackPlayer = AttackPlayer();
+        StartCoroutine(_AttackPlayer);
     }
 
     void OnUpdateATTACK() //UPDATE OF THE ATTACK STATE
     {
-        TileDetection t = FindFirstObjectByType<TileDetection>();
+        TileDetection t = FindFirstObjectByType<TileDetection>(); //GetcomponentInChildren ?????????????????????
+        //Debug.Log("instance de tile : " + t.GetInstanceID()); // Pas le meme tile ID
         if (t.PlayerDetection()) mFsm.SetCurrentState(SlimeState.ATTACK);
         else
         {
@@ -249,19 +265,18 @@ public class Slime : MonoBehaviour
         }
 
         //Vector représentant la direction de la cible
-        Vector2 delta = _Cible.position - this.gameObject.transform.position;
+        Vector2 delta = _Cible.position - this.gameObject.transform.position; 
         //Normalisation du Vector
-        _DirectionVision = delta.normalized;
+        _DirectionVision = delta.normalized; 
 
         DirectionMouvement = new Vector2(_DirectionVision.x, 0.0f);
 
-        if (!etaitAttack)
-        {
-            _AttackPlayer = AttackPlayer();
-            StartCoroutine(_AttackPlayer);
-        }
+        //if (!etaitAttack)
+        //{
+        //
+        //}
 
-        etaitAttack = t.etaitAttack;
+        //etaitAttack = t.etaitAttack;
     }
 
     void OnExitATTACK()
@@ -273,7 +288,7 @@ public class Slime : MonoBehaviour
 
     void OnEnterDAMAGE() //ENTRY OF THE DAMAGE STATE
     {
-        Debug.Log("Enter the " + mFsm.GetCurrentState().Name.ToString());
+        //Debug.Log("Enter the " + mFsm.GetCurrentState().Name.ToString());
         Vector2 direction = GetDirectionMouvement();
         Vector2 directionForce = (direction.x < 0.01f) ? Vector2.left : Vector2.right;
         _Rigidbody2D.AddForce(directionForce * _KbTaken, ForceMode2D.Impulse);
@@ -319,7 +334,7 @@ public class Slime : MonoBehaviour
 
     private IEnumerator AttackPlayer() //Wander
     {
-        Debug.Log("ATACCKKKKKK");
+        //Debug.Log("ATTACCKKKKKK");
         TileDetection t = FindFirstObjectByType<TileDetection>();
         while (true)
         {

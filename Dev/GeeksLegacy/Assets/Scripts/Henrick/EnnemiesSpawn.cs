@@ -45,7 +45,8 @@ public class EnnemiesSpawn : MonoBehaviour
     private Vector2 _PlayerPosition;
     private Node head;
     private int enemyCount = 0;
-    private int maxEnemies = 10; // Nombre maximal d'ennemis autorisés
+    [SerializeField]
+    private int maxEnemies = 1; // Nombre maximal d'ennemis autorisés
     private EnnemiesSpawn _List;
     private bool _CanSpawn = false;
     private GameObject _Character;
@@ -97,7 +98,7 @@ public class EnnemiesSpawn : MonoBehaviour
 
         while (!_CanSpawn)
         {
-            _PlayerPosition = GameObject.FindGameObjectWithTag("Player").transform.position;
+            _PlayerPosition = GameObject.FindGameObjectWithTag("Player").transform.position; //OnEnnemySpawn
             float randomX = Random.Range(_MinSpawnableX + _PlayerPosition.x, _MaxSpawnableX + _PlayerPosition.x);
             float randomY = Random.Range(_MinSpawnableY + _PlayerPosition.y, _MaxSpawnableY + _PlayerPosition.y);
 
@@ -187,9 +188,9 @@ public class EnnemiesSpawn : MonoBehaviour
     public bool CanSpawnArea(Vector2 ennemieSpawnPoint) {
         _PlayerPosition = GameObject.FindGameObjectWithTag("Player").transform.position;
 
-        List<int[]> temp = _Generation.GetSurface();
+        //List<int[]> temp = _Generation.GetSurface();
 
-        Debug.Log(temp);
+        //Debug.Log(temp);
         
         //Limite gauche
         bool leftLimit = ennemieSpawnPoint.x < -_XSpawnLimitStart - _PlayerPosition.x
@@ -217,7 +218,7 @@ public class EnnemiesSpawn : MonoBehaviour
 
         while (currentNode != null)
         {
-            Debug.Log("Enemy Type: " + currentNode.enemyType);
+            //Debug.Log("Enemy Type: " + currentNode.enemyType);
             currentNode = currentNode.next;
         }
     }
@@ -226,6 +227,6 @@ public class EnnemiesSpawn : MonoBehaviour
     {
         _List = new EnnemiesSpawn();
         InvokeRepeating("AddNode", 5.0f, 5.0f);
-        _Generation.GetComponent<ProceduralGeneration>();
+        //_Generation.GetComponent<ProceduralGeneration>();
     }
 }

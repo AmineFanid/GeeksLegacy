@@ -13,6 +13,10 @@ namespace Patterns
         //      State out of these possible set of states.
 
         // A dictionary to represent the a set of states.
+        static private int _Guid = 0;
+        public int _CurrentGuid = 0;
+
+
         protected Dictionary<T, State<T>> mStates;
 
         // The current state.
@@ -21,6 +25,8 @@ namespace Patterns
         public FiniteStateMachine()
         {
             mStates = new Dictionary<T, State<T>>();
+            _CurrentGuid = _Guid;
+            _Guid++;
         }
 
         public void Add(State<T> state)

@@ -28,7 +28,7 @@ public class TileDetection : MonoBehaviour
         _ParentBody = _Parent.GetComponent<Rigidbody2D>();
         attackd = new Vector2(_AttackDistance, _AttackDistance);
         _Cible = GameObject.FindGameObjectWithTag("Player").transform;
-        Debug.Log(_Cible);
+        //Debug.Log(_Cible);
     }
 
     void Update()
@@ -44,10 +44,8 @@ public class TileDetection : MonoBehaviour
         etaitAttack = _EstEnAttack;
         //Player and ennemie distance
         Vector2 distance = _Cible.position - this.gameObject.transform.position;
-        Debug.Log(distance);
-        if (LtEq(distance, attackd) && GtEq(distance, attackd * -1)) _EstEnAttack = true;
-        else _EstEnAttack = false;
-        return _EstEnAttack;
+        //Debug.Log(distance);
+        return LtEq(distance, attackd) && GtEq(distance, attackd * -1.0f);
     }
 
     public static bool LtEq(Vector2 first, Vector2 second) { 
@@ -92,7 +90,7 @@ public class TileDetection : MonoBehaviour
     {
         _DirectionAbsolute = DirectionAbsolution();
         if (_CanJump) {
-            //Debug.Log(_ParentBody.velocity);
+            Debug.Log(_ParentBody.velocity);
             _ParentBody.velocity = new Vector2(0, Mathf.Sqrt(-2.0f * Physics2D.gravity.y * _JumpHeight));
         }
     }
