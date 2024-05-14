@@ -237,7 +237,7 @@ public class ProceduralGeneration : MonoBehaviour
                     else
                     {
                         //Moore's neighborhood
-                        int surroundingGroundCount = GetSurroundingGroundCount(x,y);
+                        int surroundingGroundCount = GetSurroundingGroundCount(x,y, caveVal);
                         //GetSurfaceGround(x, y);
                         if (surroundingGroundCount > 4)
                         {
@@ -257,21 +257,31 @@ public class ProceduralGeneration : MonoBehaviour
     {
         for (int i = 0; i < nbSmoothingMinerals; i++)
         {
-            for (int x = 0; x < width; x++) //loop à travers la width de notre map
+            for (int x = 0; x < width; x++)
             {
-                for (int y = 0; y < perlinHeightList[x]; y++) //loop à travers une liste de nos valeur de PerlinHeignt
+                for (int y = 0; y < perlinHeightList[x]; y++)
                 {
-
-                    int surroundingGroundCount = GetSurroundingGroundCount(x, y);
-                    if (surroundingGroundCount < 4)
+                    // If the tile is not a mineral, check its neighbors
+                    if (map[x, y] != firstMineralVal)
                     {
-                        map[x, y] = firstMineralVal;
+                        // Count the number of neighboring mineral tiles
+                        int mineralCount = GetSurroundingMineralCount(x, y, firstMineralVal);
+
+                        // If there are at least 4 neighboring mineral tiles, convert this tile to a mineral
+                        if(mineralCount < 4)
+                        {
+                            continue;
+                        }
+                        else if (mineralCount >= 4)
+                        {
+                            map[x, y] = firstMineralVal;
+                        }
                     }
-                 
                 }
             }
         }
     }
+
 
     public void GetSurfaceTiles()
     {
@@ -305,9 +315,9 @@ public class ProceduralGeneration : MonoBehaviour
     }
 
 
-    public int GetSurroundingGroundCount(int gridX, int gridY) 
+    public int GetSurroundingGroundCount(int gridX, int gridY, int val) 
     {
-        //Fonction qui nous permet de compter les occurences de ground ou cave autour de chaque tile
+        //Fonction qui nous permet de compter les occurences de ground ou cave/mineral autour de chaque tile
         int groundCount = 0;
 
         for (int neighbourX = gridX -1; neighbourX <= gridX+1; neighbourX++)
@@ -318,7 +328,7 @@ public class ProceduralGeneration : MonoBehaviour
                 {
                     if (neighbourX != gridX || neighbourY != gridY) //Exclusion de la tile au milieu
                     {
-                        if (map[neighbourX, neighbourY] != 0 && map[neighbourX, neighbourY] != caveVal) //Si on a plus d'un groundTile comme voisin, on incrémente la variable groundCount
+                        if (map[neighbourX, neighbourY] != 0 && map[neighbourX, neighbourY] != val) //Si on a plus d'un groundTile comme voisin, on incrémente la variable groundCount
                         {
                             groundCount++;
                         }
@@ -328,6 +338,31 @@ public class ProceduralGeneration : MonoBehaviour
         }
 
         return groundCount;
+    }
+
+    public int GetSurroundingMineralCount(int gridX, int gridY, int val)
+    {
+        //Fonction qui nous permet de compter les occurences de ground ou cave/mineral autour de chaque tile
+        int mineralCount = 0;
+
+        for (int neighbourX = gridX - 1; neighbourX <= gridX + 1; neighbourX++)
+        {
+            for (int neighbourY = gridY - 1; neighbourY <= gridY + 1; neighbourY++)
+            {
+                if (neighbourX >= 0 && neighbourX < width && neighbourY >= 0 && neighbourY < height) //On s'assure d'être à l'intérieur de notre map
+                {
+                    if (neighbourX != gridX || neighbourY != gridY) //Exclusion de la tile au milieu
+                    {
+                        if (map[neighbourX, neighbourY] != 0 && map[neighbourX, neighbourY] == val) //Si on a plus d'un mineralTile comme voisin, on incrémente la variable groundCount
+                        {
+                            mineralCount++;
+                        }
+                    }
+                }
+            }
+        }
+
+        return mineralCount;
     }
 
     public void BiomeNumAssignation() //Crée par Amine et amélioré par chatGPT
@@ -425,7 +460,7 @@ public class ProceduralGeneration : MonoBehaviour
                         caveTileMap.SetTile(new Vector3Int(x, y, 0), caveTile);
                         break;
                     case var value when value == firstMineralVal: // BIZARRE OUI, MAIS REGLE UN BUG DE UNITY. J'AI TROUVÉ CE TRUC SUR STACK OVER FLOW :) ca prenait pas juste caveVal
-                        caveTileMap.SetTile(new Vector3Int(x, y, 0), caveTile);
+                        //caveTileMap.SetTile(new Vector3Int(x, y, 0), caveTile);
                         mineralTileMap.SetTile(new Vector3Int(x, y, 0), mineralTile);
                         break;
                     case var value when value == 0:
@@ -485,7 +520,7 @@ public class ProceduralGeneration : MonoBehaviour
         {
             for (int y = 0; y < perlinHeightList[x]; y++)
             {
-                if(map[x, y] != caveVal)
+                if(map[x, y] != caveVal && map[x, y] != firstMineralVal && map[x, y] != 0)
                 {
                     if(pseudoRandom.Next(1, 100) > randomFillPercentMinerals)
                     {
