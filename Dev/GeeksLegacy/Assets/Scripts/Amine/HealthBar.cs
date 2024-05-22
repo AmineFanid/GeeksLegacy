@@ -1,6 +1,8 @@
 using UnityEngine;
 using UnityEngine.Events;
 
+[DefaultExecutionOrder(35)]
+
 public class HealthBar : MonoBehaviour
 {
     private UnityAction<object> _EcouteurBruit;

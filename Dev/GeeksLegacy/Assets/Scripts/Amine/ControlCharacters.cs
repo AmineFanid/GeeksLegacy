@@ -2,6 +2,8 @@ using System;
 using System.Collections;
 using UnityEngine;
 
+[DefaultExecutionOrder(20)]
+
 [RequireComponent(typeof(Animator))]
 [RequireComponent(typeof(Rigidbody2D))]
 
@@ -26,7 +28,7 @@ public class ControlCharacters : MonoBehaviour
     public IEnumerator invincibility;
     private IEnumerator _AttackingAnimation;
     public Player player;
-    public CharacterInventory inventory;
+    //public CharacterInventory inventory;
     public bool knockRight;
     private int _NumJump = 0;
     private Vector2 _Movement;
@@ -37,13 +39,18 @@ public class ControlCharacters : MonoBehaviour
     private int playerLayer;
     private int ennemiesLayer;
     private Rigidbody2D _ToolRigidBody;
-
+    //GameDataManager gameDataManager;
+    //UserData currentUser;
+    GeeksLegacyLauncher geeksLegacyLauncher;
     public void Start()
     {
+        geeksLegacyLauncher = FindFirstObjectByType<GeeksLegacyLauncher>();
+       
         _Animator = GetComponent<Animator>();
         _Rigidbody = GetComponent<Rigidbody2D>();
-        inventory = new CharacterInventory();
-        player = new Player(_PlayerLife, inventory);
+
+
+        player = geeksLegacyLauncher.getPlayerFromDB();
         playerLayer = LayerMask.NameToLayer("Player");
         ennemiesLayer = LayerMask.NameToLayer("Ennemies");
         _ToolRigidBody = this.gameObject.GetComponentInChildren<Rigidbody2D>();
@@ -197,42 +204,16 @@ public class ControlCharacters : MonoBehaviour
     {
         return player;
     }
+
+    public void setPlayer(Player player)
+    {
+        this.player = player;
+    }
+    /*
+    public int[,] getPlayerMap()
+    {
+        return currentUser.map;
+    }
+    */
 }
 
-public class Player
-{
-    private float _LifePoint;
-    private CharacterInventory _Inventory;
-
-    public Player(float lifePoint, CharacterInventory inventory)
-    {
-        this._LifePoint = lifePoint;
-        this._Inventory = inventory;
-    }
-
-    public float GetLifePoint()
-    {
-        return this._LifePoint;
-    }
-
-    public void SetLifePoint(float NewLifePoint)
-    {
-        this._LifePoint = NewLifePoint;
-    }
-
-    public CharacterInventory GetPlayerInventory()
-    {
-        return this._Inventory;
-    }
-
-    public void SetPlayerInventory(CharacterInventory NewInventory)
-    {
-        this._Inventory = NewInventory;
-    }
-
-    public void TakeDamage(float damage)
-    {
-        this._LifePoint -= damage;
-        EventManager.TriggerEvent(EventManager.PossibleEvent.eVieJoueurChange, this._LifePoint);
-    }
-}

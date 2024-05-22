@@ -5,6 +5,8 @@ using System.Net;
 using TMPro;
 using UnityEngine;
 
+[DefaultExecutionOrder(30)]
+
 public class Inventory : MonoBehaviour
 {
     public SpriteRenderer spriteRenderer;
@@ -16,15 +18,19 @@ public class Inventory : MonoBehaviour
     public Sprite[] spriteArray;
     int keyIndex = -1;
     public ItemFactory iFactory;
+    GeeksLegacyLauncher geeksLegacyLauncher;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        geeksLegacyLauncher = FindFirstObjectByType<GeeksLegacyLauncher>();
+
         spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
         _AnimatorInv = GetComponent<Animator>();
 
         _PLayerObject = GameObject.FindGameObjectWithTag("Player");
         _PlayerControl = _PLayerObject.GetComponent<ControlCharacters>();
-        inventory = _PlayerControl.findPlayerObject().GetPlayerInventory();
+        inventory = geeksLegacyLauncher.getPlayerFromDB().GetPlayerInventory();
         iFactory = FindFirstObjectByType<ItemFactory>();
 
     }

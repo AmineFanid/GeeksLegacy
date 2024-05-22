@@ -5,6 +5,8 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
+[DefaultExecutionOrder(25)]
+
 public class ProceduralGeneration : MonoBehaviour
 {
     enum TileValue{
@@ -90,6 +92,7 @@ public class ProceduralGeneration : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        /*
         biomeCount = BiomeCount(); // On get le nombre de biome ici
         BiomeRandomization();
         perlinHeightList = new int[width]; //liste de la taille de notre width
@@ -99,12 +102,16 @@ public class ProceduralGeneration : MonoBehaviour
         {
             biomeNames[firstMineralVal] = firstMineralDrops;
         }
-        Generation();
+        */
+        //Generation();
     }
 
     private void Update()
     {
-        RenderMap(map);
+        if (map != null)
+        {
+            RenderMap(map);
+        }
     }
 
     public int BiomeCount()
@@ -116,6 +123,18 @@ public class ProceduralGeneration : MonoBehaviour
         return biomeCount;
     }
 
+    public void prepareProceduralGeneration()
+    {
+        biomeCount = BiomeCount(); // On get le nombre de biome ici
+        BiomeRandomization();
+        perlinHeightList = new int[width]; //liste de la taille de notre width
+        surface = new List<int[]>();
+        biomeNames = new Dictionary<int, string>();
+        if (mineralTile != null)
+        {
+            biomeNames[firstMineralVal] = firstMineralDrops;
+        }
+    }
 
     public void BiomeRandomization()
     {
@@ -153,9 +172,12 @@ public class ProceduralGeneration : MonoBehaviour
     public void Generation()
     {
         clearMap();
-        map = GenerateArray(width, height, true);
-        map = TerrainGeneration(map);
-        smoothMap(nbSmoothing);
+        if (map == null)
+        {
+            map = GenerateArray(width, height, true);
+            map = TerrainGeneration(map);
+            smoothMap(nbSmoothing);
+        }
         GetSurfaceTiles();
         BiomeNumAssignation();
         if(mineralTile != null)
@@ -164,8 +186,21 @@ public class ProceduralGeneration : MonoBehaviour
             mineralSmoothing(nbSmoothingMinerals);
         }
         RenderMap(map);
-        SpawnCharacter(characterPrefab);
+        //SpawnCharacter(characterPrefab);
     }
+
+    /*
+    public void GenerateExistingMap() // Similaire a Generation(), mais pour quand on a deja une map  dans la bd (JSON)
+    {
+        GetSurfaceTiles();
+        BiomeNumAssignation();
+        if (mineralTile != null)
+        {
+            placeMinerals(map);
+            mineralSmoothing(nbSmoothingMinerals);
+        }
+        RenderMap(map);
+    }*/
 
     public int[,] GenerateArray(int width, int height, bool empty) { 
 
@@ -469,7 +504,7 @@ public class ProceduralGeneration : MonoBehaviour
                         if (thirdBiomeTileMap != null && thirdBiomeTile) thirdBiomeTileMap.SetTile(new Vector3Int(x, y, 0), null);
                         break;
                     default:
-                        //rien
+                        //rien for now
                         break;
                 }
             }
@@ -493,7 +528,7 @@ public class ProceduralGeneration : MonoBehaviour
         backgroundTileMap.SetTile(new Vector3Int(x, y, 0), null);
     }
 
-    public void SpawnCharacter(GameObject characterPrefab)
+    public void SpawnCharacter()
     {
         if (surface.Count > 0)
         {
@@ -506,6 +541,8 @@ public class ProceduralGeneration : MonoBehaviour
 
             // Spawn the character prefab at the calculated position
             Instantiate(characterPrefab, spawnPosition, Quaternion.identity);
+            //characterPrefab.transform.position = spawnPosition;
+
         }
         else
         {
@@ -539,5 +576,9 @@ public class ProceduralGeneration : MonoBehaviour
         return biomeNames[map[x, y]];
     }
 
+    public void setMap(int[,] map)
+    {
+        this.map = map;
+    }
 
 }
