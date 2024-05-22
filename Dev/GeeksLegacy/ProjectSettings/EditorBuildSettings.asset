@@ -5,7 +5,14 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/SampleScene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 1
+    path: Assets/Scenes/Amine/LoginScene.unity
+    guid: 7c8679a9b089ff141b1eb628ea9d1797
+  - enabled: 1
+    path: Assets/Scenes/Amine/MapGenTemp.unity
+    guid: 6b1479c56b79a274c9f5d8597c1308d0
   m_configObjects: {}
+  m_UseUCBPForAssetBundles: 0
