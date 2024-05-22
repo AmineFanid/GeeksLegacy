@@ -576,6 +576,11 @@ public class ProceduralGeneration : MonoBehaviour
         return biomeNames[map[x, y]];
     }
 
+    public int[,] getMap()
+    {
+        return map;
+    }
+
     public void setMap(int[,] map)
     {
         this.map = map;

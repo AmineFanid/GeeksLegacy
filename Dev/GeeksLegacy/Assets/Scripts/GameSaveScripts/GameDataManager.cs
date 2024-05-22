@@ -3,9 +3,11 @@ using UnityEngine;
 public class GameDataManager : MonoBehaviour
 {
     UserData currentUser;
+    WriteOrReadUser worUser;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        worUser = FindFirstObjectByType<WriteOrReadUser>();
         try
         {
             string json = PlayerPrefs.GetString("sessionUser");
@@ -30,5 +32,13 @@ public class GameDataManager : MonoBehaviour
             return currentUser;
         }
         return null;
+    }
+
+    public void updateCurrentUser(Player updatedPlayer, int[,] newMap)
+    {
+        currentUser.player = updatedPlayer;
+        currentUser.inventory = updatedPlayer.GetPlayerInventory();
+        currentUser.map = newMap;
+        worUser.updateUserInJSON(currentUser);
     }
 }

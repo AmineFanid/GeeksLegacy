@@ -53,15 +53,6 @@ public class CharacterInventory
         
     }
 
-    /*
-    public void insideOfInventory()
-    {
-        foreach (KeyValuePair<string, int> kvp in this.inventory)
-        {
-            Debug.Log("clé : " + kvp.Key);
-            Debug.Log("valeur : " + kvp.Value);
-        }
-    }*/
 
     public void updateInventory()
     {
@@ -100,6 +91,7 @@ public class CharacterInventory
     {
         return inventory.Count;
     }
+
 
     public void dropStuff(ControlCharacters charac, string itemName)
     {

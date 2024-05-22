@@ -42,7 +42,7 @@ public class WriteOrReadUser : MonoBehaviour
 
     public void saveToJson()
     {
-        UserData temp = getUser(); //Ici, utilisé pour modifier le booléen isNewUser
+        UserData temp = getUser();
         if (temp == null)
         {
             UserData newUser = new UserData
@@ -95,5 +95,30 @@ public class WriteOrReadUser : MonoBehaviour
         {
             Debug.Log("Existe pas, dans la fonction loadUserFromJson");
         }
+    }
+
+    public void updateUserInJSON(UserData currentUser)
+    {
+        
+        UserDataList userDataList = loadUserDataScript.loadData();
+
+        if (userDataList != null)
+        {
+            foreach (UserData user in userDataList.users)
+            {
+                if (user.username == currentUser.username)
+                {
+                    user.player = currentUser.player;
+                    user.inventory = currentUser.inventory;
+                    user.map = currentUser.map;
+                    break;
+                }
+            }
+            string json = JsonUtility.ToJson(userDataList);
+            //JsonUtility.FromJsonOverwrite(json, userDataList);
+            File.WriteAllText(filePath, json);
+            
+        }
+
     }
 }
