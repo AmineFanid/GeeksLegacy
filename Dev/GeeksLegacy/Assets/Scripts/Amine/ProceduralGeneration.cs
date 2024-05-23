@@ -92,23 +92,12 @@ public class ProceduralGeneration : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        /*
-        biomeCount = BiomeCount(); // On get le nombre de biome ici
-        BiomeRandomization();
-        perlinHeightList = new int[width]; //liste de la taille de notre width
-        surface = new List<int[]>();
-        biomeNames = new Dictionary<int, string>();
-        if(mineralTile != null)
-        {
-            biomeNames[firstMineralVal] = firstMineralDrops;
-        }
-        */
-        //Generation();
+
     }
 
     private void Update()
     {
-        if (map != null)
+        if (map.GetLength(0) > 0) // Au cas ou c'est soit un nouvel usager, qui n'a pas de vrai map
         {
             RenderMap(map);
         }
@@ -138,7 +127,6 @@ public class ProceduralGeneration : MonoBehaviour
 
     public void BiomeRandomization()
     {
-        //List<TileValue> liste = new List<TileValue> { TileValue.BIOME1, TileValue.BIOME2, TileValue.BIOME3 };
         List<TileValue> liste = new List<TileValue>();
 
         foreach(TileValue i in Enum.GetValues(typeof(TileValue)))
@@ -172,7 +160,7 @@ public class ProceduralGeneration : MonoBehaviour
     public void Generation()
     {
         clearMap();
-        if (map == null)
+        if (map.GetLength(0) <= 0)
         {
             map = GenerateArray(width, height, true);
             map = TerrainGeneration(map);
@@ -186,21 +174,7 @@ public class ProceduralGeneration : MonoBehaviour
             mineralSmoothing(nbSmoothingMinerals);
         }
         RenderMap(map);
-        //SpawnCharacter(characterPrefab);
     }
-
-    /*
-    public void GenerateExistingMap() // Similaire a Generation(), mais pour quand on a deja une map  dans la bd (JSON)
-    {
-        GetSurfaceTiles();
-        BiomeNumAssignation();
-        if (mineralTile != null)
-        {
-            placeMinerals(map);
-            mineralSmoothing(nbSmoothingMinerals);
-        }
-        RenderMap(map);
-    }*/
 
     public int[,] GenerateArray(int width, int height, bool empty) { 
 

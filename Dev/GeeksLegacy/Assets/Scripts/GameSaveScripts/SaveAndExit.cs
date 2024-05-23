@@ -28,6 +28,7 @@ public class SaveAndExit : MonoBehaviour
         player = controlCharacters.findPlayerObject();
         //inventory = player.GetPlayerInventory();
         gameDataManager.updateCurrentUser(player, map);
+        Debug.Log("Exiting Game nowww");
         _ExitGame();
     }
 

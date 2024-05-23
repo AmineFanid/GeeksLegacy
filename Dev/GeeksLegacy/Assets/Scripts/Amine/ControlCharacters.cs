@@ -28,7 +28,7 @@ public class ControlCharacters : MonoBehaviour
     public IEnumerator invincibility;
     private IEnumerator _AttackingAnimation;
     public Player player;
-    //public CharacterInventory inventory;
+    public CharacterInventory inventory;
     public bool knockRight;
     private int _NumJump = 0;
     private Vector2 _Movement;
@@ -51,6 +51,8 @@ public class ControlCharacters : MonoBehaviour
 
 
         player = geeksLegacyLauncher.getPlayerFromDB();
+        inventory = new CharacterInventory();
+        player.SetPlayerInventory(inventory);
         playerLayer = LayerMask.NameToLayer("Player");
         ennemiesLayer = LayerMask.NameToLayer("Ennemies");
         _ToolRigidBody = this.gameObject.GetComponentInChildren<Rigidbody2D>();

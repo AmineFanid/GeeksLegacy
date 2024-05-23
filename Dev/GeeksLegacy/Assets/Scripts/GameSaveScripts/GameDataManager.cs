@@ -38,7 +38,11 @@ public class GameDataManager : MonoBehaviour
     {
         currentUser.player = updatedPlayer;
         currentUser.inventory = updatedPlayer.GetPlayerInventory();
-        currentUser.map = newMap;
+        currentUser.mapRows = newMap.GetLength(0);
+        currentUser.mapCols = newMap.GetLength(1);
+        currentUser.map = ArrayUtils.ConvertToString(newMap);
         worUser.updateUserInJSON(currentUser);
+        Debug.Log("gamedatamanagerrrr");
     }
+
 }

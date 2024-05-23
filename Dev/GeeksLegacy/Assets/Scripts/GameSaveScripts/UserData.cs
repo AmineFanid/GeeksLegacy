@@ -8,7 +8,9 @@ public class UserData
     public string password;
     public Player player;
     public CharacterInventory inventory;
-    public int[,] map;
+    public int mapRows;
+    public int mapCols;
+    public string map;
 }
 
 [System.Serializable]
