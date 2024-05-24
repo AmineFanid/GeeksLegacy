@@ -44,7 +44,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c9d8b9db8f3a2e4a9d71eb3794ddf1e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _Cible: {fileID: 0}
   _AttackDistance: 3
   _JumpHeight: 1.5
   _Parent: {fileID: 8156664620012122354}
@@ -240,8 +239,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c2fbb6479fb9aa44b68386742e2c04b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _Cible: {fileID: 0}
-  _ForceMouvement: 7
+  _ForceMouvement: 10
   _MaxSpeed: 2
   _MaxYSpeed: 20
   _JumpHeight: 1.2

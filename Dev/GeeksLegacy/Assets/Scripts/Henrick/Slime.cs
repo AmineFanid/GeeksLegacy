@@ -249,7 +249,7 @@ public class Slime : MonoBehaviour
 
     void OnUpdateATTACK() //UPDATE OF THE ATTACK STATE
     {
-        TileDetection t = FindFirstObjectByType<TileDetection>(); //GetcomponentInChildren ?????????????????????
+        TileDetection t = GetComponentInChildren<TileDetection>();
         //Debug.Log("instance de tile : " + t.GetInstanceID()); // Pas le meme tile ID
         if (t.PlayerDetection()) mFsm.SetCurrentState(SlimeState.ATTACK);
         else
