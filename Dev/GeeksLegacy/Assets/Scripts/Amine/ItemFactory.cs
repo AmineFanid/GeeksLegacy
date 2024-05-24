@@ -1,3 +1,6 @@
+// ItemFactory
+// Patron de conception Fabrique, permet d'instancier des item d'à peu près partout dans les autres scripts, selon le nom de l'item en string. Permet aussi, d'obtenir le Prefab d'un item selon un nom en string
+// Auteur: Amine Fanid 
 using UnityEngine;
 
 public class ItemFactory : MonoBehaviour

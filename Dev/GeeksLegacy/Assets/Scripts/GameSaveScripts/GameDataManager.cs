@@ -1,3 +1,7 @@
+// GameDataManager 
+// Permet de gérer nos données persistentes pour une partie en cours
+// Auteur : Amine Fanid
+using System.IO;
 using UnityEngine;
 
 public class GameDataManager : MonoBehaviour

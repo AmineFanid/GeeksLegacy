@@ -1,3 +1,6 @@
+// CharacterInventory
+// Classe CharacterInventory
+// Auteur: Amine Fanid 
 using UnityEngine;
 using System.Collections.Generic;
 using System;
@@ -6,7 +9,7 @@ using System;
 public class CharacterInventory
 {
 
-    public int numberOfItems { get; private set; } //n'importe quel script peut get la valeur, mais seulement ce script peut modifier la valeur
+    public int numberOfItems { get; private set; }
     public Dictionary<string, int> inventory { get; private set; }
 
     private Dictionary<string, Type> itemTypeMap = new Dictionary<string, Type>()
@@ -39,7 +42,7 @@ public class CharacterInventory
             return;
         }
 
-        numberOfItems++; //Pour sauvegarder le nombre d'item total
+        numberOfItems++;
         if (inventory.ContainsKey(itemName))
         {
             inventory[itemName]++;
@@ -52,7 +55,7 @@ public class CharacterInventory
     }
 
 
-    public void updateInventory() //Mettre à jour notre inventaire
+    public void updateInventory() 
     {
         
         foreach (KeyValuePair<string, int> kvp in this.inventory)

@@ -1,3 +1,6 @@
+// LoadUserData
+// Permet de lire dans le fichier JSON afin d'obtenir notre liste d'usager
+// Auteur : Amine Fanid
 using System.IO;
 using UnityEngine;
 

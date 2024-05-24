@@ -1,3 +1,6 @@
+// GeeksLegacyLauncher
+// Permet d'instancier une partie de Geek's Legacy, et communique avec les autres éléments du jeu pour la gestion de la partie.
+// Auteur: Amine Fanid 
 using UnityEngine;
 [DefaultExecutionOrder(15)]
 
@@ -10,7 +13,7 @@ public class GeeksLegacyLauncher : MonoBehaviour
     public CharacterInventory inventory;
     public Player player;
     int[,] map = null;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+
     void Start()
     {
         gameDataManager = FindFirstObjectByType<GameDataManager>();

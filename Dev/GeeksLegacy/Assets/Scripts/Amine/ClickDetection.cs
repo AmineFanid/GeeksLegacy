@@ -1,3 +1,6 @@
+// ClickDetection
+// Permet de détecter quel Tile a été cliquer, et permettre d'instancier des matériaux par exemple.
+// Auteur: Amine Fanid
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;

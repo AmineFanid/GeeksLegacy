@@ -1,3 +1,6 @@
+// Item
+// Classe abstraite utilisé par plusieurs sous classes d'items
+// Auteurs: Amine Fanid et Henrick Baril
 using System;
 using System.Collections.Generic;
 using UnityEngine;
@@ -16,7 +19,6 @@ public abstract class Item : MonoBehaviour
         return 0f;
     }
 
-    // Pour enlever des points de durabilité à l'item
     public void deductDurability(float pts)
     {
         this.itemDurability -= pts;

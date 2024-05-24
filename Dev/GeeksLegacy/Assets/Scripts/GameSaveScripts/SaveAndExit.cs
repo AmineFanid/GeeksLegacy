@@ -1,3 +1,6 @@
+// SaveAndExit
+// Permet d'enregistrer la partie de l'usager dans le fichier JSON
+// Auteur : Amine Fanid
 using UnityEngine;
 
 public class SaveAndExit : MonoBehaviour

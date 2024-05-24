@@ -1,3 +1,6 @@
+// Pickaxe
+// Sous-classe d'Item, outils tel que sword ou axe
+// Auteurs: Amine Fanid et Henrick Baril
 using System.Collections.Generic;
 using System;
 using UnityEngine;

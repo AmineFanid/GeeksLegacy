@@ -1,3 +1,6 @@
+// Player
+// Classe encapsulant des informations sur le joueur
+// Auteurs: Amine Fanid et Henrick Baril
 [System.Serializable]
 
 public class Player
