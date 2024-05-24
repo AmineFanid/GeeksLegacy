@@ -191,6 +191,62 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   usernameInputField: {fileID: 0}
   passwordInputField: {fileID: 0}
+--- !u!1 &351606947
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 351606949}
+  - component: {fileID: 351606948}
+  m_Layer: 0
+  m_Name: EnnemySpawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &351606948
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 351606947}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2b3fb1283952434ab31c7f095cbfa26, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _XSpawnLimitStart: 12
+  _XSpawnLimitEnd: 21
+  _YSpawnLimitStart: 8
+  _YSpawnLimitEnd: 13
+  _MaxSpawnableX: 21
+  _MinSpawnableX: -21
+  _MaxSpawnableY: 13
+  _MinSpawnableY: -13
+  _Slime: {fileID: 3282144701167911265, guid: 5bfa42b025cd03244a0a85f12d836046, type: 3}
+  _Wolf: {fileID: 1808570927791128511, guid: d9db0fcc5caaef647949c05ec5bebf23, type: 3}
+  _Dragon: {fileID: 7027996666550085531, guid: cf2ff5ea2cf1dbe4eae6cb1ee5d1de70, type: 3}
+  maxEnemies: 3
+--- !u!4 &351606949
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 351606947}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 49.632256, y: 101.90683, z: 1.1089505}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &441166871
 GameObject:
   m_ObjectHideFlags: 0
@@ -1421,6 +1477,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1640a0dbdd77be4baafe8391cc20bb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inventory:
+    maxSize: 9
+  player:
+    username: 
 --- !u!4 &2136344107
 Transform:
   m_ObjectHideFlags: 0
@@ -1446,3 +1506,4 @@ SceneRoots:
   - {fileID: 36741942}
   - {fileID: 2136344107}
   - {fileID: 754012033}
+  - {fileID: 351606949}
