@@ -1,4 +1,6 @@
-//Généré à l'aide de ChatGPT
+// ArrayUtils 
+// Permet de transformer notre matrice multidimensionnelle (carte du monde) en string et vice-versa, pour pouvoir la stocker dans le fichier JSON. Généré à l'aide de ChatGPT
+// Auteur : Amine Fanid
 public static class ArrayUtils
 {
     public static string ConvertToString(int[,] array)

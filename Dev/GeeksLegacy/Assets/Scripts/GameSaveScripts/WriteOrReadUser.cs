@@ -1,3 +1,7 @@
+// WriteOrReadUser
+// Permet d'écrire ou lire dans le fichier JSON
+// Auteur : Amine Fanid
+
 using System.IO;
 using UnityEngine;
 using UnityEngine.UI;

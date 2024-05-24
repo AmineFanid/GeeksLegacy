@@ -1,3 +1,6 @@
+// Axe
+// Classes Axe, et sous-classes WoodenAxe et IronAxe
+// Auteurs: Amine Fanid et Henrick Baril
 using System.Collections.Generic;
 using System;
 using UnityEngine;

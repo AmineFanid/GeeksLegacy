@@ -1,5 +1,6 @@
-
-
+// Dirt
+// Permet d'instancier un objet Dirt
+// Auteurs: Amine Fanid et Henrick Baril
 public class Dirt : Item
 {
 

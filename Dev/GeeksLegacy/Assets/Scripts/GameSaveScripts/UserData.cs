@@ -1,3 +1,6 @@
+// UserData
+// Structure des données à enregistrer dans le fichier JSON
+// Auteur : Amine Fanid
 using System.Collections.Generic;
 
 [System.Serializable]

@@ -1,3 +1,6 @@
+// EventManager
+// Permet d'applique le patron de conception Observer
+// Auteur: Amine Fanid 
 using UnityEngine;
 using UnityEngine.Events;
 using System.Collections;

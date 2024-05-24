@@ -1,10 +1,12 @@
+// ProceduralGeneration
+// Bibliothèque qui permet de gémérer une carte aléatoire, selon le nombre de biome, la hauteur et largeur que l'utilisateur met dans le script dans Unity
+// Auteur: Amine Fanid
 using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
 [DefaultExecutionOrder(25)]
-// Librairie qui permet de gémérer une carte aléatoire, selon le nombre de biome, la hauteur et largeur que l'utilisateur met dans le script dans Unity
 
 // Ici nous avons utilisé un tutoriel pour partir notre libraire et nous avons développé dessus pour obtenir ce résultat final.
 // Le tutoriel a été filmé par ChronoABI, il a mis comme référence un site qui contient des fonctions qu'on utilise dans notre code.

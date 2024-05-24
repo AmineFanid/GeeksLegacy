@@ -1,3 +1,6 @@
+// ControlCharacters
+// Gestion des actions du joueur et autres fonctionnalités du joueur
+// Auteurs: Amine Fanid et Henrick Baril
 using System;
 using System.Collections;
 using UnityEngine;

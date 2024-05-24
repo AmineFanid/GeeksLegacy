@@ -1,3 +1,6 @@
+// HealthBar
+// Gestion de la barre de vie
+// Auteurs: Amine Fanid et Henrick Baril
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -17,16 +20,16 @@ public class HealthBar : MonoBehaviour
         _EcouteurBruit += updateHealthBar;
         _PLayerObject = GameObject.FindGameObjectWithTag("Player");
         _PlayerControl = _PLayerObject.GetComponent<ControlCharacters>();
-        playersLife = _PlayerControl.findPlayerObject().GetLifePoint(); // Pour initialiser la variable playersLife avec la vie actuelle du joueur
-        EventManager.StartListening(EventManager.PossibleEvent.eVieJoueurChange, _EcouteurBruit); // Subscribe to eVieJoueurChange event
+        playersLife = _PlayerControl.findPlayerObject().GetLifePoint(); 
+        EventManager.StartListening(EventManager.PossibleEvent.eVieJoueurChange, _EcouteurBruit); 
     }
 
     void Update()
     {
-        _Animator.SetFloat("CurrentHP", playersLife); //Pour mettre a jour le sprite (animation) de la barre de vie
+        _Animator.SetFloat("CurrentHP", playersLife); 
     }
 
-    public void updateHealthBar(object newLife)//Pour mettre a jour playersLife
+    public void updateHealthBar(object newLife)
     {
         playersLife = (float)newLife;       
     }

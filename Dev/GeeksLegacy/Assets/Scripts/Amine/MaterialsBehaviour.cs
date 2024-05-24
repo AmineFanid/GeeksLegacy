@@ -1,3 +1,6 @@
+// MaterialsBehaviour 
+// Gestion des comportements et fonctionnalités des items dans le jeu (Dirt, Iron, etc).
+// Auteur: Amine Fanid 
 using System.Collections;
 using Unity.VisualScripting;
 using UnityEngine;

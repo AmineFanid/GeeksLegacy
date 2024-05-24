@@ -1,3 +1,6 @@
+// Inventory 
+// Gestion de l'inventaire dans le jeu.
+// Auteurs: Amine Fanid et Henrick Baril
 using System;
 using System.Collections.Generic;
 using System.Linq;
