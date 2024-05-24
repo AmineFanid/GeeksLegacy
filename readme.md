@@ -7,6 +7,9 @@ Notre projet consiste à programmer un jeu de plate-forme 2D, inspiré du jeu 2D
 ### Installation
 Pour ce travail, il faut utiliser la plateforme Unity et le langage C#. L'éditeur de code Visual Studio sera aussi nécessaire pour écrire en C#. Installer Unity est suffisant pour pouvoir travailler, si vous n'avez pas Visual Studio sur votre poste de travail, Unity peut l'installer pour vous. La version d'Unity 2023.3.0b10 (BETA) sera nécessaire pour faire rouler le projet.
 
+### Script
+Pour accéder aux différents script du projet veuillez suivre le chemin suivant : Dev\GeeksLegacy\Assets\Scripts.
+Ensuite, vous avez accès aux différents folder contenant tous les scripts. 
 
 ---
 ### Contact
