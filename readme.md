@@ -1,19 +1,12 @@
 # Geek's Legacy
 
-### Présentation
-Notre projet consiste à programmer un jeu de plate-forme 2D, inspiré du jeu « Terraria ». C’est un jeu du genre Bac à sable et aventure, et nous avons choisi de nous en inspirer pour notre travail de synthèse, car nous sommes intéressés par la conception d’une version plus simple du jeu. Notre jeu se nommera **Geek’s Legacy**.
+### PrÃ©sentation
+Notre projet consiste Ã  programmer un jeu de plate-forme 2D, inspirÃ© du jeu 2D Terraria. C'est un jeu du genre Bac Ã  sable et aventure, et nous avons choisi de nous en inspirer pour notre travail de synthÃ¨se, car nous sommes intÃ©ressÃ©s par la conception d'une version plus simple du jeu. Notre jeu se nommera **Geek's Legacy**.
 
 ---
 ### Installation
-Pour ce travail, il faut utiliser la plateforme Unity et le langage C#. L'éditeur de code Visual Studio sera aussi nécessaire pour écrire en C#. Installer Unity est suffisant pour pouvoir travailler, si vous n'avez pas Visual Studio sur votre poste de travail, Unity peut l'installer pour vous.
+Pour ce travail, il faut utiliser la plateforme Unity et le langage C#. L'Ã©diteur de code Visual Studio sera aussi nÃ©cessaire pour Ã©crire en C#. Installer Unity est suffisant pour pouvoir travailler, si vous n'avez pas Visual Studio sur votre poste de travail, Unity peut l'installer pour vous. La version d'Unity 2023.3.0b10 (BETA) sera nÃ©cessaire pour faire rouler le projet.
 
----
-### Utilisation
-- À venir
-
----
-### Références
-- À venir
 
 ---
 ### Contact
