@@ -1,3 +1,6 @@
+// TileDetection 
+// Gestion de la détection des tilemap pour les ennemies leur permettant de sauter et de se mouvoir dans la map.
+// Auteurs: Henrick Baril
 using System;
 using System.Collections;
 using System.Collections.Generic;

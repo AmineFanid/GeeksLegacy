@@ -1,3 +1,6 @@
+// FiniteStateMachine 
+// Namespace contenant le skelette de la FSM
+// Auteurs: https://faramira.com/finite-state-machine-using-csharp-delegates-in-unity/ Code tirer a 100% de se site.
 using System;
 using System.Collections.Generic;
 using System.Text;

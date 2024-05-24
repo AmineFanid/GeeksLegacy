@@ -1,3 +1,6 @@
+// ForceAnimationVirtualJoystick 
+// Forcer les animations selon la direction donné
+// Auteurs: Marc-André Lavoie lors du cours de jeu-vidéo (https://bitbucket.org/akilea/foretmagiqueint/src/master/Assets/Script/ForceAnimationVirtualJoystick.cs)
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;

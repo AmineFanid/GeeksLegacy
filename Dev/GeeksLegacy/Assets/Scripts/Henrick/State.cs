@@ -1,6 +1,9 @@
+// State 
+// Namespace pour les états de la FSM (Delegate et fonction virtual)
+// Auteurs: https://faramira.com/finite-state-machine-using-csharp-delegates-in-unity/ Code tirer a 100% de se site.
+
 using System.Collections;
 using System.Collections.Generic;
-
 
 /// <summary>
 /// Our objective is to implement a finite state machine using 

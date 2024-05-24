@@ -1,3 +1,6 @@
+// Slime 
+// Gestion du comportement du slime en fonction de l'état.
+// Auteurs: Henrick Baril
 using UnityEngine;
 using Patterns;
 using System.Collections;

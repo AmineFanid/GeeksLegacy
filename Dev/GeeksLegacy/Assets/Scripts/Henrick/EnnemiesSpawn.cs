@@ -1,3 +1,7 @@
+// EnnemiesSpawner
+// Classes: EnnemiesSpawn, Node
+// Permet de généré les ennemies
+// Auteurs: Henrick Baril
 using NUnit.Framework.Constraints;
 using System.Collections.Generic;
 using UnityEngine;
