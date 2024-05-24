@@ -4,12 +4,10 @@ using UnityEngine;
 
 public class Pickaxe : Item
 {
-
     public float damage;
-
     public Pickaxe()
     {
-      
+        
     }
 }
 public class WoodenPickaxe : Pickaxe
@@ -28,7 +26,7 @@ public class WoodenPickaxe : Pickaxe
         };
     }
 
-    public override float DoDamage()
+    public override float doDamage()
     {
         return damage;
     }
@@ -51,7 +49,7 @@ public class IronPickaxe : Pickaxe
         };
     }
 
-    public override float DoDamage()
+    public override float doDamage()
     {
         return damage;
     }

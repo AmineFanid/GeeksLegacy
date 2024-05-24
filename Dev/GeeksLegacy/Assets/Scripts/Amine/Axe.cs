@@ -29,7 +29,7 @@ public class WoodenAxe : Axe
         damage = 5.0f;
     }
 
-    public override float DoDamage()
+    public override float doDamage()
     {
         return damage;
     }
@@ -54,7 +54,7 @@ public class IronAxe : Axe
         damage = 10.0f;
     }
 
-    public override float DoDamage()
+    public override float doDamage()
     {
         return damage;
     }

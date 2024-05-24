@@ -1,8 +1,6 @@
-using System;
-//Entièrement généré par ChatGPT
+//Généré à l'aide de ChatGPT
 public static class ArrayUtils
 {
-    // Convert int[,] to string
     public static string ConvertToString(int[,] array)
     {
         int rows = array.GetLength(0);
@@ -18,11 +16,8 @@ public static class ArrayUtils
                 elements[index++] = array[i, j].ToString();
             }
         }
-
         return string.Join(",", elements);
     }
-
-    // Convert string to int[,]
     public static int[,] ConvertToIntArray(string str, int rows, int cols)
     {
         string[] elements = str.Split(',');
@@ -37,7 +32,6 @@ public static class ArrayUtils
                 array[i, j] = int.Parse(elements[index++]);
             }
         }
-
         return array;
     }
 }

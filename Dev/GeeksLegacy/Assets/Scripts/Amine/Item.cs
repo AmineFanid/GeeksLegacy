@@ -9,30 +9,17 @@ public abstract class Item : MonoBehaviour
     public Sprite itemSprite { get; set; }
     [SerializeField] public GameObject itemPrefab { get; set; }
     public Dictionary<string, int> recipe;
-    public float itemDurability { get; set; }
-    //public List<String> recipe;
+    public float itemDurability { get; set; }  
     
-    public Item()
-    {
-    } 
-    
-    
-    public virtual float DoDamage()
+    public virtual float doDamage()
     {
         return 0f;
     }
 
-
-
     // Pour enlever des points de durabilité à l'item
-    public void DeductDurability(float pts)
+    public void deductDurability(float pts)
     {
         this.itemDurability -= pts;
     }
 
-    /*
-    public GameObject itemPrefab()
-    {
-
-    }*/
 }

@@ -2,7 +2,7 @@ using NUnit.Framework.Constraints;
 using System.Collections.Generic;
 using UnityEngine;
 
-//Type d'ennemie
+//Type d'ennemis
 public enum EnemyType
 {
     Slime,
@@ -44,9 +44,9 @@ public class EnnemiesSpawn : MonoBehaviour
 
     private Vector2 _PlayerPosition;
     private Node head;
-    private int enemyCount = 0;
+    private int _EnemyCount = 0;
     [SerializeField]
-    private int maxEnemies = 1; // Nombre maximal d'ennemis autorisés
+    private int _MaxEnemies = 1; // Nombre maximal d'ennemis autorisés
     private EnnemiesSpawn _List;
     private bool _CanSpawn = false;
     private GameObject _Character;
@@ -77,14 +77,13 @@ public class EnnemiesSpawn : MonoBehaviour
     public void AddNode()
     {
 
-        //Debug.Log(enemyCount);
         GameObject enemyInstance = null;
         Node newNode = null;
         _CanSpawn = false;
 
-        if (enemyCount >= maxEnemies)
+        if (_EnemyCount >= _MaxEnemies)
         {
-            Debug.Log("Limite d'ennemis atteinte !");
+            //Limite d'ennemis atteinte
             return;
         }
 
@@ -92,7 +91,7 @@ public class EnnemiesSpawn : MonoBehaviour
         GameObject enemyPrefab = GetEnemyPrefab(randomEnemyType); // Obtenez le prefab de l'ennemi en fonction du type
         if (enemyPrefab == null)
         {
-            Debug.LogError("Prefab d'ennemi introuvable pour le type: " + randomEnemyType);
+            //Prefab d'ennemi introuvable pour le type randomEnemyType
             return;
         }
 
@@ -105,11 +104,9 @@ public class EnnemiesSpawn : MonoBehaviour
             // Créer un Vector2 aléatoire à partir des valeurs générées
             Vector2 ennemieSpawnPoint = new Vector2(randomX, randomY);
 
-            //Debug.Log(enemyPrefab);
 
             if (CanSpawnArea(ennemieSpawnPoint))
             {
-                //Debug.Log("SPAWN");
                 _CanSpawn = true;
                 enemyInstance = Instantiate(enemyPrefab, ennemieSpawnPoint, Quaternion.identity); // Instancier l'ennemi
             }
@@ -135,7 +132,7 @@ public class EnnemiesSpawn : MonoBehaviour
             lastNode.next = newNode;
         }
 
-        enemyCount++; // Incrémenter le compteur d'ennemis
+        _EnemyCount++; // Incrémenter le compteur d'ennemis
     }
 
     //Détermine quel prefab d'ennemi doit etre retourner
@@ -174,24 +171,17 @@ public class EnnemiesSpawn : MonoBehaviour
                     prevNode.next = currentNode.next;
                 }
                 Destroy(enemyInstanceToRemove); // Détruire l'ennemi
-                enemyCount--; // Décrémenter le compteur d'ennemis
+                _EnemyCount--; // Décrémenter le compteur d'ennemis
                 return;
             }
             prevNode = currentNode;
             currentNode = currentNode.next;
         }
-
-        Debug.LogError("Ennemi à supprimer introuvable dans la liste !");
     }
 
     //Vérification de possibilité de spawn
     public bool CanSpawnArea(Vector2 ennemieSpawnPoint) {
-        _PlayerPosition = GameObject.FindGameObjectWithTag("Player").transform.position;
-
-        //List<int[]> temp = _Generation.GetSurface();
-
-        //Debug.Log(temp);
-        
+        _PlayerPosition = GameObject.FindGameObjectWithTag("Player").transform.position;        
         //Limite gauche
         bool leftLimit = ennemieSpawnPoint.x < -_XSpawnLimitStart - _PlayerPosition.x
             && ennemieSpawnPoint.x >= -_XSpawnLimitEnd - _PlayerPosition.x;
@@ -210,15 +200,12 @@ public class EnnemiesSpawn : MonoBehaviour
         else
             return false;
     }
-
-    //Debug fonction
     public void PrintList()
     {
         Node currentNode = head;
 
         while (currentNode != null)
         {
-            //Debug.Log("Enemy Type: " + currentNode.enemyType);
             currentNode = currentNode.next;
         }
     }
@@ -227,6 +214,5 @@ public class EnnemiesSpawn : MonoBehaviour
     {
         _List = new EnnemiesSpawn();
         InvokeRepeating("AddNode", 5.0f, 5.0f);
-        //_Generation.GetComponent<ProceduralGeneration>();
     }
 }

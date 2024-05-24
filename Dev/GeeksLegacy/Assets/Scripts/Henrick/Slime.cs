@@ -463,8 +463,8 @@ public class Slime : MonoBehaviour
             //Debug.Log(collision.gameObject);
             if (collisionObject != null)
             {
-                if (_CurrentHealth - collisionObject.DoDamage() >= 0)
-                    _CurrentHealth -= collisionObject.DoDamage();
+                if (_CurrentHealth - collisionObject.doDamage() >= 0)
+                    _CurrentHealth -= collisionObject.doDamage();
                 else if (_CurrentHealth <= 0)
                     mFsm.SetCurrentState(SlimeState.DIE);
             }

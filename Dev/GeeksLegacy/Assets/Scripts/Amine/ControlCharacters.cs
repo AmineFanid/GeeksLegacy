@@ -36,25 +36,20 @@ public class ControlCharacters : MonoBehaviour
     private Animator _Animator;
     private Rigidbody2D _Rigidbody;
     private float _ControleX;
-    private int playerLayer;
-    private int ennemiesLayer;
+    private int _PlayerLayer;
+    private int _EnnemiesLayer;
     private Rigidbody2D _ToolRigidBody;
-    //GameDataManager gameDataManager;
-    //UserData currentUser;
     GeeksLegacyLauncher geeksLegacyLauncher;
     public void Start()
     {
-        geeksLegacyLauncher = FindFirstObjectByType<GeeksLegacyLauncher>();
-       
+        geeksLegacyLauncher = FindFirstObjectByType<GeeksLegacyLauncher>();       
         _Animator = GetComponent<Animator>();
         _Rigidbody = GetComponent<Rigidbody2D>();
-
-
-        player = geeksLegacyLauncher.getPlayerFromDB();
+        player = geeksLegacyLauncher.getPlayerFromDB(); //Obtient le player depuis la base de donnée
         inventory = new CharacterInventory();
-        player.SetPlayerInventory(inventory);
-        playerLayer = LayerMask.NameToLayer("Player");
-        ennemiesLayer = LayerMask.NameToLayer("Ennemies");
+        player.SetPlayerInventory(inventory); //Temporaire, en attendant d'ajouter les fonctionnalités qui vont permettre de sérialiser CharacterInventory
+        _PlayerLayer = LayerMask.NameToLayer("Player");
+        _EnnemiesLayer = LayerMask.NameToLayer("Ennemies");
         _ToolRigidBody = this.gameObject.GetComponentInChildren<Rigidbody2D>();
     }
 
@@ -108,7 +103,7 @@ public class ControlCharacters : MonoBehaviour
             }
         }
     }
-    private IEnumerator AttackingAnimation(bool IsRight) //Attacking
+    private IEnumerator AttackingAnimation(bool IsRight) 
     {
         _Animator.SetBool("FaceRight", IsRight);
         _Animator.SetBool("Attacking", true);
@@ -131,7 +126,7 @@ public class ControlCharacters : MonoBehaviour
         if (kBCounter <= 0)
         {
             _Animator.SetBool("GetHit", false);
-            Physics2D.IgnoreLayerCollision(playerLayer, ennemiesLayer, false);
+            Physics2D.IgnoreLayerCollision(_PlayerLayer, _EnnemiesLayer, false);
 
             int groundLayerMask = LayerMask.GetMask("Ground");
             _isGrounded = Physics2D.Raycast(transform.position, Vector2.down, 0.9f, groundLayerMask);
@@ -144,7 +139,7 @@ public class ControlCharacters : MonoBehaviour
         else
         {
             _Animator.SetBool("GetHit", true);
-            Physics2D.IgnoreLayerCollision(playerLayer, ennemiesLayer, true);
+            Physics2D.IgnoreLayerCollision(_PlayerLayer, _EnnemiesLayer, true);
 
             KnockBack();
             kBCounter -= Time.deltaTime;
@@ -173,23 +168,23 @@ public class ControlCharacters : MonoBehaviour
 
     public void MaxingSpeed()
     {
-        //Vérification pour limité la vitesse en x positif
+        //Vérification pour limiter la vitesse en x positif
         if (_Rigidbody.velocity.x >= _MaxSpeed)
         {
             _Rigidbody.velocity = new Vector2(_MaxSpeed, _Rigidbody.velocity.y);
-            //Vérification pour limité la vitesse en y négatif
+            //Vérification pour limiter la vitesse en y négatif
             if (_Rigidbody.velocity.y <= _MaxYSpeed * -1)
                 _Rigidbody.velocity = new Vector2(_MaxSpeed, _MaxYSpeed * -1);
         }
-        //Vérification pour limité la vitesse en x négatif
+        //Vérification pour limiter la vitesse en x négatif
         if (_Rigidbody.velocity.x <= _MaxSpeed * -1)
         {
             _Rigidbody.velocity = new Vector2(_MaxSpeed * -1, _Rigidbody.velocity.y);
-            //Vérification pour limité la vitesse en y négatif
+            //Vérification pour limiter la vitesse en y négatif
             if (_Rigidbody.velocity.y <= _MaxYSpeed * -1)
                 _Rigidbody.velocity = new Vector2(_MaxSpeed * -1, _MaxYSpeed * -1);
         }
-        //Vérification pour limité la vitesse en y négatif
+        //Vérification pour limiter la vitesse en y négatif
         if (_Rigidbody.velocity.y <= _MaxYSpeed * -1)
             _Rigidbody.velocity = new Vector2(_Rigidbody.velocity.x, _MaxYSpeed * -1);
     }
@@ -207,15 +202,5 @@ public class ControlCharacters : MonoBehaviour
         return player;
     }
 
-    public void setPlayer(Player player)
-    {
-        this.player = player;
-    }
-    /*
-    public int[,] getPlayerMap()
-    {
-        return currentUser.map;
-    }
-    */
 }
 
