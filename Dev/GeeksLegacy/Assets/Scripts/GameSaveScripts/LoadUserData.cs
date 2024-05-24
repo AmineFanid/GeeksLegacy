@@ -3,20 +3,20 @@ using UnityEngine;
 
 public class LoadUserData : MonoBehaviour
 {
-    private string filePath;
+    private string _FilePath;
 
     void Start()
     {
-        filePath = Application.dataPath + "/UserDataFile.json";
+        _FilePath = Application.dataPath + "/UserDataFile.json";
     }
 
     public UserDataList loadData()
     {
-        if (File.Exists(filePath))
+        if (File.Exists(_FilePath))
         {
             try
             {
-                string json = File.ReadAllText(filePath);
+                string json = File.ReadAllText(_FilePath);
                 return JsonUtility.FromJson<UserDataList>(json);
             }
             catch (IOException e)

@@ -4,43 +4,34 @@ using UnityEngine;
 
 public class MaterialsBehaviour : MonoBehaviour
 {
-    public float detectionRadius = 5.0f; // Rayon pour detecter le joueur quand y est proche
-    private GameObject pushingP;
-    private Player player;
+    public float detectionRadius = 5.0f; // Rayon pour detecter le joueur quand il est proche
+    private GameObject _InstanceOfPlayer;
     private ControlCharacters playerControl;
     private bool _Collected = false;
     private Vector3 _Start;
-    public float duration = 3f;
+    private float _Duration = 3f;
     private float _ElapsedTime;
-    public Vector3 characpos;
     [SerializeField] string itemName;
-    private CharacterInventory characInventory;
+    private CharacterInventory _CharacInventory;
 
 
-    //public void 
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        pushingP = GameObject.FindGameObjectWithTag("Player");
-        playerControl = pushingP.GetComponent<ControlCharacters>();
-        characInventory = playerControl.findPlayerObject().GetPlayerInventory();
+        _InstanceOfPlayer = GameObject.FindGameObjectWithTag("Player");
+        playerControl = _InstanceOfPlayer.GetComponent<ControlCharacters>();
+        _CharacInventory = playerControl.findPlayerObject().GetPlayerInventory();
         _Start = transform.position;
-        
-
     }
 
-    // Update is called once per frame
     void Update()
     {
         _ElapsedTime += Time.deltaTime;
-        float distance = Vector3.Distance(transform.position, pushingP.transform.position);
+        float distance = Vector3.Distance(transform.position, _InstanceOfPlayer.transform.position);
         float finalSpeed = (distance / 5);
-
 
         if (!_Collected)
         {
-
             if (distance < detectionRadius)
             {
                 _Collected = true;
@@ -48,25 +39,23 @@ public class MaterialsBehaviour : MonoBehaviour
         }
         else
         {
-            if (characInventory.canAddInventory()) {
-                float percentageDestination = _ElapsedTime / duration;
+            if (_CharacInventory.canAddInventory()) {
+                float percentageDestination = _ElapsedTime / _Duration;
 
-                transform.position = Vector3.Lerp(transform.position, pushingP.transform.position, Time.deltaTime / finalSpeed);
+                transform.position = Vector3.Lerp(transform.position, _InstanceOfPlayer.transform.position, Time.deltaTime / finalSpeed);
             }            
         }
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-       //CharacInventory = other.GetComponent<CharacterInventory>();
-        if (characInventory != null)
+        if (_CharacInventory != null)
         {
-            if(itemName != null && characInventory.canAddInventory())
+            if(itemName != null && _CharacInventory.canAddInventory())
             {
-                characInventory.addItem(itemName);
+                _CharacInventory.addItem(itemName);
                 Destroy(gameObject);
             }
         }
     }
-
 }

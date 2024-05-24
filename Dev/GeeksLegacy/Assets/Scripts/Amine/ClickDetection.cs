@@ -19,7 +19,6 @@ public class ClickDetection : MonoBehaviour
     {
         proceduralGeneration = FindFirstObjectByType<ProceduralGeneration>();
         iFactory = FindFirstObjectByType<ItemFactory>();
-
     }
 
 
@@ -28,41 +27,35 @@ public class ClickDetection : MonoBehaviour
         
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
-           //Vector3? est un nullable type, normalement on peut pas avoir de null pour les vector3 et puisqu'un vecteur3 (0,0,0) est une position réelle, on utilise le nullable vector? et on verifie s'il y a qlqchose dedans.
-            Vector3? clickLocation = GetTheTile();
+           //Vector3? est un nullable type, normalement on peut pas avoir de null pour les vector3 et puisqu'un vecteur3 (0,0,0) est une position réelle, on utilise le nullable vector? et on verifie s'il y a quelquechose dedans.
+            Vector3? clickLocation = getTheTile();
             if (clickLocation.HasValue)
             {
-                // The method returned a non-null value
                 Vector3 location = clickLocation.Value;
-                // Now you can use 'location' for further processing
-                //Debug.Log("Clicked on tile at position: " + location);
                 if (proceduralGeneration) { 
                     destroyTile(location);
                 }
-                else { Debug.Log("no instance of proceduralGeneration detected"); }
+                else { Debug.Log("Pas d'instance de proceduralGeneration detecté"); }
             }
             else
             {
-                // The method returned null
-                Debug.Log("Clicked outside of any tile.");
+                Debug.Log("Vous n'avez pas cliqué sur une tile");
             }
 
         }
 
     }
 
-    public Vector3? GetTheTile()
+    public Vector3? getTheTile()
     {
         Vector3 mp = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         location = tiles.WorldToCell(mp);
 
         if (tiles.GetTile(location)) {
-            //Debug.Log("Tile Here : " + location);
             return location;
         }
         else
         {
-            //Debug.Log("Empty Here");
             return null;
         }
     }

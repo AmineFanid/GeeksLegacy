@@ -14,56 +14,48 @@ public class Inventory : MonoBehaviour
     private ControlCharacters _PlayerControl;
     public CharacterInventory inventory;
     private Animator _AnimatorInv;
-    int InventoryIndex = 0;
+    int inventoryIndex = 0;
     public Sprite[] spriteArray;
     int keyIndex = -1;
     public ItemFactory iFactory;
     GeeksLegacyLauncher geeksLegacyLauncher;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         geeksLegacyLauncher = FindFirstObjectByType<GeeksLegacyLauncher>();
-
         spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
         _AnimatorInv = GetComponent<Animator>();
-
         _PLayerObject = GameObject.FindGameObjectWithTag("Player");
         _PlayerControl = _PLayerObject.GetComponent<ControlCharacters>();
         inventory = geeksLegacyLauncher.getPlayerFromDB().GetPlayerInventory();
         iFactory = FindFirstObjectByType<ItemFactory>();
-
     }
 
-    // Update is called once per frame
     void Update()
-    {
+    { 
+        // Pour le côté FrontEnd de l'inventaire, permet de scroll la souris et ainsi se déplacer d'index en index dans l'inventaire
         if (Input.GetAxisRaw("Scroll") > 0.0f)
         {
             _AnimatorInv.SetTrigger("ScrollUp");
-            InventoryIndex++;
+            inventoryIndex++;
         }
         if (Input.GetAxisRaw("Scroll") < 0.0f)
         {
             _AnimatorInv.SetTrigger("ScrollDown");
-            InventoryIndex--;
+            inventoryIndex--;
         }
-        //// ICI ON VA AVOIR LA GESTION DU VISUEL DE SPRITE
+
+        //Pour la gestion de l'inventaire
         if(inventory.inventoryCount() > 0)
         {
 
-            // If keyIndex is not set or out of bounds, set it to 0
             if (keyIndex == -1 || keyIndex >= inventory.inventoryCount())
             {
                 keyIndex = 0;
             }
-            
-
-            //inventory.insideOfInventory();
-            foreach (KeyValuePair<string, int> kvp in inventory.getInventoryDict())
+            //Permet l'affichage des éléments dans l'inventaire selon ce qu'on a dant l'inventaire, ainsi que le nombre de chaque élément
+            foreach (KeyValuePair<string, int> kvp in inventory.getInventoryDict()) //Parcours le dictionnaire dans l'inventaire, qui contient les infos sur les éléments dans l'inventaire
             {
-                string keyAtIndex = inventory.getInventoryDict().Keys.ElementAt(keyIndex); //Pas sur encore. a verifier quand on a plus de chose dans notre dictionaire
-
                 GameObject slot = this.gameObject.transform.GetChild(keyIndex).gameObject;
                 if(kvp.Value > 0)
                 {
@@ -77,14 +69,14 @@ public class Inventory : MonoBehaviour
                 }
             }
 
-            if (Input.GetButtonDown("Throw"))
+            if (Input.GetButtonDown("Throw")) // "g" dans le clavier
             {
-                throwAwaySum(InventoryIndex%9);
+                throwAwaySum(inventoryIndex % 9); // Pour jeter un élément de l'inventaire
             }
         
         }
         try { 
-            inventory.updateInventory();
+            inventory.updateInventory(); //Mettre à jour notre inventaire
         }
         catch(Exception e)
         {
@@ -92,24 +84,24 @@ public class Inventory : MonoBehaviour
         }
     }
 
-    public void throwAwaySum(int indexInventory)
+    public void throwAwaySum(int indexInventory) // Pour jeter un élément de l'inventaire
     {
         int i = 0;
         Dictionary<string, int> tempDict = inventory.getInventoryDict();
         List<string> keysToRemove = new List<string>();
-        foreach (KeyValuePair<string, int> kvp in tempDict)
+        foreach (KeyValuePair<string, int> kvp in tempDict) //Parcours l'inventaire
         {
-            if (i == indexInventory)
+            if (i == indexInventory) // trouve l'élément à l'index
             {
                 string s = kvp.Key;
-                //EventManager.TriggerEvent(EventManager.PossibleEvent.eVieJoueurChange, s); // Utilisation de l'observer
-                if (inventory.inInventory(s)) { 
+                if (inventory.inInventory(s))
+                { 
                     Vector3 characPosition = _PlayerControl.transform.position;
-                    Vector2 direction = _PlayerControl.GetDirectionPersonnage();
+                    Vector2 direction = _PlayerControl.GetDirectionPersonnage(); //le jette à gauche ou a droite du personnage selon la direction à laquelle il fait face
                     characPosition.x += direction.x != 0.0f ? (direction.x * 2) : 2.0f;
-                    GameObject temp = iFactory.getPrefab(s);
-                    Instantiate(temp, characPosition, Quaternion.identity);
-                    keysToRemove.Add(s);
+                    GameObject temp = iFactory.getPrefab(s); 
+                    Instantiate(temp, characPosition, Quaternion.identity); //Instantie un Prefab de l'élément jeté.
+                    keysToRemove.Add(s); // Ajoute la clé dans cette liste qu'on va parcourir plus tard, pour supprimer un des éléments de l'inventaire
                     break;
                 }
             }
@@ -117,11 +109,11 @@ public class Inventory : MonoBehaviour
         }
         foreach (string key in keysToRemove)
         {
-            inventory.deleteOne(key);
+            inventory.deleteOne(key); // Supprime 1 exemplaire d'un élément de l'inventaire, pour chaque élément jeté
         }
     }
 
-    public int changeSprite(string dictKey)
+    public int changeSprite(string dictKey) //Pour le sprite dans l'inventaire, selon la liste de Sprite dans Unity
     {
         switch (dictKey)
         {

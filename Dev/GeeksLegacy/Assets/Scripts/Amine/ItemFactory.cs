@@ -17,7 +17,6 @@ public class ItemFactory : MonoBehaviour
             case "Wood":
                 return new Wood();
             default:
-                Debug.LogError("Unknown item type: " + itemType);
                 return null;
         }
     }
@@ -33,20 +32,7 @@ public class ItemFactory : MonoBehaviour
             case "Wood":
                 return woodPrefab;
             default:
-                Debug.LogError("Unknown item type: " + itemType);
                 return null;
         }
     }
-
-
-    /*
-    public void InstantiateItemPrefab(Item item, Vector3 position, Quaternion rotation)
-    {
-        if (item is Dirt && dirtPrefab != null)
-        {
-            Instantiate(dirtPrefab, position, rotation);
-        }
-        // Add similar checks for other item types
-    }
-    */
 }

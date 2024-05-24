@@ -7,12 +7,11 @@ public class Player
     private CharacterInventory _Inventory;
     public int[,] map;
 
-
     public Player(string username, float lifePoint, CharacterInventory inventory)
     {
         this.username = username;
-        this._LifePoint = lifePoint;
-        this._Inventory = inventory;
+        _LifePoint = lifePoint;
+        _Inventory = inventory;
     }
 
     public float GetLifePoint()
@@ -22,22 +21,22 @@ public class Player
 
     public void SetLifePoint(float NewLifePoint)
     {
-        this._LifePoint = NewLifePoint;
+        _LifePoint = NewLifePoint;
     }
 
     public CharacterInventory GetPlayerInventory()
     {
-        return this._Inventory;
+        return _Inventory;
     }
 
     public void SetPlayerInventory(CharacterInventory NewInventory)
     {
-        this._Inventory = NewInventory;
+        _Inventory = NewInventory;
     }
 
     public void TakeDamage(float damage)
     {
-        this._LifePoint -= damage;
-        EventManager.TriggerEvent(EventManager.PossibleEvent.eVieJoueurChange, this._LifePoint);
+        _LifePoint -= damage;
+        EventManager.TriggerEvent(EventManager.PossibleEvent.eVieJoueurChange, _LifePoint); // Utilisation de l'observer
     }
 }

@@ -1,11 +1,18 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
 [DefaultExecutionOrder(25)]
+// Librairie qui permet de gémérer une carte aléatoire, selon le nombre de biome, la hauteur et largeur que l'utilisateur met dans le script dans Unity
+
+// Ici nous avons utilisé un tutoriel pour partir notre libraire et nous avons développé dessus pour obtenir ce résultat final.
+// Le tutoriel a été filmé par ChronoABI, il a mis comme référence un site qui contient des fonctions qu'on utilise dans notre code.
+// ref 1: https://youtu.be/neTvQEDhZZM?si=7Bdp6xrINJxV7MQU (Vidéo de ChronoABI)
+// ref 1.5 : https://blog.unity.com/engine-platform/procedural-patterns-you-can-use-with-tilemaps-part-1 (Site web référencé par ChronoABI)
+// ref 2: https://youtu.be/l5KVBDOsHfg?si=_RxjTLFp0sT07Zml (Vidéo de ChronoABI)
+// ref 2.5 : https://blog.unity.com/engine-platform/procedural-patterns-to-use-with-tilemaps-part-2 (Site web référencé par ChronoABI)
+//Les fonctions qui ont été inspiré/fondé sur le code de ChronoABI arboreront ce commentaire : "// Inspiré ou provenant de la vidéo de ChronoABI"
 
 public class ProceduralGeneration : MonoBehaviour
 {
@@ -24,7 +31,6 @@ public class ProceduralGeneration : MonoBehaviour
     [SerializeField] int height;
     [SerializeField] float smoothness;
     int[] perlinHeightList;
-
 
     [Header("Minerals")]
     [Range(90, 100)]
@@ -89,7 +95,6 @@ public class ProceduralGeneration : MonoBehaviour
 
     int biomeCount;
 
-    // Start is called before the first frame update
     void Start()
     {
 
@@ -97,13 +102,13 @@ public class ProceduralGeneration : MonoBehaviour
 
     private void Update()
     {
-        if (map.GetLength(0) > 0) // Au cas ou c'est soit un nouvel usager, qui n'a pas de vrai map
+        if (map.GetLength(0) > 0) // Limite l'appel de RenderMap() pour les nouveaux usagers, tant qu'ils n'ont pas de Map complète
         {
             RenderMap(map);
         }
     }
 
-    public int BiomeCount()
+    public int BiomeCount() //Retourne le nombre de biomes existant
     {
         int biomeCount = 0;
         if (firstTile != null) biomeCount++;
@@ -114,9 +119,9 @@ public class ProceduralGeneration : MonoBehaviour
 
     public void prepareProceduralGeneration()
     {
-        biomeCount = BiomeCount(); // On get le nombre de biome ici
+        biomeCount = BiomeCount(); 
         BiomeRandomization();
-        perlinHeightList = new int[width]; //liste de la taille de notre width
+        perlinHeightList = new int[width]; 
         surface = new List<int[]>();
         biomeNames = new Dictionary<int, string>();
         if (mineralTile != null)
@@ -157,7 +162,7 @@ public class ProceduralGeneration : MonoBehaviour
     }
 
 
-    public void Generation()
+    public void Generation() // Inspiré ou provenant de la vidéo de ChronoABI
     {
         clearMap();
         if (map.GetLength(0) <= 0)
@@ -176,7 +181,8 @@ public class ProceduralGeneration : MonoBehaviour
         RenderMap(map);
     }
 
-    public int[,] GenerateArray(int width, int height, bool empty) { 
+    public int[,] GenerateArray(int width, int height, bool empty) // Inspiré ou provenant de la vidéo de ChronoABI
+    { 
 
         int[,] map = new int[width, height];   
 
@@ -207,11 +213,11 @@ public class ProceduralGeneration : MonoBehaviour
             case 2:
                 return thirdBiomeVal; // Return la valeur du troisieme biome
             default:
-                return firstBiomeVal; 
+                return firstBiomeVal; // Return la valeur de 1er biome par défaut
         }
     }
 
-    public int[,] TerrainGeneration(int[,] map)
+    public int[,] TerrainGeneration(int[,] map) // Inspiré ou provenant de la vidéo de ChronoABI
     {
         System.Random pseudoRandom = new System.Random(seed.GetHashCode()); //Nous donne des valeurs aléatoires selon notre seed
         int perlinhHeight;
@@ -229,7 +235,7 @@ public class ProceduralGeneration : MonoBehaviour
         return map;
     }
 
-    public void smoothMap(int nbSmoothing) 
+    public void smoothMap(int nbSmoothing) // Inspiré ou provenant de la vidéo de ChronoABI
     {
         int num = firstBiomeVal;
         for (int i = 0; i < nbSmoothing; i++)
@@ -247,7 +253,6 @@ public class ProceduralGeneration : MonoBehaviour
                     {
                         //Moore's neighborhood
                         int surroundingGroundCount = GetSurroundingGroundCount(x,y, caveVal);
-                        //GetSurfaceGround(x, y);
                         if (surroundingGroundCount > 4)
                         {
                             map[x, y] = num;
@@ -262,7 +267,7 @@ public class ProceduralGeneration : MonoBehaviour
         }
     }
 
-    public void mineralSmoothing(int nbSmoothingMinerals)
+    public void mineralSmoothing(int nbSmoothingMinerals) // Inspiré ou provenant de la vidéo de ChronoABI
     {
         for (int i = 0; i < nbSmoothingMinerals; i++)
         {
@@ -270,13 +275,13 @@ public class ProceduralGeneration : MonoBehaviour
             {
                 for (int y = 0; y < perlinHeightList[x]; y++)
                 {
-                    // If the tile is not a mineral, check its neighbors
+                    // Si la tile n'est pas un mineral, on check ses voisins
                     if (map[x, y] != firstMineralVal)
                     {
-                        // Count the number of neighboring mineral tiles
+                        // Compte le nombre de tile de mineral autour
                         int mineralCount = GetSurroundingMineralCount(x, y, firstMineralVal);
 
-                        // If there are at least 4 neighboring mineral tiles, convert this tile to a mineral
+                        // Si on a au moins 4 tiles autour qui sont des tiles de mineral, on transforme cette tile en mineral
                         if(mineralCount < 4)
                         {
                             continue;
@@ -324,7 +329,7 @@ public class ProceduralGeneration : MonoBehaviour
     }
 
 
-    public int GetSurroundingGroundCount(int gridX, int gridY, int val) 
+    public int GetSurroundingGroundCount(int gridX, int gridY, int val) // Inspiré ou provenant de la vidéo de ChronoABI
     {
         //Fonction qui nous permet de compter les occurences de ground ou cave/mineral autour de chaque tile
         int groundCount = 0;
@@ -349,7 +354,7 @@ public class ProceduralGeneration : MonoBehaviour
         return groundCount;
     }
 
-    public int GetSurroundingMineralCount(int gridX, int gridY, int val)
+    public int GetSurroundingMineralCount(int gridX, int gridY, int val) // Inspiré ou provenant de la vidéo de ChronoABI
     {
         //Fonction qui nous permet de compter les occurences de ground ou cave/mineral autour de chaque tile
         int mineralCount = 0;
@@ -374,7 +379,7 @@ public class ProceduralGeneration : MonoBehaviour
         return mineralCount;
     }
 
-    public void BiomeNumAssignation() //Crée par Amine et amélioré par chatGPT
+    public void BiomeNumAssignation() //Créée par Amine et amélioré/complété par chatGPT
     {
         System.Random random = new System.Random();
 
@@ -382,7 +387,6 @@ public class ProceduralGeneration : MonoBehaviour
         // /Initialization of Lists: We start by initializing two lists, biomeTilemaps and biomeTiles, to store the available tilemaps and tiles for the biomes, respectively.
         List<Tilemap> biomeTilemaps = new List<Tilemap>();
         List<TileBase> biomeTiles = new List<TileBase>();
-
 
         // Adding Available Biomes: We check each biome to see if it's available (i.e., if the biome value is greater than 0 and the corresponding tile is not null). If it is, we add its tilemap and tile to the lists.
         if (firstBiomeVal > 0 && firstTile != null)
@@ -448,7 +452,7 @@ public class ProceduralGeneration : MonoBehaviour
     }
 
 
-    public void RenderMap(int[,] map)
+    public void RenderMap(int[,] map) // Inspiré ou provenant de la vidéo de ChronoABI
     {
         for(int x = 0; x < width; x++) {
             for (int y = 0; y < height; y++)
@@ -456,6 +460,7 @@ public class ProceduralGeneration : MonoBehaviour
 
                 switch (map[x, y])
                 {
+                    // "case var value when value" Nécessaire, ref : https://stackoverflow.com/questions/7593377/switch-case-in-c-sharp-a-constant-value-is-expected
                     case var value when value == firstBiomeVal:
                         firstBiomeTileMap.SetTile(new Vector3Int(x, y, 0), firstBiomeTile);
                         break;
@@ -465,11 +470,10 @@ public class ProceduralGeneration : MonoBehaviour
                     case var value when value == thirdBiomeVal:
                         thirdBiomeTileMap.SetTile(new Vector3Int(x, y, 0), thirdBiomeTile);
                         break;
-                    case var value when value == caveVal: // BIZARRE OUI, MAIS REGLE UN BUG DE UNITY. J'AI TROUVÉ CE TRUC SUR STACK OVER FLOW :) ca prenait pas juste caveVal
+                    case var value when value == caveVal: 
                         caveTileMap.SetTile(new Vector3Int(x, y, 0), caveTile);
                         break;
-                    case var value when value == firstMineralVal: // BIZARRE OUI, MAIS REGLE UN BUG DE UNITY. J'AI TROUVÉ CE TRUC SUR STACK OVER FLOW :) ca prenait pas juste caveVal
-                        //caveTileMap.SetTile(new Vector3Int(x, y, 0), caveTile);
+                    case var value when value == firstMineralVal:
                         mineralTileMap.SetTile(new Vector3Int(x, y, 0), mineralTile);
                         break;
                     case var value when value == 0:
@@ -478,7 +482,6 @@ public class ProceduralGeneration : MonoBehaviour
                         if (thirdBiomeTileMap != null && thirdBiomeTile) thirdBiomeTileMap.SetTile(new Vector3Int(x, y, 0), null);
                         break;
                     default:
-                        //rien for now
                         break;
                 }
             }
@@ -486,7 +489,7 @@ public class ProceduralGeneration : MonoBehaviour
 
     }
 
-    public void clearMap() 
+    public void clearMap() // Inspiré ou provenant de la vidéo de ChronoABI
     {
         firstTileMap.ClearAllTiles();
         caveTileMap.ClearAllTiles();
@@ -506,17 +509,15 @@ public class ProceduralGeneration : MonoBehaviour
     {
         if (surface.Count > 0)
         {
-            // Choose a random surface tile
+            // Sélectionne une position aléatoire sur la surface de la Map
             int randomIndex = UnityEngine.Random.Range(0, surface.Count);
             int[] surfaceTile = surface[randomIndex];
 
-            // Calculate the position to spawn the character
+            // Calcule la position ou on va faire apparaître le character
             Vector3 spawnPosition = new Vector3(surfaceTile[0], surfaceTile[1], 0);
 
-            // Spawn the character prefab at the calculated position
+            // Fait apparaître le character à la position choisi
             Instantiate(characterPrefab, spawnPosition, Quaternion.identity);
-            //characterPrefab.transform.position = spawnPosition;
-
         }
         else
         {
@@ -536,13 +537,10 @@ public class ProceduralGeneration : MonoBehaviour
                     if(pseudoRandom.Next(1, 100) > randomFillPercentMinerals)
                     {
                         map[x, y] = firstMineralVal;
-                    }
-                    //map[x, y] = (pseudoRandom.Next(1, 100) < randomFillPercentMinerals) ? num : firstMineral; //si la valeur du pseudoRandom est plus grande que le randomFillPercent, on place un groundTile/iceTile/desolationTile, sinon un mineral
-                
+                    }                
                 }
             }
         }
-
     }
 
     public string getTileVal(int x, int y)

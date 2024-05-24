@@ -13,8 +13,6 @@ public class Sword : Item
 
 public class WoodenSword : Sword
 {
-
-
     public WoodenSword() 
     {
         itemName = "WoodenSword";
@@ -27,7 +25,7 @@ public class WoodenSword : Sword
         };
     }
 
-    public override float DoDamage()
+    public override float doDamage()
     {
         return damage;
     }
@@ -35,8 +33,6 @@ public class WoodenSword : Sword
 
 public class IronSword : Sword
 {
-
-
     public IronSword()
     {
         itemName = "IronSword";
@@ -50,7 +46,7 @@ public class IronSword : Sword
         };
     }
 
-    public override float DoDamage()
+    public override float doDamage()
     {
         return damage;
     }

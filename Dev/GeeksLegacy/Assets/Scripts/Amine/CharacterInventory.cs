@@ -6,8 +6,7 @@ using System;
 public class CharacterInventory
 {
 
-//    [SerializeField] private GameObject inventoryPrefab;
-    public int NumberOfItems { get; private set; } //n'importe quel script peut get la valeur, mais seulement ce script peut modifier la valeur
+    public int numberOfItems { get; private set; } //n'importe quel script peut get la valeur, mais seulement ce script peut modifier la valeur
     public Dictionary<string, int> inventory { get; private set; }
 
     private Dictionary<string, Type> itemTypeMap = new Dictionary<string, Type>()
@@ -21,7 +20,7 @@ public class CharacterInventory
 
     public CharacterInventory()
     {
-        NumberOfItems = 0;
+        numberOfItems = 0;
         inventory = new Dictionary<string, int>();
         maxSize = 9;
     }
@@ -37,11 +36,10 @@ public class CharacterInventory
 
         if (!canAddInventory())
         {
-            Debug.Log("INVENTORY IS FULL");
             return;
         }
 
-        NumberOfItems++; //Pour sauvegarder le nombre d'item total
+        numberOfItems++; //Pour sauvegarder le nombre d'item total
         if (inventory.ContainsKey(itemName))
         {
             inventory[itemName]++;
@@ -54,9 +52,8 @@ public class CharacterInventory
     }
 
 
-    public void updateInventory()
+    public void updateInventory() //Mettre à jour notre inventaire
     {
-     //   if (this.inventory[])
         
         foreach (KeyValuePair<string, int> kvp in this.inventory)
         {
@@ -67,8 +64,6 @@ public class CharacterInventory
                     this.inventory.Remove(kvp.Key);
                 }
             }
-            //Debug.Log("clé : " + kvp.Key);
-            //Debug.Log("valeur : " + kvp.Value);
         }
     }
 
@@ -77,7 +72,7 @@ public class CharacterInventory
         return inventory.ContainsKey(itemName);
     }
 
-    public void deleteOne(string itemName) //SVP TOUJOURS VERIFIER SI L'ITEM EST DANS L'INVENTAIRE, A L'AIDE de inInventory()
+    public void deleteOne(string itemName) //TOUJOURS VERIFIER SI L'ITEM EST DANS L'INVENTAIRE, A L'AIDE de inInventory(), exemple de logique dans le script Inventory.cs
     {        
         inventory[itemName]--;
     }
@@ -90,21 +85,6 @@ public class CharacterInventory
     public int inventoryCount()
     {
         return inventory.Count;
-    }
-
-
-    public void dropStuff(ControlCharacters charac, string itemName)
-    {
-        Vector3 characPosition = charac.transform.position;
-
-        //proceduralGeneration.updateMap((int)tilelocation.x, (int)tilelocation.y, 0);
-        // Spawn a block of dirt at the same location
-        //tilelocation.y += 1;
-        //tilelocation.x += 0.5f;
-        //GameObject dirtBlock = Instantiate(dirtPrefab, tilelocation, Quaternion.identity);
-        // Attach the MaterialsBehaviour script to the spawned dirt block
-        //dirtBlock.AddComponent<MaterialsBehaviour>();
-
     }
 
 }
